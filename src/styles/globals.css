@@ -1,26 +1,126 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import 'tailwindcss';
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+
+    /* Brand scale  */
+    --color-brand-50: var(--color-sky-50);
+    --color-brand-100: var(--color-sky-100);
+    --color-brand-200: var(--color-sky-200);
+    --color-brand-300: var(--color-sky-300);
+    --color-brand-400: var(--color-sky-400);
+    --color-brand-500: var(--color-sky-500);
+    --color-brand-600: var(--color-sky-600);
+    --color-brand-700: var(--color-sky-700);
+    --color-brand-800: var(--color-sky-800);
+    --color-brand-900: var(--color-sky-900);
+    --color-brand-950: var(--color-sky-950);
+
+    /* Brand semantics */
+    --color-brand-primary: var(--color-brand-400);
+    --color-brand-secondary: var(--color-brand-100);
+    --color-brand-strong: var(--color-brand-700);
+    --color-brand-subtle: var(--color-brand-50);
+
+    /* Backgrounds */
+    --color-background-primary: var(--color-white);
+    --color-background-secondary: var(--color-brand-secondary);
+    --color-background-accent: var(--color-brand-primary);
+    --color-background-strong: var(--color-brand-strong);
+
+    /* Foregrounds */
+    --color-foreground-primary: var(--color-gray-800);
+    --color-foreground-secondary: var(--color-gray-700);
+    --color-foreground-muted: var(--color-gray-500);
+    --color-foreground-inverted: var(--color-white);
+    --color-foreground-brand: var(--color-brand-400);
+    --color-foreground-brand-inverted: var(--color-brand-50);
+    --color-foreground-brand-strong: var(--color-brand-500);
+
+    /* Borders */
+    --color-border-default: var(--color-gray-400);
+    --color-border-subtle: var(--color-gray-200);
+    --color-border-strong: var(--color-gray-600);
+
+    --color-border-brand: var(--color-brand-400);
+    --color-border-brand-subtle: var(--color-brand-200);
+    --color-border-brand-strong: var(--color-brand-600);
+
+    /* States */
+    --color-state-success: var(--color-emerald-500);
+    --color-state-warning: var(--color-amber-400);
+    --color-state-error: var(--color-red-500);
+    --color-state-info: var(--color-sky-500);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@layer base {
+    body {
+        @apply bg-background-primary text-foreground-secondary overflow-x-hidden font-sans antialiased;
+    }
+
+    main {
+        @apply min-h-svh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply text-foreground-primary tracking-tight;
+    }
+
+    h1 {
+        @apply text-center text-4xl;
+    }
+
+    h2 {
+        @apply text-3xl;
+    }
+
+    h3 {
+        @apply text-2xl;
+    }
+
+    h4,
+    h5,
+    h5 {
+        @apply text-xl;
+    }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+    .btn {
+        @apply flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap;
+    }
+
+    .btn-sm {
+        @apply p-3 text-base;
+    }
+
+    .btn-md {
+        @apply p-4 text-base sm:text-lg;
+    }
+
+    .btn-lg {
+        @apply gap-4 px-8 py-4 text-xl sm:text-2xl;
+    }
+
+    .btn-primary {
+        @apply bg-brand-400 hover:bg-brand-300 text-foreground-brand-inverted transition;
+    }
+
+    .btn-secondary {
+        @apply text-foreground-secondary bg-gray-300 transition hover:bg-gray-200;
+    }
+
+    .btn-outline {
+        @apply border-border-brand text-foreground-brand-strong hover:bg-brand-primary hover:border-brand-primary hover:text-foreground-inverted border-2 bg-transparent transition;
+    }
+
+    .btn-ghost {
+        @apply text-foreground-brand-strong hover:bg-background-secondary bg-transparent transition;
+    }
 }
