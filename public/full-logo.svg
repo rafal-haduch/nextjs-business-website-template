@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="170.22234mm"
+   height="41.91mm"
+   viewBox="0 0 170.22234 41.91"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient4">
+      <stop
+         style="stop-color:#34d399;stop-opacity:1;"
+         offset="0"
+         id="stop4" />
+      <stop
+         style="stop-color:#38bdf8;stop-opacity:1;"
+         offset="0.7473309"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient4"
+       id="linearGradient5"
+       x1="93.205894"
+       y1="52.605984"
+       x2="182.7151"
+       y2="52.605984"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,0.75959043)" />
+  </defs>
+  <g
+     id="layer1"
+     style="display:inline"
+     transform="translate(-63.388834,-23.609072)">
+    <path
+       d="m 82.269495,55.613072 -2.921,2.878666 -15.95966,-15.832666 15.70566,-15.621 2.921,2.921 -12.61533,12.7 z m 27.347325,-30.056666 -20.404655,39.962667 -3.76767,-1.905 20.404665,-40.005001 z m 23.28335,17.102666 -15.70567,15.578666 -2.921,-2.878666 12.61533,-12.7 -12.86933,-12.954 2.921,-2.921 z m 24.51101,14.816666 h -4.23334 V 44.775739 h -12.7 V 57.475738 H 136.2445 V 27.842405 h 4.23334 v 12.7 h 12.7 v -12.7 h 4.23334 z m 25.39999,-8.466666 q 0,3.471333 -2.49766,5.969 -2.49768,2.497666 -5.969,2.497666 h -12.7 V 27.842405 h 12.7 q 3.47132,0 5.969,2.497667 2.49766,2.497667 2.49766,5.969 z m -4.23334,0 v -12.7 q 0,-1.735667 -1.27,-2.963333 -1.22766,-1.27 -2.96333,-1.27 h -8.46667 v 21.166666 h 8.46667 q 1.73567,0 2.96333,-1.227667 1.27,-1.27 1.27,-3.005666 z m 29.63334,8.466666 h -12.7 q -3.47132,0 -5.969,-2.497666 -2.49766,-2.497667 -2.49766,-5.969 v -4.233333 q 0,-3.471334 2.49766,-5.969 2.49768,-2.497667 5.969,-2.497667 h 4.23333 q 3.47134,0 5.969,2.497667 2.49768,2.497666 2.49768,5.969 v 4.233333 h -16.93333 q 0,1.735666 1.22766,3.005666 1.26999,1.227667 3.00566,1.227667 h 12.7 z m -4.23333,-12.699999 q 0,-1.735667 -1.27,-2.963334 -1.22767,-1.27 -2.96334,-1.27 h -4.23333 q -1.73567,0 -3.00567,1.27 -1.22766,1.227667 -1.22766,2.963334 z m 29.63332,-4.233334 -8.46666,16.933333 h -4.23334 L 212.4445,40.542405 v -4.233333 h 4.23334 v 3.175 l 6.35,12.7 6.35,-12.7 v -3.175 h 4.23332 z"
+       id="text1"
+       style="font-size:50.8px;line-height:1.1;font-family:'ProFontWindows Nerd Font';-inkscape-font-specification:'ProFontWindows Nerd Font, Normal';display:inline;fill:url(#linearGradient5);stroke-width:1.971"
+       aria-label="&lt;/&gt;HDev" />
+  </g>
+</svg>

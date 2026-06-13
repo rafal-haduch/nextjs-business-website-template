@@ -1,0 +1,28 @@
+import Link from 'next/link';
+
+import { ROUTES } from '@/src/constants/routes';
+
+import Container from '@/src/components/container';
+
+export default function FooterLegal() {
+    return (
+        <div className="bg-background-accent text-foreground-inverted w-full py-6">
+            <Container>
+                <div className="flex flex-col items-center gap-4">
+                    <ul className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-between">
+                        <li>
+                            <Link href={ROUTES.REGULATIONS.path}>Regulamin</Link>
+                        </li>
+                        <li>
+                            <Link href={ROUTES.PRIVACY_POLICY.path}>Polityka prywatności</Link>
+                        </li>
+                    </ul>
+                    <p className="text-center">
+                        {/* TODO: change from const*/}© 2026 Pracownia Rentgenodiagnostyki
+                        Stomatologicznej w Sanoku
+                    </p>
+                </div>
+            </Container>
+        </div>
+    );
+}
