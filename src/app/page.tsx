@@ -1,15 +1,11 @@
-import Section from '@/src/components/section';
-import Container from '@/src/components/container';
+import HeroSection from '@/src/app/_components/hero-section';
+import FirstSection from '@/src/app/_components/first-section';
 
 export default function Home() {
     return (
-        <Section>
-            <Container>
-                <h1 className="mb-4">Hello World!</h1>
-                <p className="text-center">
-                    This is a business website template in NextJS made by Rafał Haduch.
-                </p>
-            </Container>
-        </Section>
+        <>
+            <HeroSection />
+            <FirstSection />
+        </>
     );
 }

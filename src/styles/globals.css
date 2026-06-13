@@ -93,7 +93,7 @@
 
 @layer components {
     .btn {
-        @apply flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap;
+        @apply flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap mx-auto;
     }
 
     .btn-sm {
