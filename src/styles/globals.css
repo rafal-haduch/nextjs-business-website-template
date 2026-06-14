@@ -36,7 +36,7 @@
     --color-foreground-inverted: var(--color-white);
     --color-foreground-brand: var(--color-brand-400);
     --color-foreground-brand-inverted: var(--color-brand-50);
-    --color-foreground-brand-strong: var(--color-brand-500);
+    --color-foreground-brand-strong: var(--color-brand-600);
 
     /* Borders */
     --color-border-default: var(--color-gray-400);
@@ -93,7 +93,7 @@
 
 @layer components {
     .btn {
-        @apply flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap mx-auto;
+        @apply mx-auto flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap;
     }
 
     .btn-sm {
