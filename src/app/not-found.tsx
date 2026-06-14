@@ -1,20 +1,25 @@
 import Link from 'next/link';
+import { House } from 'lucide-react';
 
 import { ROUTES } from '@/src/config/routes';
 
-import PageSection from '@/src/components/page-section';
-import Container from '@/src/components/container';
+import { getButtonClasses } from '@/src/lib/get-button-classes';
+
+import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
+import Container, { CONTAINER_PRESETS } from '@/src/components/container';
 
 export default function NotFound() {
     return (
-        <PageSection spacing="single" aria-labelledby="not-found-heading">
-            <Container className="text-center">
-                <h1 id="not-found-heading" className="mb-6">
+        <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="not-found-title">
+            <Container {...CONTAINER_PRESETS.base} className="text-center">
+                <h1 id="not-found-title" className="mb-6">
                     Nie znaleziono treści
                 </h1>
-                <p className="mb-8">Przejdź do strony głównej lub skorzystaj z menu na górze.</p>
-                <Link href={ROUTES.HOME.path} className="btn btn-lg btn-primary">
-                    Strona główna{' '}
+                <p className="mb-8">
+                    Przejdź do strony głównej lub skorzystaj z menu nawigacyjnego.
+                </p>
+                <Link href={ROUTES.HOME.path} className={getButtonClasses({ size: 'large' })}>
+                    Strona główna <House aria-hidden="true" />
                 </Link>
             </Container>
         </PageSection>

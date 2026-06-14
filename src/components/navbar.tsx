@@ -10,6 +10,8 @@ import { NAV_ITEMS, ROUTES } from '@/src/config/routes';
 
 import { cn } from '@/src/utils/cn';
 
+import { getButtonClasses } from '@/src/lib/get-button-classes';
+
 import Container from '@/src/components/container';
 
 import logo from '@/public/full-logo.svg';
@@ -91,7 +93,8 @@ export default function Navbar() {
                                     ))}
                                 </ul>
                             </nav>
-                            <Link href={ROUTES.CTA.path} className="btn btn-lg btn-primary">
+                            {/* CTA button */}
+                            <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
                                 CTA
                             </Link>
                         </div>
@@ -154,7 +157,7 @@ export default function Navbar() {
                     </ul>
                     {/* CTA button */}
                     <div className="mt-auto w-full">
-                        <Link href={ROUTES.CTA.path} className="btn btn-lg btn-primary">
+                        <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
                             CTA
                         </Link>
                     </div>

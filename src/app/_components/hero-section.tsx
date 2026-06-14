@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { ROUTES } from '@/src/config/routes';
 
+import { getButtonClasses } from '@/src/lib/get-button-classes';
+
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
 import Container, { CONTAINER_PRESETS } from '@/src/components/container';
 
@@ -32,7 +34,7 @@ export default function HeroSection() {
                         >
                             Hello World!
                         </h1>
-                        <Link href={ROUTES.CTA.path} className="btn btn-lg btn-primary">
+                        <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
                             CTA
                         </Link>
                     </div>
