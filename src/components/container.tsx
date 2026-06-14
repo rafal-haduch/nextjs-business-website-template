@@ -36,7 +36,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 export const CONTAINER_PRESETS = {
     hero: {
         width: 'md',
-        padding: 'md',
+        padding: 'none',
     },
     narrow: {
         width: 'sm',
