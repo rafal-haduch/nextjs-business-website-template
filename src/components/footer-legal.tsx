@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
-import { ROUTES } from '@/src/constants/routes';
+import { ROUTES } from '@/src/config/routes';
+
+import { COMPANY_NAME } from '@/src/data/site-and-company';
 
 import Container from '@/src/components/container';
 
@@ -17,10 +19,7 @@ export default function FooterLegal() {
                             <Link href={ROUTES.PRIVACY_POLICY.path}>Polityka prywatności</Link>
                         </li>
                     </ul>
-                    <p className="text-center">
-                        {/* TODO: change from const*/}© 2026 Pracownia Rentgenodiagnostyki
-                        Stomatologicznej w Sanoku
-                    </p>
+                    <p className="text-center">© 2026 {COMPANY_NAME}</p>
                 </div>
             </Container>
         </div>

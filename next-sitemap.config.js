@@ -1,5 +1,5 @@
 module.exports = {
-    siteUrl: 'https://example.com', //TODO:  change to imported const
+    siteUrl: 'https://domain.com', //TODO: set url
     generateRobotsTxt: true,
     sitemapSize: 50000,
     changefreq: 'monthly',

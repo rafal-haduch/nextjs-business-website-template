@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
-import { NAV_ITEMS, ROUTES } from '@/src/constants/routes';
+import { NAV_ITEMS, ROUTES } from '@/src/config/routes';
 
 import { cn } from '@/src/utils/cn';
 

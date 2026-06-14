@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ROUTES } from '@/src/constants/routes';
+import { ROUTES } from '@/src/config/routes';
 
 import Section from '@/src/components/section';
 import Container from '@/src/components/container';
