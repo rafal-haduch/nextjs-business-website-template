@@ -4,6 +4,8 @@ type Thickness = 'thin' | 'medium' | 'thick' | 'none';
 type Spacing = 'compact' | 'normal' | 'spacious' | 'none';
 type Width = 'short' | 'base' | 'long' | 'none';
 
+type DecorativeLineVariant = 'mainHeading' | 'heading' | 'contentSeparator' | 'custom';
+
 const thicknessStyles: Record<Thickness, string> = {
     thin: 'border-t-2',
     medium: 'border-t-4',
@@ -35,18 +37,17 @@ interface Props {
 
 /**
  * Predefined style combinations for common use cases.
- * Spreads directly onto `<DecorativeLine />` with `{...preset}`.
  * Use `custom` preset to opt out of all defaults and style entirely via `className`.
  */
 export const DECORATIVE_LINE_PRESETS = {
     mainHeading: { thickness: 'thick', spacing: 'spacious' } as const,
     heading: { thickness: 'medium', spacing: 'normal' } as const,
-    separator: { thickness: 'thin', spacing: 'compact' } as const,
+    contentSeparator: { thickness: 'thin', spacing: 'compact' } as const,
     custom: { thickness: 'none', spacing: 'none', width: 'none' } as const,
-} satisfies Record<string, Partial<Props>>;
+} satisfies Record<DecorativeLineVariant, Partial<Props>>;
 
 /**
- * A decorative line that highlights headings or separates content.
+ * Reusable decorative line component that highlights headings or separates content.
  *
  * **Recommended:** use via {@link DECORATIVE_LINE_PRESETS}
  *

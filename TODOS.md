@@ -2,7 +2,6 @@
 
 
 ## Tech:
-- add decorative line component,
 - add getButtonClasses(),
 - add utils (price, date, format text etc),
 - add privacy policy,
