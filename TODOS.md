@@ -2,9 +2,6 @@
 
 
 ## Tech:
-- add getButtonClasses(),
-- add utils (price, date, format text etc),
-- add privacy policy,
 - review: contact-title or contact-heading? (id and aria-labelledby)
 - add section wave separator,
 - add bullet list, table?
