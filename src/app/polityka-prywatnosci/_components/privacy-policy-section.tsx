@@ -7,11 +7,11 @@ import PrivacyPolicySubsection from '@/src/app/polityka-prywatnosci/_components/
 
 export default function PrivacyPolicySection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="privacy-heading">
+        <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="privacy-title">
             <Container {...CONTAINER_PRESETS.narrow}>
                 <div className="flex flex-col gap-10">
                     <header className="flex flex-col gap-4">
-                        <h1 id="privacy-heading">Polityka prywatności</h1>
+                        <h1 id="privacy-title">Polityka prywatności</h1>
                         <p className="text-muted-foreground text-sm sm:text-center">
                             Niniejsza polityka prywatności określa zasady przetwarzania i ochrony
                             danych osobowych użytkowników korzystających ze strony internetowej

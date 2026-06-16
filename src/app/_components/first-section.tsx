@@ -14,11 +14,11 @@ import DecorativeLine, { DECORATIVE_LINE_PRESETS } from '@/src/components/decora
 
 export default function FirstSection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.last} aria-labelledby="section-heading">
+        <PageSection {...PAGE_SECTION_PRESETS.last} aria-labelledby="section-title">
             <Container {...CONTAINER_PRESETS.base}>
                 <div className="text-center">
                     <h2
-                        id="section-heading"
+                        id="section-title"
                         className="flex items-center justify-center gap-4 whitespace-nowrap"
                     >
                         <Sparkles aria-hidden="true" className="text-foreground-brand h-10 w-10" />

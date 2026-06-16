@@ -2,9 +2,8 @@
 
 
 ## Tech:
-- review: contact-title or contact-heading? (id and aria-labelledby)
-- add section wave separator,
-- add bullet list, table?
+- add section wave separator?,
+- add table component?
 - extend actual code for slide in, brand-secondary, scroll-to-top button, popup (closed, info), loading placeholder image, review how dark mode off,
 
 

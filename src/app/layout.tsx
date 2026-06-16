@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { BASE_URL, SITE_NAME } from '@/src/data/site-and-company';
 
 import Navbar from '@/src/components/navbar';
-import FatFooter from '@/src/components/fat-footer';
+import Footer from '@/src/components/footer';
 
 import '@/src/styles/globals.css';
 
@@ -56,7 +56,7 @@ export default function RootLayout({
             <body>
                 <Navbar />
                 <main>{children}</main>
-                <FatFooter />
+                <Footer variant="fat" />
             </body>
         </html>
     );
