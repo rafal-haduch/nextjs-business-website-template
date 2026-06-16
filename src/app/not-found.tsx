@@ -13,13 +13,12 @@ export default function NotFound() {
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="not-found-title">
             <Container {...CONTAINER_PRESETS.base} className="text-center">
                 <h1 id="not-found-title" className="mb-6">
-                    Nie znaleziono treści
+                    404 Not Found
                 </h1>
-                <p className="mb-8">
-                    Przejdź do strony głównej lub skorzystaj z menu nawigacyjnego.
-                </p>
+                <p className="mb-8">Go to the home page or use the navigation menu.</p>
                 <Link href={ROUTES.HOME.path} className={getButtonClasses({ size: 'large' })}>
-                    Strona główna <House aria-hidden="true" />
+                    {ROUTES.HOME.label}
+                    <House aria-hidden="true" />
                 </Link>
             </Container>
         </PageSection>

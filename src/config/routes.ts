@@ -1,20 +1,20 @@
 /**
  * Navigation item links.
- * @property {string} label - Display text in navigation menu.
  * @property {number} order - Sort order in navigation (ascending).
  */
 interface NavItem {
-    label: string;
     order: number;
 }
 
 /**
  * Application route definition.
  * @property {string} path - URL path for the route.
+ * @property {string} label - Display text in navigation menu or link buttons.
  * @property {NavItem} [nav] - Optional navigation metadata (omit for non-navigable routes).
  */
 interface AppRoute {
     path: string;
+    label: string;
     nav?: NavItem;
 }
 
@@ -35,29 +35,33 @@ interface NavRoute extends AppRoute {
 export const ROUTES = {
     HOME: {
         path: '/',
+        label: 'Home',
     },
     ABOUT_US: {
-        path: '/o-nas',
+        path: '/about-us',
+        label: 'About us',
         nav: {
-            label: 'O nas',
             order: 1,
         },
     },
     CONTACT: {
-        path: '/kontakt',
+        path: '/contact',
+        label: 'Contact',
         nav: {
-            label: 'Kontakt',
             order: 2,
         },
     },
     CTA: {
         path: '/cta',
+        label: 'CTA',
     },
     REGULATIONS: {
-        path: '/regulamin',
+        path: '/regulations',
+        label: 'Regulations',
     },
     PRIVACY_POLICY: {
-        path: '/polityka-prywatnosci',
+        path: '/privacy-policy',
+        label: 'Privacy policy',
     },
 } satisfies Record<string, AppRoute>;
 

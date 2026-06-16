@@ -29,61 +29,61 @@ export const SEO = {
         },
     },
     ABOUT_US: {
-        title: 'O nas',
+        title: ROUTES.ABOUT_US.label,
         description: '...',
         alternates: {
             canonical: ROUTES.ABOUT_US.path,
         },
         openGraph: {
-            title: `O nas - ${SITE_NAME}`,
+            title: `${ROUTES.ABOUT_US.label} - ${SITE_NAME}`,
             description: '...',
             url: ROUTES.ABOUT_US.path,
         },
     },
     CONTACT: {
-        title: 'Kontakt',
+        title: ROUTES.CONTACT.label,
         description: '...',
         alternates: {
             canonical: ROUTES.CONTACT.path,
         },
         openGraph: {
-            title: `Kontakt - ${SITE_NAME}`,
+            title: `${ROUTES.CONTACT.label} - ${SITE_NAME}`,
             description: '...',
             url: ROUTES.CONTACT.path,
         },
     },
     CTA: {
-        title: 'CTA',
+        title: ROUTES.CTA.label,
         description: '...',
         alternates: {
             canonical: ROUTES.CTA.path,
         },
         openGraph: {
-            title: `CTA - ${SITE_NAME}`,
+            title: `${ROUTES.CTA.label} - ${SITE_NAME}`,
             description: '...',
             url: ROUTES.CTA.path,
         },
     },
     REGULATIONS: {
-        title: 'Regulamin',
+        title: ROUTES.REGULATIONS.label,
         description: '...',
         alternates: {
             canonical: ROUTES.REGULATIONS.path,
         },
         openGraph: {
-            title: `Regulamin - ${SITE_NAME}`,
+            title: `${ROUTES.REGULATIONS.label} - ${SITE_NAME}`,
             description: '...',
             url: ROUTES.REGULATIONS.path,
         },
     },
     PRIVACY_POLICY: {
-        title: 'Polityka prywatności',
+        title: ROUTES.PRIVACY_POLICY.label,
         description: '...',
         alternates: {
             canonical: ROUTES.PRIVACY_POLICY.path,
         },
         openGraph: {
-            title: `Polityka prywatności - ${SITE_NAME}`,
+            title: `${ROUTES.PRIVACY_POLICY.label} - ${SITE_NAME}`,
             description: '...',
             url: ROUTES.PRIVACY_POLICY.path,
         },

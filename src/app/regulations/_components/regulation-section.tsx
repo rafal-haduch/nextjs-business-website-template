@@ -4,9 +4,11 @@ import WorkInProgress from '@/src/components/wip';
 
 export default function RegulationsSection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.single}>
+        <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="regulations-title">
             <Container {...CONTAINER_PRESETS.base}>
-                <h1 className="mb-4">Regulamin</h1>
+                <h1 id="regulations-title" className="mb-4">
+                    Regulations
+                </h1>
                 <WorkInProgress />
             </Container>
         </PageSection>

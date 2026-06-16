@@ -13,10 +13,12 @@ export default function FooterLegal() {
                 <div className="flex flex-col items-center gap-4">
                     <ul className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-between">
                         <li>
-                            <Link href={ROUTES.REGULATIONS.path}>Regulamin</Link>
+                            <Link href={ROUTES.REGULATIONS.path}>{ROUTES.REGULATIONS.label}</Link>
                         </li>
                         <li>
-                            <Link href={ROUTES.PRIVACY_POLICY.path}>Polityka prywatności</Link>
+                            <Link href={ROUTES.PRIVACY_POLICY.path}>
+                                {ROUTES.PRIVACY_POLICY.label}
+                            </Link>
                         </li>
                     </ul>
                     <p className="text-center">© 2026 {COMPANY_NAME}</p>

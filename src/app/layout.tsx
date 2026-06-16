@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     metadataBase: new URL(BASE_URL),
     title: {
         default: SITE_NAME,
-        template: `%s | ${SITE_NAME}`,
+        template: `%s - ${SITE_NAME}`,
     },
     openGraph: {
         type: 'website',
         siteName: SITE_NAME,
-        locale: 'pl_PL',
+        locale: 'en',
         images: [{ url: `${BASE_URL}/og-image.jpg` }],
     },
     twitter: {

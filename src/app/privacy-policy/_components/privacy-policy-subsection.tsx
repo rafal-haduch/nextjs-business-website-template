@@ -1,6 +1,6 @@
 import BulletList from '@/src/components/bullet-list';
 
-import { PrivacyPolicySubsectionItem } from '@/src/app/polityka-prywatnosci/_content/privacy-policy';
+import { PrivacyPolicySubsectionItem } from '@/src/app/privacy-policy/_content/privacy-policy';
 
 export default function PrivacyPolicySubsection({
     id,

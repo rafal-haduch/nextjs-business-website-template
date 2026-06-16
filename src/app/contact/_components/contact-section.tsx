@@ -7,7 +7,7 @@ export default function ContactSection() {
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="contact-title">
             <Container {...CONTAINER_PRESETS.base}>
                 <h1 id="contact-title" className="mb-4">
-                    Kontakt
+                    Contact
                 </h1>
                 <WorkInProgress />
             </Container>

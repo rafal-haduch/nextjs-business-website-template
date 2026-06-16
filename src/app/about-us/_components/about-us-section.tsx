@@ -7,7 +7,7 @@ export default function AboutUsSection() {
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="about-us-title">
             <Container {...CONTAINER_PRESETS.base}>
                 <h1 id="about-us-title" className="mb-4">
-                    O nas
+                    About us
                 </h1>
                 <WorkInProgress />
             </Container>

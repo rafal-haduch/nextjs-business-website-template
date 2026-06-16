@@ -87,7 +87,7 @@ export default function Navbar() {
                                                         : ''
                                                 )}
                                             >
-                                                {link.nav.label}
+                                                {link.label}
                                             </Link>
                                         </li>
                                     ))}
@@ -95,7 +95,7 @@ export default function Navbar() {
                             </nav>
                             {/* CTA button */}
                             <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
-                                CTA
+                                {ROUTES.CTA.label}
                             </Link>
                         </div>
                         {/* Hamburger */}
@@ -150,7 +150,7 @@ export default function Navbar() {
                                     onClick={closeMobileMenu}
                                     className="hover:text-foreground-brand block rounded-lg px-4 py-3 text-center text-lg whitespace-nowrap transition-colors"
                                 >
-                                    {item.nav.label}
+                                    {item.label}
                                 </Link>
                             </li>
                         ))}
@@ -158,7 +158,7 @@ export default function Navbar() {
                     {/* CTA button */}
                     <div className="mt-auto w-full">
                         <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
-                            CTA
+                            {ROUTES.CTA.label}
                         </Link>
                     </div>
                 </nav>
