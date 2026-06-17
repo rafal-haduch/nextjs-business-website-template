@@ -39,6 +39,10 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
     spacingBottom?: SpacingBottom;
     background?: Background;
     backgroundImage?: string;
+    /** Decorative element rendered above the section. */
+    topSeparator?: React.ReactNode;
+    /** Decorative element rendered below the section. */
+    bottomSeparator?: React.ReactNode;
     className?: string;
     children: React.ReactNode;
 }
@@ -77,12 +81,17 @@ export const PAGE_SECTION_PRESETS = {
 /**
  * Reusable page section component with semantic vertical spacing and background control.
  *
+ * Decorative separators can be injected above and/or below the section
+ * using the `topSeparator` and `bottomSeparator` props.
+ *
  * **Recommended:** use via {@link PAGE_SECTION_PRESETS}
  *
  * @param spacingTop - Top section spacing. Default: `'lg'`.
  * @param spacingBottom - Bottom section spacing. Default: `'lg'`.
  * @param background - Background color variant. Default: `'none'`.
  * @param backgroundImage - Optional background image URL (overlays on background color).
+ * @param topSeparator - Optional decorative element rendered before the section. Accepts any React node.
+ * @param bottomSeparator - Optional decorative element rendered after the section. Accepts any React node.
  * @param className - Additional Tailwind classes merged via `cn()`.
  * @param children - Section content.
  */
@@ -91,22 +100,28 @@ export default function PageSection({
     spacingBottom = 'lg',
     background = 'none',
     backgroundImage,
+    topSeparator,
+    bottomSeparator,
     className,
     children,
     ...props
 }: Props) {
     return (
-        <section
-            className={cn(
-                spacingTopStyles[spacingTop],
-                spacingBottomStyles[spacingBottom],
-                backgroundStyles[background],
-                className
-            )}
-            style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
-            {...props}
-        >
-            {children}
-        </section>
+        <>
+            {topSeparator}
+            <section
+                className={cn(
+                    spacingTopStyles[spacingTop],
+                    spacingBottomStyles[spacingBottom],
+                    backgroundStyles[background],
+                    className
+                )}
+                style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
+                {...props}
+            >
+                {children}
+            </section>
+            {bottomSeparator}
+        </>
     );
 }
