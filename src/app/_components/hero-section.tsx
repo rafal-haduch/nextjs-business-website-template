@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { ROUTES } from '@/src/config/routes';
 
-import { getButtonClasses } from '@/src/lib/get-button-classes';
+import { getButtonClasses } from '@/src/lib/design-system/button';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
 import Container, { CONTAINER_PRESETS } from '@/src/components/container';

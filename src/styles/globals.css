@@ -123,4 +123,20 @@
     .btn-ghost {
         @apply text-foreground-brand-strong hover:bg-background-secondary bg-transparent transition;
     }
+
+    .table-base {
+        @apply w-full border-collapse;
+    }
+
+    .table-base th {
+        @apply bg-background-secondary px-4 py-3 text-left font-semibold;
+    }
+
+    .table-base td {
+        @apply px-4 py-3;
+    }
+
+    .table-base tr {
+        @apply border-border-brand border-b;
+    }
 }

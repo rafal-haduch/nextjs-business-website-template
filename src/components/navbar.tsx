@@ -10,7 +10,7 @@ import { NAV_ITEMS, ROUTES } from '@/src/config/routes';
 
 import { cn } from '@/src/utils/cn';
 
-import { getButtonClasses } from '@/src/lib/get-button-classes';
+import { getButtonClasses } from '@/src/lib/design-system/button';
 
 import Container from '@/src/components/container';
 
