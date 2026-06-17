@@ -17,17 +17,24 @@
     --color-brand-900: var(--color-sky-900);
     --color-brand-950: var(--color-sky-950);
 
-    /* Brand semantics */
-    --color-brand-primary: var(--color-brand-400);
-    --color-brand-secondary: var(--color-brand-100);
-    --color-brand-strong: var(--color-brand-700);
-    --color-brand-subtle: var(--color-brand-50);
+    /* Secondary brand scale  */
+    --color-brand-secondary-50: var(--color-green-50);
+    --color-brand-secondary-100: var(--color-green-100);
+    --color-brand-secondary-200: var(--color-green-200);
+    --color-brand-secondary-300: var(--color-green-300);
+    --color-brand-secondary-400: var(--color-green-400);
+    --color-brand-secondary-500: var(--color-green-500);
+    --color-brand-secondary-600: var(--color-green-600);
+    --color-brand-secondary-700: var(--color-green-700);
+    --color-brand-secondary-800: var(--color-green-800);
+    --color-brand-secondary-900: var(--color-green-900);
+    --color-brand-secondary-950: var(--color-green-950);
 
     /* Backgrounds */
     --color-background-primary: var(--color-white);
-    --color-background-secondary: var(--color-brand-secondary);
-    --color-background-accent: var(--color-brand-primary);
-    --color-background-strong: var(--color-brand-strong);
+    --color-background-secondary: var(--color-brand-100);
+    --color-background-accent: var(--color-brand-400);
+    --color-background-strong: var(--color-brand-700);
 
     /* Foregrounds */
     --color-foreground-primary: var(--color-gray-800);
@@ -109,7 +116,7 @@
     }
 
     .btn-primary {
-        @apply bg-brand-400 hover:bg-brand-300 text-foreground-brand-inverted transition;
+        @apply from-background-accent to-brand-secondary-400 hover:bg-brand-300 text-foreground-brand-inverted bg-linear-to-tl transition;
     }
 
     .btn-secondary {
@@ -117,7 +124,7 @@
     }
 
     .btn-outline {
-        @apply border-border-brand text-foreground-brand-strong hover:bg-brand-primary hover:border-brand-primary hover:text-foreground-inverted border-2 bg-transparent transition;
+        @apply border-border-brand text-foreground-brand-strong hover:bg-background-accent hover:border-background-accent hover:text-foreground-inverted border-2 bg-transparent transition;
     }
 
     .btn-ghost {
