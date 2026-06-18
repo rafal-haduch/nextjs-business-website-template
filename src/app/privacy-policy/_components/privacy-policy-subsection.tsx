@@ -16,7 +16,7 @@ export default function PrivacyPolicySubsection({
                 id={`section-${id}`}
                 className="text-foreground border-border-brand border-b pb-2 text-base font-semibold tracking-wide uppercase"
             >
-                <span className="text-foreground-brand">§{id}</span> {title}
+                <span className="text-foreground-brand-primary">§{id}</span> {title}
             </h2>
             <div className="flex flex-col gap-3">
                 {paragraphs?.map((p) => (
@@ -28,7 +28,7 @@ export default function PrivacyPolicySubsection({
                 {items && (
                     <BulletList
                         items={items}
-                        markerColor="text-foreground-brand"
+                        markerColor="text-foreground-brand-primary"
                         textSize="small"
                     />
                 )}

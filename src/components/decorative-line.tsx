@@ -1,10 +1,17 @@
 import { cn } from '@/src/utils/cn';
 
+type Color = 'primary' | 'secondary' | 'none';
 type Thickness = 'thin' | 'medium' | 'thick' | 'none';
 type Spacing = 'compact' | 'normal' | 'spacious' | 'none';
 type Width = 'short' | 'base' | 'long' | 'none';
 
 type DecorativeLineVariant = 'mainHeading' | 'heading' | 'contentSeparator' | 'custom';
+
+const colorStyles: Record<Color, string> = {
+    primary: 'border-border-brand-primary',
+    secondary: 'border-border-brand-secondary',
+    none: '',
+};
 
 const thicknessStyles: Record<Thickness, string> = {
     thin: 'border-t-2',
@@ -28,6 +35,7 @@ const widthStyles: Record<Width, string> = {
 };
 
 interface Props {
+    color?: Color;
     thickness?: Thickness;
     spacing?: Spacing;
     width?: Width;
@@ -71,6 +79,7 @@ export const DECORATIVE_LINE_PRESETS = {
  *
  */
 export default function DecorativeLine({
+    color = 'primary',
     thickness = 'medium',
     spacing = 'normal',
     width = 'base',
@@ -81,7 +90,8 @@ export default function DecorativeLine({
         <div
             aria-hidden="true"
             className={cn(
-                'border-border-brand mx-auto',
+                'mx-auto',
+                colorStyles[color],
                 thicknessStyles[thickness],
                 spacingStyles[spacing],
                 widthStyles[width],

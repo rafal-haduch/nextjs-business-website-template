@@ -81,9 +81,9 @@ export default function Navbar() {
                                             <Link
                                                 href={link.path}
                                                 className={cn(
-                                                    'hover:text-foreground-brand transition-colors',
+                                                    'hover:text-foreground-brand-primary transition-colors',
                                                     path === link.path
-                                                        ? 'text-foreground-brand'
+                                                        ? 'text-foreground-brand-primary'
                                                         : ''
                                                 )}
                                             >
@@ -94,7 +94,13 @@ export default function Navbar() {
                                 </ul>
                             </nav>
                             {/* CTA button */}
-                            <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
+                            <Link
+                                href={ROUTES.CTA.path}
+                                className={getButtonClasses({
+                                    variant: 'solid',
+                                    color: 'gradient',
+                                })}
+                            >
                                 {ROUTES.CTA.label}
                             </Link>
                         </div>
@@ -102,7 +108,7 @@ export default function Navbar() {
                         <button
                             onClick={openMobileMenu}
                             aria-label="Otwórz menu"
-                            className="text-foreground-brand cursor-pointer lg:hidden"
+                            className="text-foreground-brand-primary cursor-pointer lg:hidden"
                         >
                             <Menu className="h-8 w-8" aria-hidden="true" />
                         </button>
@@ -135,7 +141,7 @@ export default function Navbar() {
                     <button
                         onClick={closeMobileMenu}
                         aria-label="Zamknij menu"
-                        className="text-foreground-brand cursor-pointer p-1"
+                        className="text-foreground-brand-primary cursor-pointer p-1"
                     >
                         <X className="h-8 w-8" aria-hidden="true" />
                     </button>
@@ -148,7 +154,7 @@ export default function Navbar() {
                                 <Link
                                     href={item.path}
                                     onClick={closeMobileMenu}
-                                    className="hover:text-foreground-brand block rounded-lg px-4 py-3 text-center text-lg whitespace-nowrap transition-colors"
+                                    className="hover:text-foreground-brand-primary block rounded-lg px-4 py-3 text-center text-lg whitespace-nowrap transition-colors"
                                 >
                                     {item.label}
                                 </Link>

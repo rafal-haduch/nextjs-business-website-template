@@ -1,7 +1,8 @@
 import { cn } from '@/src/utils/cn';
 
 type Marker = 'dash' | 'bullet' | 'check' | 'arrow' | 'none';
-type Spacing = 'compact' | 'normal' | 'spacious';
+type Color = 'base' | 'primary' | 'secondary' | 'none';
+type Spacing = 'compact' | 'normal' | 'spacious' | 'none';
 type TextSize = 'small' | 'medium' | 'large';
 
 const markerStyles: Record<Marker, React.ReactNode> = {
@@ -12,10 +13,18 @@ const markerStyles: Record<Marker, React.ReactNode> = {
     none: null,
 };
 
+const colorStyles: Record<Color, React.ReactNode> = {
+    base: 'text-foreground-secondary',
+    primary: 'text-foreground-brand-primary',
+    secondary: 'text-foreground-brand-secondary',
+    none: '',
+};
+
 const spacingStyles: Record<Spacing, string> = {
     compact: 'gap-1',
     normal: 'gap-2',
     spacious: 'gap-4',
+    none: '',
 };
 
 const textSizeStyles: Record<TextSize, string> = {
@@ -27,7 +36,7 @@ const textSizeStyles: Record<TextSize, string> = {
 interface Props {
     items: string[];
     marker?: Marker;
-    markerColor?: string;
+    color?: Color;
     spacing?: Spacing;
     textSize?: TextSize;
     className?: string;
@@ -39,8 +48,7 @@ interface Props {
  *
  * @param items - Array of list item strings to render.
  * @param marker - Marker displayed before each item. Default: `'dash'`.
- * @param markerColor - Tailwind text color class applied to the marker
- * (e.g. `'text-foreground-brand'`) Default: `''`.
+ * @param color - Foreground color class applied to the marker. Default: `'primary'`.
  * @param spacing - Vertical spacing between list items. Default: `'normal'`.
  * @param textSize - Text size applied to list items. Default: `'medium'`.
  * @param className - Additional Tailwind classes merged via `cn()`.
@@ -48,7 +56,7 @@ interface Props {
 export default function BulletList({
     items,
     marker = 'dash',
-    markerColor = '',
+    color = 'primary',
     spacing = 'normal',
     textSize = 'medium',
     className,
@@ -64,7 +72,7 @@ export default function BulletList({
                     )}
                 >
                     {markerStyles[marker] && (
-                        <span className={cn(markerColor ? markerColor : '', 'shrink-0')}>
+                        <span className={cn(colorStyles[color], 'shrink-0')}>
                             {markerStyles[marker]}
                         </span>
                     )}

@@ -4,20 +4,20 @@
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
 
-    /* Brand scale  */
-    --color-brand-50: var(--color-sky-50);
-    --color-brand-100: var(--color-sky-100);
-    --color-brand-200: var(--color-sky-200);
-    --color-brand-300: var(--color-sky-300);
-    --color-brand-400: var(--color-sky-400);
-    --color-brand-500: var(--color-sky-500);
-    --color-brand-600: var(--color-sky-600);
-    --color-brand-700: var(--color-sky-700);
-    --color-brand-800: var(--color-sky-800);
-    --color-brand-900: var(--color-sky-900);
-    --color-brand-950: var(--color-sky-950);
+    /* Primary brand scale */
+    --color-brand-primary-50: var(--color-sky-50);
+    --color-brand-primary-100: var(--color-sky-100);
+    --color-brand-primary-200: var(--color-sky-200);
+    --color-brand-primary-300: var(--color-sky-300);
+    --color-brand-primary-400: var(--color-sky-400);
+    --color-brand-primary-500: var(--color-sky-500);
+    --color-brand-primary-600: var(--color-sky-600);
+    --color-brand-primary-700: var(--color-sky-700);
+    --color-brand-primary-800: var(--color-sky-800);
+    --color-brand-primary-900: var(--color-sky-900);
+    --color-brand-primary-950: var(--color-sky-950);
 
-    /* Secondary brand scale  */
+    /* Secondary brand scale */
     --color-brand-secondary-50: var(--color-green-50);
     --color-brand-secondary-100: var(--color-green-100);
     --color-brand-secondary-200: var(--color-green-200);
@@ -30,29 +30,44 @@
     --color-brand-secondary-900: var(--color-green-900);
     --color-brand-secondary-950: var(--color-green-950);
 
+    /* Main brand colors */
+    --color-main-brand-primary: var(--color-brand-primary-400);
+    --color-main-brand-secondary: var(--color-brand-secondary-400);
+
     /* Backgrounds */
     --color-background-primary: var(--color-white);
-    --color-background-secondary: var(--color-brand-100);
-    --color-background-accent: var(--color-brand-400);
-    --color-background-strong: var(--color-brand-700);
+    --color-background-secondary: var(--color-brand-primary-100);
+    --color-background-accent-primary: var(--color-main-brand-primary);
+    --color-background-accent-secondary: var(--color-main-brand-secondary);
+    --color-background-strong-primary: var(--color-brand-primary-700);
+    --color-background-strong-secondary: var(--color-brand-secondary-700);
 
     /* Foregrounds */
     --color-foreground-primary: var(--color-gray-800);
     --color-foreground-secondary: var(--color-gray-700);
     --color-foreground-muted: var(--color-gray-500);
     --color-foreground-inverted: var(--color-white);
-    --color-foreground-brand: var(--color-brand-400);
-    --color-foreground-brand-inverted: var(--color-brand-50);
-    --color-foreground-brand-strong: var(--color-brand-600);
+
+    --color-foreground-brand-primary: var(--color-main-brand-primary);
+    --color-foreground-brand-primary-inverted: var(--color-brand-primary-50);
+    --color-foreground-brand-primary-strong: var(--color-brand-primary-600);
+
+    --color-foreground-brand-secondary: var(--color-main-brand-secondary);
+    --color-foreground-brand-secondary-inverted: var(--color-brand-secondary-50);
+    --color-foreground-brand-secondary-strong: var(--color-brand-secondary-600);
 
     /* Borders */
     --color-border-default: var(--color-gray-400);
     --color-border-subtle: var(--color-gray-200);
     --color-border-strong: var(--color-gray-600);
 
-    --color-border-brand: var(--color-brand-400);
-    --color-border-brand-subtle: var(--color-brand-200);
-    --color-border-brand-strong: var(--color-brand-600);
+    --color-border-brand-primary: var(--color-main-brand-primary);
+    --color-border-brand-primary-subtle-: var(--color-brand-primary-200);
+    --color-border-brand-primary-strong: var(--color-brand-primary-600);
+
+    --color-border-brand-secondary: var(--color-main-brand-secondary);
+    --color-border-brand-secondary-subtle: var(--color-brand-secondary-200);
+    --color-border-brand-secondary-strong: var(--color-brand-secondary-600);
 
     /* States */
     --color-state-success: var(--color-emerald-500);
@@ -99,10 +114,12 @@
 }
 
 @layer components {
+    /* --- BUTTON --- */
     .btn {
-        @apply mx-auto flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap;
+        @apply mx-auto flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap transition;
     }
 
+    /* Sizes */
     .btn-sm {
         @apply p-3 text-base;
     }
@@ -115,22 +132,44 @@
         @apply gap-4 px-8 py-4 text-xl sm:text-2xl;
     }
 
-    .btn-primary {
-        @apply from-background-accent to-brand-secondary-400 hover:bg-brand-300 text-foreground-brand-inverted bg-linear-to-tl transition;
+    /* Variants */
+    .btn-solid.btn-primary {
+        @apply bg-background-accent-primary hover:bg-brand-primary-300 text-foreground-inverted;
     }
 
-    .btn-secondary {
-        @apply text-foreground-secondary bg-gray-300 transition hover:bg-gray-200;
+    .btn-solid.btn-secondary {
+        @apply bg-background-accent-secondary hover:bg-brand-secondary-300 text-foreground-inverted;
     }
 
-    .btn-outline {
-        @apply border-border-brand text-foreground-brand-strong hover:bg-background-accent hover:border-background-accent hover:text-foreground-inverted border-2 bg-transparent transition;
+    .btn-solid.btn-gradient {
+        @apply from-background-accent-primary to-background-accent-secondary hover:from-brand-primary-300 hover:to-brand-secondary-300 text-foreground-inverted bg-linear-to-tl;
     }
 
-    .btn-ghost {
-        @apply text-foreground-brand-strong hover:bg-background-secondary bg-transparent transition;
+    .btn-outline.btn-primary {
+        @apply border-border-brand-primary text-foreground-brand-primary hover:bg-background-accent-primary hover:border-border-brand-primary hover:text-foreground-inverted border-2 bg-transparent;
     }
 
+    .btn-outline.btn-secondary {
+        @apply border-border-brand-secondary text-foreground-brand-secondary hover:bg-background-accent-secondary hover:border-border-brand-secondary hover:text-foreground-inverted border-2 bg-transparent;
+    }
+
+    .btn-outline.btn-gradient {
+        @apply border-border-brand-secondary text-foreground-brand-primary to-background-accent-secondary from-background-accent-primary hover:border-border-brand-secondary hover:text-foreground-inverted border-2 bg-transparent hover:bg-linear-to-tl;
+    }
+
+    .btn-ghost.btn-primary {
+        @apply text-foreground-brand-primary hover:text-foreground-inverted hover:bg-background-accent-primary bg-transparent;
+    }
+
+    .btn-ghost.btn-secondary {
+        @apply text-foreground-brand-secondary hover:text-foreground-inverted hover:bg-background-accent-secondary bg-transparent;
+    }
+
+    .btn-ghost.btn-gradient {
+        @apply text-foreground-brand-primary hover:text-foreground-inverted from-background-accent-primary to-background-accent-secondary bg-transparent hover:bg-linear-to-tl;
+    }
+
+    /* --- TABLE --- */
     .table-base {
         @apply w-full border-collapse;
     }
@@ -144,6 +183,6 @@
     }
 
     .table-base tr {
-        @apply border-border-brand border-b;
+        @apply border-border-brand-primary border-b;
     }
 }

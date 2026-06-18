@@ -21,14 +21,17 @@ export default function FirstSection() {
                         id="section-title"
                         className="flex items-center justify-center gap-4 whitespace-nowrap"
                     >
-                        <Sparkles aria-hidden="true" className="text-foreground-brand h-10 w-10" />
+                        <Sparkles
+                            aria-hidden="true"
+                            className="text-foreground-brand-primary h-10 w-10"
+                        />
                         Website template
                     </h2>
                     <DecorativeLine {...DECORATIVE_LINE_PRESETS.heading} />
                     <p className="mb-4">
                         This is a business website template in NextJS made by Rafał Haduch.
                     </p>
-                    <div className="text-foreground-brand inline-grid grid-cols-2 flex-row flex-wrap place-items-center gap-16 py-8 sm:grid-cols-3 md:flex md:items-center md:justify-between md:py-16">
+                    <div className="text-foreground-brand-primary inline-grid grid-cols-2 flex-row flex-wrap place-items-center gap-16 py-8 sm:grid-cols-3 md:flex md:items-center md:justify-between md:py-16">
                         <LayoutTemplate aria-hidden="true" className="h-18 w-18" />
                         <Puzzle aria-hidden="true" className="h-18 w-18" />
                         <Settings2 aria-hidden="true" className="h-18 w-18" />

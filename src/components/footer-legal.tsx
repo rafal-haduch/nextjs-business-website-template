@@ -8,7 +8,7 @@ import Container from '@/src/components/container';
 
 export default function FooterLegal() {
     return (
-        <div className="bg-background-accent text-foreground-inverted w-full py-6">
+        <div className="bg-background-accent-primary text-foreground-inverted w-full py-6">
             <Container>
                 <div className="flex flex-col items-center gap-4">
                     <ul className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-between">
