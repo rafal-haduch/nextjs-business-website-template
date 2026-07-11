@@ -5,9 +5,10 @@ import { BASE_URL, SITE_NAME } from '@/src/data/site-and-company';
 
 import Navbar from '@/src/components/navbar';
 import Footer from '@/src/components/footer';
+import ScrollToTop from '@/src/components/scroll-to-top';
 
 import '@/src/styles/globals.css';
-import ScrollToTop from '@/src/components/scroll-to-top';
+import ClientProviders from '@/src/providers/client-providers';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -57,8 +58,9 @@ export default function RootLayout({
             <body>
                 <Navbar />
                 <main>{children}</main>
-                <ScrollToTop />
                 <Footer variant="fat" />
+                <ClientProviders />
+                <ScrollToTop />
             </body>
         </html>
     );
