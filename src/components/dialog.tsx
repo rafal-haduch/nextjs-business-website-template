@@ -6,10 +6,9 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/src/utils/cn';
 
-export type DialogPlacement = 'center' | 'top' | 'bottom';
-export type DialogSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+import { Portal } from '@/src/components/portal';
 
-export interface PanelHTMLAttributes extends Omit<
+interface DialogPanelHTMLAttributes extends Omit<
     React.HTMLAttributes<HTMLDivElement>,
     'className' | 'children'
 > {
@@ -20,14 +19,14 @@ export interface PanelHTMLAttributes extends Omit<
     'aria-modal'?: boolean;
 }
 
-export interface DialogSharedProps {
+interface DialogCoreProps {
     open: boolean;
     onClose: () => void;
-    panelHTMLAttributes?: PanelHTMLAttributes;
+    panelHTMLAttributes?: DialogPanelHTMLAttributes;
     children: React.ReactNode;
 }
 
-export interface DialogBehaviorProps {
+interface DialogBehaviorProps {
     lockScroll: boolean;
     showOverlay: boolean;
     closeOnOverlayClick: boolean;
@@ -35,13 +34,17 @@ export interface DialogBehaviorProps {
     showCloseButton: boolean;
 }
 
-export interface DialogLayoutProps {
+interface DialogLayoutProps {
     overlayClassName?: string;
     wrapperClassName?: string;
     panelClassName?: string;
 }
 
-export type DialogProps = DialogSharedProps & DialogBehaviorProps & DialogLayoutProps;
+//NOTE: for parents components (banner, modal, drawer)
+export interface DialogSharedProps
+    extends DialogCoreProps, Partial<DialogBehaviorProps>, Partial<DialogLayoutProps> {}
+
+interface DialogProps extends DialogCoreProps, DialogBehaviorProps, DialogLayoutProps {}
 
 export default function Dialog({
     open,
@@ -88,46 +91,46 @@ export default function Dialog({
     } = panelHTMLAttributes ?? {};
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-100">
-            {/* Overlay */}
-            {showOverlay && (
-                <button
-                    type="button"
-                    aria-label="Close dialog"
-                    onClick={() => {
-                        if (closeOnOverlayClick) onClose();
-                    }}
-                    className={cn(
-                        'pointer-events-auto absolute inset-0 bg-black/50',
-                        overlayClassName
-                    )}
-                />
-            )}
-            {/* Wrapper for placement main panel */}
-            <div className={cn('relative flex min-h-full', wrapperClassName)}>
-                {/* Main panel with content */}
-                <div
-                    role={role}
-                    aria-modal={ariaModal}
-                    onClick={(e) => e.stopPropagation()}
-                    className={cn(
-                        'pointer-events-auto relative w-full bg-white p-6',
-                        panelClassName
-                    )}
-                    {...restPanelProps}
-                >
-                    {showCloseButton && (
-                        <button
-                            onClick={onClose}
-                            aria-label="Close dialog"
-                            className="absolute top-4 right-4 z-10 cursor-pointer p-1"
-                        >
-                            <X />
-                        </button>
-                    )}
-                    {children}
+        <Portal>
+            <div className="pointer-events-none fixed inset-0 z-100">
+                {/* Overlay */}
+                {showOverlay && (
+                    <button
+                        type="button"
+                        aria-label="Close dialog"
+                        onClick={closeOnOverlayClick ? onClose : undefined}
+                        className={cn(
+                            'pointer-events-auto absolute inset-0 bg-black/50',
+                            overlayClassName
+                        )}
+                    />
+                )}
+                {/* Wrapper for placement main panel */}
+                <div className={cn('relative flex min-h-full', wrapperClassName)}>
+                    {/* Main panel with content */}
+                    <div
+                        role={role}
+                        aria-modal={ariaModal}
+                        onClick={(e) => e.stopPropagation()}
+                        className={cn(
+                            'pointer-events-auto relative w-full bg-white p-6',
+                            panelClassName
+                        )}
+                        {...restPanelProps}
+                    >
+                        {showCloseButton && (
+                            <button
+                                onClick={onClose}
+                                aria-label="Close dialog"
+                                className="absolute top-4 right-4 z-10 cursor-pointer p-1"
+                            >
+                                <X />
+                            </button>
+                        )}
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Portal>
     );
 }

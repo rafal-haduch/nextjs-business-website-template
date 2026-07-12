@@ -2,28 +2,11 @@
 
 import { cn } from '@/src/utils/cn';
 
-import Dialog, {
-    DialogBehaviorProps,
-    DialogLayoutProps,
-    DialogSharedProps,
-} from '@/src/components/dialog';
+import Dialog, { DialogSharedProps } from '@/src/components/dialog';
 
 type BannerPlacement = 'top' | 'bottom';
 
-type BannerDialogProps = DialogSharedProps &
-    Partial<
-        Pick<
-            DialogBehaviorProps,
-            | 'lockScroll'
-            | 'showOverlay'
-            | 'closeOnOverlayClick'
-            | 'closeOnEscape'
-            | 'showCloseButton'
-        >
-    > &
-    Partial<Pick<DialogLayoutProps, 'overlayClassName' | 'wrapperClassName' | 'panelClassName'>>;
-
-interface BannerProps extends BannerDialogProps {
+interface BannerProps extends DialogSharedProps {
     placement?: BannerPlacement;
 }
 

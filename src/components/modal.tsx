@@ -2,26 +2,13 @@
 
 import { cn } from '@/src/utils/cn';
 
-import Dialog, {
-    DialogBehaviorProps,
-    DialogLayoutProps,
-    DialogSharedProps,
-} from '@/src/components/dialog';
+import Dialog, { DialogSharedProps } from '@/src/components/dialog';
 
 type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
-type ModalDialogProps = DialogSharedProps &
-    Partial<
-        Pick<
-            DialogBehaviorProps,
-            | 'lockScroll'
-            | 'showOverlay'
-            | 'closeOnOverlayClick'
-            | 'closeOnEscape'
-            | 'showCloseButton'
-        >
-    > &
-    Partial<Pick<DialogLayoutProps, 'overlayClassName' | 'wrapperClassName' | 'panelClassName'>>;
+interface ModalProps extends DialogSharedProps {
+    size?: ModalSize;
+}
 
 const modalSizeStyles: Record<ModalSize, string> = {
     sm: 'max-w-md',
@@ -30,10 +17,6 @@ const modalSizeStyles: Record<ModalSize, string> = {
     xl: 'max-w-5xl',
     full: 'max-w-none w-[95vw] h-[95vh]',
 };
-
-interface ModalProps extends ModalDialogProps {
-    size?: ModalSize;
-}
 
 export default function Modal({
     open,

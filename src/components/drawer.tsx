@@ -2,29 +2,12 @@
 
 import { cn } from '@/src/utils/cn';
 
-import Dialog, {
-    DialogBehaviorProps,
-    DialogLayoutProps,
-    DialogSharedProps,
-} from '@/src/components/dialog';
+import Dialog, { DialogSharedProps } from '@/src/components/dialog';
 
 type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
 type DrawerSide = 'left' | 'right' | 'top' | 'bottom';
 
-type DrawerDialogProps = DialogSharedProps &
-    Partial<
-        Pick<
-            DialogBehaviorProps,
-            | 'lockScroll'
-            | 'showOverlay'
-            | 'closeOnOverlayClick'
-            | 'closeOnEscape'
-            | 'showCloseButton'
-        >
-    > &
-    Partial<Pick<DialogLayoutProps, 'overlayClassName' | 'wrapperClassName' | 'panelClassName'>>;
-
-interface DrawerProps extends DrawerDialogProps {
+interface DrawerProps extends DialogSharedProps {
     side?: DrawerSide;
     size?: DrawerSize;
 }

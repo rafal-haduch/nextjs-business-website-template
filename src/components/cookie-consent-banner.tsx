@@ -6,8 +6,6 @@ import { ROUTES } from '@/src/config/routes';
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
-import { useIsClient } from '@/src/app/hooks/use-is-client';
-
 import Banner from '@/src/components/banner';
 
 import { useCookies } from '@/src/app/hooks/use-cookie-context';
