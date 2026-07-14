@@ -3,12 +3,13 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import { BASE_URL, SITE_NAME } from '@/src/data/site-and-company';
 
+import ClientProviders from '@/src/providers/client-providers';
+
 import Navbar from '@/src/components/navbar';
 import Footer from '@/src/components/footer';
 import ScrollToTop from '@/src/components/scroll-to-top';
 
 import '@/src/styles/globals.css';
-import ClientProviders from '@/src/providers/client-providers';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -56,10 +57,11 @@ export default function RootLayout({
     return (
         <html lang="pl" className={`${geistSans.variable} ${geistMono.variable}`}>
             <body>
-                <Navbar />
-                <main>{children}</main>
-                <Footer variant="fat" />
-                <ClientProviders />
+                <ClientProviders>
+                    <Navbar />
+                    <main>{children}</main>
+                    <Footer variant="fat" />
+                </ClientProviders>
                 <ScrollToTop />
             </body>
         </html>

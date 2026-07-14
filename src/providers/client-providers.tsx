@@ -1,15 +1,18 @@
 'use client';
 
-import { CookieProvider } from '@/src/providers/cookie-provider';
+import { PropsWithChildren } from 'react';
 
-import CookieConsentBanner from '@/src/components/cookie-consent-banner';
-import CookieOptionsModal from '@/src/components/cookie-options-modal';
+import { CookieProvider } from '@/src/features/cookie/model/cookie-provider';
 
-export default function ClientProviders() {
+import CookieConsentBanner from '@/src/features/cookie/ui/cookie-consent-banner';
+import CookiePreferencesModal from '@/src/features/cookie/ui/cookie-preferences-modal';
+
+export default function ClientProviders({ children }: PropsWithChildren) {
     return (
         <CookieProvider>
+            {children}
             <CookieConsentBanner />
-            <CookieOptionsModal />
+            <CookiePreferencesModal />
         </CookieProvider>
     );
 }

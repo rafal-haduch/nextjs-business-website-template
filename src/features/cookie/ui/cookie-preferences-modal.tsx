@@ -2,12 +2,18 @@
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
-import { useCookies } from '@/src/app/hooks/use-cookie-context';
+import { useCookies } from '@/src/features/cookie/model/use-cookies';
 
 import Modal from '@/src/components/modal';
 
-export default function CookieOptionsModal() {
-    const { isOptionsOpen, closeOptions, acceptAll, rejectAll, saveConsent } = useCookies();
+export default function CookiePreferencesModal() {
+    const {
+        isPreferencesOpen: isOptionsOpen,
+        closePreferences: closeOptions,
+        acceptAll,
+        rejectAll,
+        saveConsent,
+    } = useCookies();
 
     return (
         <Modal open={isOptionsOpen} onClose={closeOptions}>

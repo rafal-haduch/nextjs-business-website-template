@@ -2,6 +2,7 @@
 
 import { useCallback, useState, useSyncExternalStore } from 'react';
 
+//TODO: write JSDOC
 function subscribe(key: string, callback: () => void) {
     const handler = (event: StorageEvent) => {
         if (event.key === key) callback();
@@ -11,6 +12,7 @@ function subscribe(key: string, callback: () => void) {
     return () => window.removeEventListener('storage', handler);
 }
 
+//TODO: write JSDOC
 export function useLocalStorage<T>(key: string, initialValue: T) {
     const [isReady, setIsReady] = useState(false);
 

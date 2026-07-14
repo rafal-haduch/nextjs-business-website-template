@@ -6,16 +6,12 @@ import { ROUTES } from '@/src/config/routes';
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
+import { useCookies } from '@/src/features/cookie/model/use-cookies';
+
 import Banner from '@/src/components/banner';
 
-import { useCookies } from '@/src/app/hooks/use-cookie-context';
-
 export default function CookieConsentBanner() {
-    //TODO: Improve note
-    //NOTE: sprawdza render u klienta - nieweluje efekt migania podczas renderu.
-    //const isClient = useIsClient();
-
-    const { consent, isReady, acceptAll, openOptions } = useCookies();
+    const { consent, isReady, acceptAll, openPreferences: openOptions } = useCookies();
 
     if (!isReady || consent) return null;
 

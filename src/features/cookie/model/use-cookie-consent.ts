@@ -1,9 +1,12 @@
 'use client';
 
-import { useLocalStorage } from '@/src/app/hooks/use-local-storage';
+import { useLocalStorage } from '@/src/hooks/use-local-storage';
 
 export type CookieConsent = 'all' | 'necessary' | 'customized';
 
+/**
+ * Manages cookie consent state and persistence in local storage.
+ */
 export function useCookieConsent() {
     const [isReady, consent, setConsent] = useLocalStorage<CookieConsent | null>(
         'cookie-consent',

@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import { useEffect } from 'react';
 import { X } from 'lucide-react';
 
 import { cn } from '@/src/utils/cn';
+
+import { useEscapeKey } from '@/src/hooks/use-escape-key';
+import { useScrollLock } from '@/src/hooks/use-scroll-lock';
 
 import { Portal } from '@/src/components/portal';
 
@@ -60,27 +62,12 @@ export default function Dialog({
     showCloseButton,
     overlayClassName,
 }: DialogProps) {
-    useEffect(() => {
-        if (!open || !closeOnEscape) return;
+    useEscapeKey({
+        enabled: open && closeOnEscape,
+        onEscape: onClose,
+    });
 
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') onClose();
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [open, closeOnEscape, onClose]);
-
-    useEffect(() => {
-        if (!open || !lockScroll) return;
-
-        const originalOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-
-        return () => {
-            document.body.style.overflow = originalOverflow;
-        };
-    }, [open, lockScroll]);
+    useScrollLock(open && lockScroll);
 
     if (!open) return null;
 
@@ -92,12 +79,12 @@ export default function Dialog({
 
     return (
         <Portal>
+            {/* Base container */}
             <div className="pointer-events-none fixed inset-0 z-100">
                 {/* Overlay */}
                 {showOverlay && (
-                    <button
-                        type="button"
-                        aria-label="Close dialog"
+                    <div
+                        aria-hidden="true"
                         onClick={closeOnOverlayClick ? onClose : undefined}
                         className={cn(
                             'pointer-events-auto absolute inset-0 bg-black/50',
@@ -111,7 +98,6 @@ export default function Dialog({
                     <div
                         role={role}
                         aria-modal={ariaModal}
-                        onClick={(e) => e.stopPropagation()}
                         className={cn(
                             'pointer-events-auto relative w-full bg-white p-6',
                             panelClassName
@@ -124,7 +110,7 @@ export default function Dialog({
                                 aria-label="Close dialog"
                                 className="absolute top-4 right-4 z-10 cursor-pointer p-1"
                             >
-                                <X />
+                                <X size={24} />
                             </button>
                         )}
                         {children}
