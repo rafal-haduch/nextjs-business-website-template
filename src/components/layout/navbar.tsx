@@ -12,7 +12,7 @@ import { cn } from '@/src/utils/cn';
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
-import Container from '@/src/components/container';
+import Container from '@/src/components/ui/container';
 
 import logo from '@/public/full-logo.svg';
 

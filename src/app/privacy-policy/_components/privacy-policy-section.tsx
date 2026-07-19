@@ -1,5 +1,5 @@
-import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
-import Container, { CONTAINER_PRESETS } from '@/src/components/container';
+import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
 
 import { PRIVACY_SECTIONS } from '@/src/app/privacy-policy/_content/privacy-policy';
 

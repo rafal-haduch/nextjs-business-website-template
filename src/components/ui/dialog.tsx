@@ -8,7 +8,7 @@ import { cn } from '@/src/utils/cn';
 import { useEscapeKey } from '@/src/hooks/use-escape-key';
 import { useScrollLock } from '@/src/hooks/use-scroll-lock';
 
-import { Portal } from '@/src/components/portal';
+import { Portal } from '@/src/components/ui/portal';
 
 interface DialogPanelHTMLAttributes extends Omit<
     React.HTMLAttributes<HTMLDivElement>,

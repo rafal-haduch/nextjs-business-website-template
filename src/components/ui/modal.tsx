@@ -2,7 +2,7 @@
 
 import { cn } from '@/src/utils/cn';
 
-import Dialog, { DialogSharedProps } from '@/src/components/dialog';
+import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 
 type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 

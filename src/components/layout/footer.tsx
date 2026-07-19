@@ -1,5 +1,5 @@
-import FooterContent from '@/src/components/footer-content';
-import FooterLegal from '@/src/components/footer-legal';
+import FooterContent from '@/src/components/layout/footer-content';
+import FooterLegal from '@/src/components/layout/footer-legal';
 
 interface Props {
     variant: 'slim' | 'fat';

@@ -3,13 +3,14 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import { BASE_URL, SITE_NAME } from '@/src/data/site-and-company';
 
-import ClientProviders from '@/src/providers/client-providers';
+import AppProviders from '@/src/app/app-providers';
 
-import Navbar from '@/src/components/navbar';
-import Footer from '@/src/components/footer';
-import ScrollToTop from '@/src/components/scroll-to-top';
+import Navbar from '@/src/components/layout/navbar';
+import Footer from '@/src/components/layout/footer';
+import ScrollToTop from '@/src/components/layout/scroll-to-top';
 
 import '@/src/styles/globals.css';
+import AppShell from '@/src/components/layout/app-shell';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -55,14 +56,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pl" className={`${geistSans.variable} ${geistMono.variable}`}>
+        <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
             <body>
-                <ClientProviders>
-                    <Navbar />
-                    <main>{children}</main>
-                    <Footer variant="fat" />
-                </ClientProviders>
-                <ScrollToTop />
+                <AppProviders>
+                    <AppShell>{children}</AppShell>
+                </AppProviders>
             </body>
         </html>
     );

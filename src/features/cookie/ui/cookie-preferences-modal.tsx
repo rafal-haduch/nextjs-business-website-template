@@ -2,21 +2,16 @@
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
+import Modal from '@/src/components/ui/modal';
+
 import { useCookies } from '@/src/features/cookie/model/use-cookies';
 
-import Modal from '@/src/components/modal';
-
+//TODO: improve save preferences options (with useCookieConsent())
 export default function CookiePreferencesModal() {
-    const {
-        isPreferencesOpen: isOptionsOpen,
-        closePreferences: closeOptions,
-        acceptAll,
-        rejectAll,
-        saveConsent,
-    } = useCookies();
+    const { isPreferencesOpen, closePreferences, acceptAll, rejectAll, saveConsent } = useCookies();
 
     return (
-        <Modal open={isOptionsOpen} onClose={closeOptions}>
+        <Modal open={isPreferencesOpen} onClose={closePreferences}>
             <div>
                 <h2>Cookie options</h2>
                 <p>...</p>
@@ -24,7 +19,7 @@ export default function CookiePreferencesModal() {
                     <button
                         onClick={() => {
                             acceptAll();
-                            closeOptions();
+                            closePreferences();
                         }}
                         className={getButtonClasses({
                             variant: 'outline',
@@ -37,7 +32,7 @@ export default function CookiePreferencesModal() {
                     <button
                         onClick={() => {
                             rejectAll();
-                            closeOptions();
+                            closePreferences();
                         }}
                         className={getButtonClasses({
                             variant: 'outline',
@@ -50,7 +45,7 @@ export default function CookiePreferencesModal() {
                     <button
                         onClick={() => {
                             saveConsent('customized');
-                            closeOptions();
+                            closePreferences();
                         }}
                         className={getButtonClasses({
                             size: 'small',

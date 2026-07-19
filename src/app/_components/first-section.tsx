@@ -8,9 +8,9 @@ import {
     Sparkles,
 } from 'lucide-react';
 
-import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
-import Container, { CONTAINER_PRESETS } from '@/src/components/container';
-import DecorativeLine, { DECORATIVE_LINE_PRESETS } from '@/src/components/decorative-line';
+import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
+import DecorativeLine, { DECORATIVE_LINE_PRESETS } from '@/src/components/ui/decorative-line';
 
 export default function FirstSection() {
     return (

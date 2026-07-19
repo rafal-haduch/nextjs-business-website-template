@@ -2,7 +2,7 @@
 
 import { cn } from '@/src/utils/cn';
 
-import Dialog, { DialogSharedProps } from '@/src/components/dialog';
+import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 
 type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
 type DrawerSide = 'left' | 'right' | 'top' | 'bottom';

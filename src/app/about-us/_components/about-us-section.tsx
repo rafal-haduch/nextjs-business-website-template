@@ -1,6 +1,6 @@
-import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/page-section';
-import Container, { CONTAINER_PRESETS } from '@/src/components/container';
-import WorkInProgress from '@/src/components/wip';
+import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
+import WorkInProgress from '@/src/components/ui/wip';
 
 export default function AboutUsSection() {
     return (

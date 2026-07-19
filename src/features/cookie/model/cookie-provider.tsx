@@ -2,10 +2,10 @@
 
 import { PropsWithChildren } from 'react';
 
-import { useCookieConsent } from '@/src/features/cookie/model/use-cookie-consent';
 import { useDisclosure } from '@/src/hooks/use-disclosure';
 
 import { CookieContext } from '@/src/features/cookie/model/cookie-context';
+import { useCookieConsent } from '@/src/features/cookie/model/use-cookie-consent';
 
 /**
  * Provides cookie consent state and actions to child components through context.

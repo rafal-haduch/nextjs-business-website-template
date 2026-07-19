@@ -1,4 +1,4 @@
-import BulletList from '@/src/components/bullet-list';
+import BulletList from '@/src/components/ui/bullet-list';
 
 import { PrivacyPolicySubsectionItem } from '@/src/app/privacy-policy/_content/privacy-policy';
 

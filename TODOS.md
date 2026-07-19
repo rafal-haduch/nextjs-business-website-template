@@ -1,5 +1,6 @@
 # TODOS:
-
+review: what is different between children: ReactNode vd children: React.ReactNode?
+review: structure src/features/xyz/... model/ui/server or domain
 
 ## Tech:
 - write JSDOC dla dialog i 3 komponentów: nadpisywac style (np bg-) overlay, wrapper, panel przez [name]ClassName
