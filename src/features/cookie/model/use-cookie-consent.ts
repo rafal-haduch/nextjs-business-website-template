@@ -1,34 +1,46 @@
 'use client';
 
-import { useLocalStorage } from '@/src/hooks/use-local-storage';
+import { useState } from 'react';
 
-export type CookieConsent = 'all' | 'necessary' | 'customized';
+import { CookieConsent } from '@/src/features/cookie/model/cookie-types';
+
+import {
+    ALL_COOKIE_CONSENT,
+    NECESSARY_COOKIE_CONSENT,
+} from '@/src/features/cookie/model/cookie-consent-presets';
+
+import {
+    getCookieConsent,
+    removeCookieConsent,
+    setCookieConsent,
+} from '@/src/features/cookie/model/cookie-storage';
 
 /**
- * Manages cookie consent state and persistence in local storage.
+ * Manages the current cookie consent state and provides actions
+ * for accepting, rejecting, updating, and resetting preferences.
  */
 export function useCookieConsent() {
-    const [isReady, consent, setConsent] = useLocalStorage<CookieConsent | null>(
-        'cookie-consent',
-        null
-    );
-    const acceptAll = () => {
-        setConsent('all');
-    };
-
-    const rejectAll = () => {
-        setConsent('necessary');
-    };
+    const [consent, setConsent] = useState<CookieConsent | null>(() => getCookieConsent());
 
     const saveConsent = (value: CookieConsent) => {
         setConsent(value);
+        setCookieConsent(value);
+    };
+
+    const acceptAll = () => saveConsent(ALL_COOKIE_CONSENT);
+
+    const rejectAll = () => saveConsent(NECESSARY_COOKIE_CONSENT);
+
+    const reset = () => {
+        setConsent(null);
+        removeCookieConsent();
     };
 
     return {
         consent,
-        isReady,
+        saveConsent,
         acceptAll,
         rejectAll,
-        saveConsent,
+        reset,
     };
 }

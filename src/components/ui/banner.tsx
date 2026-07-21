@@ -20,6 +20,9 @@ const shadowStyles: Record<BannerPlacement, string> = {
     bottom: 'shadow-[0_-10px_30px_rgba(0,0,0,0.05)]',
 };
 
+/**
+ * Banner displayed at the top or bottom of the viewport built on top of {@link Dialog}.
+ */
 export default function Banner({
     open,
     onClose,

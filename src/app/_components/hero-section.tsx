@@ -12,16 +12,17 @@ import heroImage from '@/public/hero-image.webp';
 
 export default function HeroSection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.hero} aria-label="hero-title">
+        <PageSection {...PAGE_SECTION_PRESETS.hero} aria-labelledby="hero-title">
             <Container {...CONTAINER_PRESETS.hero}>
                 {/* Background image */}
                 <div className="relative h-svh max-h-184">
                     <Image
                         src={heroImage}
-                        alt="..."
+                        alt=""
                         priority
                         placeholder="blur"
                         fill
+                        sizes="100vw"
                         className="object-cover"
                     />
                     {/* Overlay */}

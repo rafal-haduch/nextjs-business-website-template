@@ -18,6 +18,9 @@ const modalSizeStyles: Record<ModalSize, string> = {
     full: 'max-w-none w-[95vw] h-[95vh]',
 };
 
+/**
+ * Centered modal dialog built on top of {@link Dialog}.
+ */
 export default function Modal({
     open,
     onClose,

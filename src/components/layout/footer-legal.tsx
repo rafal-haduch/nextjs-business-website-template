@@ -5,7 +5,7 @@ import { ROUTES } from '@/src/config/routes';
 import { COMPANY_NAME } from '@/src/data/site-and-company';
 
 import Container from '@/src/components/ui/container';
-import CookiePreferencesButton from '@/src/features/cookie/ui/cookies-preferences-button';
+import CookiePreferencesButton from '@/src/features/cookie/components/cookies-preferences-button';
 
 export default function FooterLegal() {
     return (

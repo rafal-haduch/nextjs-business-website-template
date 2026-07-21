@@ -8,7 +8,7 @@ import { cn } from '@/src/utils/cn';
 import { useEscapeKey } from '@/src/hooks/use-escape-key';
 import { useScrollLock } from '@/src/hooks/use-scroll-lock';
 
-import { Portal } from '@/src/components/ui/portal';
+import Portal from '@/src/components/ui/portal';
 
 interface DialogPanelHTMLAttributes extends Omit<
     React.HTMLAttributes<HTMLDivElement>,
@@ -24,6 +24,10 @@ interface DialogPanelHTMLAttributes extends Omit<
 interface DialogCoreProps {
     open: boolean;
     onClose: () => void;
+    /**
+     * Additional HTML and ARIA attributes forwarded
+     * to the dialog panel element.
+     */
     panelHTMLAttributes?: DialogPanelHTMLAttributes;
     children: React.ReactNode;
 }
@@ -38,16 +42,46 @@ interface DialogBehaviorProps {
 
 interface DialogLayoutProps {
     overlayClassName?: string;
+    /**
+     * Additional classes applied to the wrapper responsible for positioning
+     * the dialog panel inside the viewport.
+     */
     wrapperClassName?: string;
+    /**
+     * Additional classes applied directly to the dialog panel.
+     *
+     * Useful for overriding appearance such as padding, background,
+     * border radius or shadow.
+     */
     panelClassName?: string;
 }
 
-//NOTE: for parents components (banner, modal, drawer)
+/**
+ * Shared props used by all dialog-based components.
+ *
+ * Allows higher-level components to expose only the configuration
+ * they need while reusing the same dialog behavior.
+ */
 export interface DialogSharedProps
     extends DialogCoreProps, Partial<DialogBehaviorProps>, Partial<DialogLayoutProps> {}
 
 interface DialogProps extends DialogCoreProps, DialogBehaviorProps, DialogLayoutProps {}
 
+/**
+ * Low-level dialog primitive.
+ *
+ * Provides common behavior for overlay components:
+ * - Modal
+ * - Drawer
+ * - Banner
+ *
+ * Features:
+ * - Portal rendering
+ * - Escape key handling
+ * - optional body scroll locking
+ * - overlay click handling
+ * - accessibility attributes
+ */
 export default function Dialog({
     open,
     onClose,

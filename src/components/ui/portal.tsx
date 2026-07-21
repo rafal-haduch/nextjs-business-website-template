@@ -16,7 +16,7 @@ interface PortalProps {
  * Prevents issues with z-index, overflow:hidden and scroll containers.
  * Waits for client mount to avoid SSR hydration mismatch.
  */
-export function Portal({ children }: PortalProps) {
+export default function Portal({ children }: PortalProps) {
     const mounted = useSyncExternalStore(
         () => () => {},
         () => true,

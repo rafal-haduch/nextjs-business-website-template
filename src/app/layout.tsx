@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
@@ -5,12 +6,9 @@ import { BASE_URL, SITE_NAME } from '@/src/data/site-and-company';
 
 import AppProviders from '@/src/app/app-providers';
 
-import Navbar from '@/src/components/layout/navbar';
-import Footer from '@/src/components/layout/footer';
-import ScrollToTop from '@/src/components/layout/scroll-to-top';
-
-import '@/src/styles/globals.css';
 import AppShell from '@/src/components/layout/app-shell';
+
+import '@/src/app/globals.css';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -53,7 +51,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) {
     return (
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>

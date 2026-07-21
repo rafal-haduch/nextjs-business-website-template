@@ -2,6 +2,8 @@
 
 import { useCallback, useState, useSyncExternalStore } from 'react';
 
+//REVIEW: Shoud i remove this file?
+
 //TODO: write JSDOC
 function subscribe(key: string, callback: () => void) {
     const handler = (event: StorageEvent) => {

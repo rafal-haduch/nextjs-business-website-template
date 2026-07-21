@@ -2,24 +2,18 @@
 
 import { createContext } from 'react';
 
-import { CookieConsent } from '@/src/features/cookie/model/use-cookie-consent';
+import { CookieConsent } from '@/src/features/cookie/model/cookie-types';
 
 interface CookieContextValue {
     /**
      * Current user's cookie consent choice.
-     * Persisted in local storage.
      */
     consent: CookieConsent | null;
 
-    /**
-     * Indicates whether the initial consent value has been loaded from local storage*.
-     * Prevents UI components from flickering before the stored value is available.
-     */
-    isReady: boolean;
-
+    saveConsent(value: CookieConsent): void;
     acceptAll(): void;
     rejectAll(): void;
-    saveConsent(value: CookieConsent): void;
+    reset(): void;
 
     /**
      * Controls visibility of the cookie options modal.

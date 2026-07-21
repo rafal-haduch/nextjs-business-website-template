@@ -53,6 +53,9 @@ const drawerSizeStyles: Record<DrawerSide, Record<DrawerSize, string>> = {
     },
 };
 
+/**
+ * Sliding panel built on top of {@link Dialog}.
+ */
 export default function Drawer({
     open,
     onClose,

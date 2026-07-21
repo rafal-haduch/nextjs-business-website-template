@@ -11,9 +11,9 @@ import Banner from '@/src/components/ui/banner';
 import { useCookies } from '@/src/features/cookie/model/use-cookies';
 
 export default function CookieConsentBanner() {
-    const { consent, isReady, acceptAll, openPreferences } = useCookies();
+    const { consent, acceptAll, openPreferences } = useCookies();
 
-    if (!isReady || consent) return null;
+    if (consent !== null) return null;
 
     return (
         <Banner

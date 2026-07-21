@@ -12,7 +12,6 @@ import { useCookieConsent } from '@/src/features/cookie/model/use-cookie-consent
  */
 export function CookieProvider({ children }: PropsWithChildren) {
     const cookieConsent = useCookieConsent();
-
     const preferencesDisclosure = useDisclosure();
 
     return (
@@ -21,9 +20,7 @@ export function CookieProvider({ children }: PropsWithChildren) {
                 ...cookieConsent,
 
                 isPreferencesOpen: preferencesDisclosure.isOpen,
-
                 openPreferences: preferencesDisclosure.open,
-
                 closePreferences: preferencesDisclosure.close,
             }}
         >
