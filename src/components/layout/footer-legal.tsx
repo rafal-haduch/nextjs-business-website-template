@@ -5,7 +5,7 @@ import { ROUTES } from '@/src/config/routes';
 import { COMPANY_NAME } from '@/src/data/site-and-company';
 
 import Container from '@/src/components/ui/container';
-import CookiePreferencesButton from '@/src/features/cookie/components/cookies-preferences-button';
+import CookieSettingsButton from '@/src/features/cookie/components/cookies-settings-button';
 
 export default function FooterLegal() {
     return (
@@ -21,7 +21,7 @@ export default function FooterLegal() {
                                 {ROUTES.PRIVACY_POLICY.label}
                             </Link>
                         </li>
-                        <CookiePreferencesButton />
+                        <CookieSettingsButton />
                     </ul>
                     <p className="text-center">© 2026 {COMPANY_NAME}</p>
                 </div>

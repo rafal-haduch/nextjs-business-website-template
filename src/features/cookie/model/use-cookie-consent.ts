@@ -29,7 +29,7 @@ export function useCookieConsent() {
 
     const acceptAll = () => saveConsent(ALL_COOKIE_CONSENT);
 
-    const rejectAll = () => saveConsent(NECESSARY_COOKIE_CONSENT);
+    const rejectOptional = () => saveConsent(NECESSARY_COOKIE_CONSENT);
 
     const reset = () => {
         setConsent(null);
@@ -40,7 +40,7 @@ export function useCookieConsent() {
         consent,
         saveConsent,
         acceptAll,
-        rejectAll,
+        rejectOptional,
         reset,
     };
 }

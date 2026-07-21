@@ -10,7 +10,7 @@ import { CookieConsent } from '@/src/features/cookie/model/cookie-types';
 import { NECESSARY_COOKIE_CONSENT } from '@/src/features/cookie/model/cookie-consent-presets';
 
 export default function CookiePreferencesModal() {
-    const { isPreferencesOpen, closePreferences, consent, saveConsent, acceptAll, rejectAll } =
+    const { isPreferencesOpen, closePreferences, consent, saveConsent, acceptAll, rejectOptional } =
         useCookies();
 
     // Stores temporary changes made in the preferences modal.
@@ -45,7 +45,7 @@ export default function CookiePreferencesModal() {
 
     const handleRejectOptional = () => {
         setChanges({});
-        rejectAll();
+        rejectOptional();
         closePreferences();
     };
 

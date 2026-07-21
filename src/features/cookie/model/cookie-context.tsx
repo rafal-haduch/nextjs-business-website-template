@@ -12,7 +12,7 @@ interface CookieContextValue {
 
     saveConsent(value: CookieConsent): void;
     acceptAll(): void;
-    rejectAll(): void;
+    rejectOptional(): void;
     reset(): void;
 
     /**

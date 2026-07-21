@@ -10,18 +10,17 @@ import Banner from '@/src/components/ui/banner';
 
 import { useCookies } from '@/src/features/cookie/model/use-cookies';
 
+import CookieSettingsButton from '@/src/features/cookie/components/cookies-settings-button';
+
 export default function CookieConsentBanner() {
-    const { consent, acceptAll, openPreferences } = useCookies();
+    const { consent, acceptAll, rejectOptional } = useCookies();
 
     if (consent !== null) return null;
 
     return (
         <Banner
             open
-            onClose={() => {
-                acceptAll();
-            }}
-            showCloseButton
+            onClose={() => {}}
             placement="bottom"
             panelHTMLAttributes={{
                 role: 'region',
@@ -40,21 +39,28 @@ export default function CookieConsentBanner() {
                         onClick={acceptAll}
                         className={getButtonClasses({
                             size: 'small',
-                            className: 'mx-0 w-1/2',
+                            className: 'mx-0 w-1/3',
                         })}
                     >
-                        Agree
+                        Accept all
                     </button>
                     <button
-                        onClick={openPreferences}
+                        onClick={rejectOptional}
                         className={getButtonClasses({
                             variant: 'outline',
                             size: 'small',
-                            className: 'mx-0 w-1/2',
+                            className: 'mx-0 w-1/3',
                         })}
                     >
-                        More Options
+                        Reject optional
                     </button>
+                    <CookieSettingsButton
+                        className={getButtonClasses({
+                            variant: 'outline',
+                            size: 'small',
+                            className: 'mx-0 w-1/3',
+                        })}
+                    />
                 </div>
             </div>
         </Banner>
