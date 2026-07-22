@@ -30,6 +30,7 @@ export default function Banner({
     panelClassName,
     panelHTMLAttributes,
     children,
+    unmountOnExit = true,
     lockScroll = false,
     showOverlay = false,
     closeOnOverlayClick = false,
@@ -42,6 +43,7 @@ export default function Banner({
             open={open}
             onClose={onClose}
             panelHTMLAttributes={panelHTMLAttributes}
+            unmountOnExit={unmountOnExit}
             lockScroll={lockScroll}
             showOverlay={showOverlay}
             closeOnOverlayClick={closeOnOverlayClick}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -12,20 +12,20 @@ import { cn } from '@/src/utils/cn';
 
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
+import { useDisclosure } from '@/src/hooks/use-disclosure';
+
 import Container from '@/src/components/ui/container';
+import Drawer from '@/src/components/ui/drawer';
 
 import logo from '@/public/full-logo.svg';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
     const path = usePathname();
-
-    const openMobileMenu = () => setIsOpen(true);
-    const closeMobileMenu = () => setIsOpen(false);
+    const mobileMenu = useDisclosure();
 
     // Block scroll when mobile menu is open
     useEffect(() => {
-        if (isOpen) {
+        if (mobileMenu.isOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
@@ -33,7 +33,7 @@ export default function Navbar() {
         return () => {
             document.body.style.overflow = '';
         };
-    }, [isOpen]);
+    }, [mobileMenu.isOpen]);
 
     // Close mobile menu at lg break point
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function Navbar() {
 
         const handleChange = (e: MediaQueryListEvent) => {
             if (e.matches) {
-                closeMobileMenu();
+                mobileMenu.close();
             }
         };
 
@@ -53,7 +53,7 @@ export default function Navbar() {
     // Close mobile menu by ESC
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') closeMobileMenu();
+            if (e.key === 'Escape') mobileMenu.close();
         };
         document.addEventListener('keydown', handleEsc);
         return () => document.removeEventListener('keydown', handleEsc);
@@ -61,6 +61,7 @@ export default function Navbar() {
 
     return (
         <>
+            {/*--- Desktop menu bar ---*/}
             <header className="bg-background-primary sticky top-0 z-50 py-4 shadow-sm">
                 <Container>
                     <div className="flex items-center justify-between">
@@ -72,7 +73,7 @@ export default function Navbar() {
                                 className="h-auto w-64"
                             />
                         </Link>
-                        {/* Desktop nav */}
+                        {/*--- Desktop nav ---*/}
                         <div className="my-auto hidden h-fit items-center gap-4 lg:flex">
                             <nav>
                                 <ul className="flex gap-4 whitespace-nowrap">
@@ -93,7 +94,7 @@ export default function Navbar() {
                                     ))}
                                 </ul>
                             </nav>
-                            {/* CTA button */}
+                            {/*--- CTA button ---*/}
                             <Link
                                 href={ROUTES.CTA.path}
                                 className={getButtonClasses({
@@ -104,9 +105,9 @@ export default function Navbar() {
                                 {ROUTES.CTA.label}
                             </Link>
                         </div>
-                        {/* Hamburger */}
+                        {/*--- Hamburger button ---*/}
                         <button
-                            onClick={openMobileMenu}
+                            onClick={mobileMenu.toggle}
                             aria-label="Otwórz menu"
                             className="text-foreground-brand-primary cursor-pointer lg:hidden"
                         >
@@ -116,44 +117,41 @@ export default function Navbar() {
                 </Container>
             </header>
 
-            {/* Overlay */}
-            <div
-                className={`fixed inset-0 z-50 bg-black/50 transition-opacity duration-300 lg:hidden ${
-                    isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-                }`}
-                onClick={closeMobileMenu}
-                aria-hidden="true"
-            />
-            {/* Mobile menu */}
-            <div
-                className={`fixed inset-y-0 right-0 z-50 flex w-full flex-col bg-white shadow-xl transition-transform duration-400 ease-in-out lg:hidden ${
-                    isOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
-                role="dialog"
-                aria-modal="true"
-                aria-label="Menu nawigacyjne"
+            {/*--- Mobile menu drawer ---*/}
+            <Drawer
+                open={mobileMenu.isOpen}
+                onClose={mobileMenu.close}
+                side="right"
+                size="full"
+                animationDuration="base"
+                lockScroll
+                closeOnEscape
+                panelClassName="p-0"
+                panelHTMLAttributes={{
+                    'aria-label': 'Menu nawigacyjne',
+                }}
             >
-                {/* Header with logo */}
-                <div className="border-border-brand flex items-center justify-between border-b-3 p-4">
-                    <Link href={ROUTES.HOME.path} onClick={closeMobileMenu} className="shrink-0">
+                {/*--- Top bar ---*/}
+                <div className="border-border-brand-primary flex items-center justify-between border-b-3 p-4">
+                    <Link href={ROUTES.HOME.path} onClick={mobileMenu.close} className="shrink-0">
                         <Image src={logo} alt="Logo pracowni" priority className="h-auto w-64" />
                     </Link>
                     <button
-                        onClick={closeMobileMenu}
+                        onClick={mobileMenu.close}
                         aria-label="Zamknij menu"
                         className="text-foreground-brand-primary cursor-pointer p-1"
                     >
                         <X className="h-8 w-8" aria-hidden="true" />
                     </button>
                 </div>
-                {/* Mobile nav */}
-                <nav className="flex flex-1 flex-col items-center gap-1 px-4 pt-12 pb-24">
-                    <ul className="divide-brand-400 flex flex-col gap-2 divide-y-2">
+                {/*--- Mobile nav ---*/}
+                <nav className="flex flex-1 flex-col items-center gap-8 px-4 pt-12 pb-24">
+                    <ul className="flex flex-col">
                         {NAV_ITEMS.map((item) => (
                             <li key={item.path}>
                                 <Link
                                     href={item.path}
-                                    onClick={closeMobileMenu}
+                                    onClick={mobileMenu.close}
                                     className="hover:text-foreground-brand-primary block rounded-lg px-4 py-3 text-center text-lg whitespace-nowrap transition-colors"
                                 >
                                     {item.label}
@@ -161,14 +159,21 @@ export default function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    {/* CTA button */}
+                    {/*--- CTA button ---*/}
                     <div className="mt-auto w-full">
-                        <Link href={ROUTES.CTA.path} className={getButtonClasses()}>
+                        <Link
+                            href={ROUTES.CTA.path}
+                            onClick={mobileMenu.close}
+                            className={getButtonClasses({
+                                variant: 'solid',
+                                color: 'gradient',
+                            })}
+                        >
                             {ROUTES.CTA.label}
                         </Link>
                     </div>
                 </nav>
-            </div>
+            </Drawer>
         </>
     );
 }

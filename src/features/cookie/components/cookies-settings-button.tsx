@@ -10,7 +10,7 @@ interface Props {
  * Button for opening the cookie preferences panel.
  */
 export default function CookieSettingsButton({ className }: Props) {
-    const { openPreferences } = useCookies();
+    const { openCookieSettings: openPreferences } = useCookies();
     return (
         <button type="button" onClick={openPreferences} className={className}>
             Cookie settings

@@ -28,6 +28,7 @@ export default function Modal({
     panelClassName,
     panelHTMLAttributes,
     children,
+    unmountOnExit = true,
     lockScroll = false,
     showOverlay = true,
     closeOnOverlayClick = false,
@@ -40,6 +41,7 @@ export default function Modal({
             open={open}
             onClose={onClose}
             panelHTMLAttributes={panelHTMLAttributes}
+            unmountOnExit={unmountOnExit}
             lockScroll={lockScroll}
             showOverlay={showOverlay}
             closeOnOverlayClick={closeOnOverlayClick}

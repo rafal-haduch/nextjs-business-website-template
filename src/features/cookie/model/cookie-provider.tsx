@@ -12,16 +12,15 @@ import { useCookieConsent } from '@/src/features/cookie/model/use-cookie-consent
  */
 export function CookieProvider({ children }: PropsWithChildren) {
     const cookieConsent = useCookieConsent();
-    const preferencesDisclosure = useDisclosure();
+    const cookieSettings = useDisclosure();
 
     return (
         <CookieContext.Provider
             value={{
                 ...cookieConsent,
-
-                isPreferencesOpen: preferencesDisclosure.isOpen,
-                openPreferences: preferencesDisclosure.open,
-                closePreferences: preferencesDisclosure.close,
+                isCookieSettingsOpen: cookieSettings.isOpen,
+                openCookieSettings: cookieSettings.open,
+                closeCookieSettings: cookieSettings.close,
             }}
         >
             {children}

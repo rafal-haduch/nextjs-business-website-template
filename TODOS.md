@@ -1,5 +1,5 @@
 # TODOS:
-review: what is different between children: ReactNode vd children: React.ReactNode?
+-review: shoud i remove or simplicity hook useLocalStorage()?
 
 ## Tech:
 - add link style in getButtonClasses()

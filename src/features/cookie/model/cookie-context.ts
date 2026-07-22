@@ -18,10 +18,10 @@ interface CookieContextValue {
     /**
      * Controls visibility of the cookie options modal.
      */
-    isPreferencesOpen: boolean;
+    isCookieSettingsOpen: boolean;
 
-    openPreferences(): void;
-    closePreferences(): void;
+    openCookieSettings(): void;
+    closeCookieSettings(): void;
 }
 
 /**

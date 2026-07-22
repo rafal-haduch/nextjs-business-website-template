@@ -9,9 +9,15 @@ import { useState } from 'react';
 import { CookieConsent } from '@/src/features/cookie/model/cookie-types';
 import { NECESSARY_COOKIE_CONSENT } from '@/src/features/cookie/model/cookie-consent-presets';
 
-export default function CookiePreferencesModal() {
-    const { isPreferencesOpen, closePreferences, consent, saveConsent, acceptAll, rejectOptional } =
-        useCookies();
+export default function CookieSettingsModal() {
+    const {
+        isCookieSettingsOpen,
+        closeCookieSettings,
+        consent,
+        saveConsent,
+        acceptAll,
+        rejectOptional,
+    } = useCookies();
 
     // Stores temporary changes made in the preferences modal.
     // Changes are applied only after clicking "Save & Exit".
@@ -40,13 +46,13 @@ export default function CookiePreferencesModal() {
     const handleAcceptAll = () => {
         acceptAll();
         setChanges({});
-        closePreferences();
+        closeCookieSettings();
     };
 
     const handleRejectOptional = () => {
         setChanges({});
         rejectOptional();
-        closePreferences();
+        closeCookieSettings();
     };
 
     const handleSave = () => {
@@ -54,15 +60,15 @@ export default function CookiePreferencesModal() {
 
         saveConsent(draftConsent);
         setChanges({});
-        closePreferences();
+        closeCookieSettings();
     };
 
     return (
         <Modal
-            open={isPreferencesOpen}
+            open={isCookieSettingsOpen}
             onClose={() => {
                 setChanges({});
-                closePreferences();
+                closeCookieSettings();
             }}
             showCloseButton
         >

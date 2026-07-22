@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
 import { cn } from '@/src/utils/cn';
@@ -33,6 +33,13 @@ interface DialogCoreProps {
 }
 
 interface DialogBehaviorProps {
+    /**
+     * Controls whether the dialog is immediately removed from the DOM when closed.
+     *
+     * Set to `false` to keep the dialog mounted until the exit transition
+     * finishes, allowing close animations to complete.
+     */
+    unmountOnExit: boolean;
     lockScroll: boolean;
     showOverlay: boolean;
     closeOnOverlayClick: boolean;
@@ -81,6 +88,7 @@ interface DialogProps extends DialogCoreProps, DialogBehaviorProps, DialogLayout
  * - optional body scroll locking
  * - overlay click handling
  * - accessibility attributes
+ * - optional delayed unmount for exit animations
  */
 export default function Dialog({
     open,
@@ -89,6 +97,7 @@ export default function Dialog({
     panelClassName,
     panelHTMLAttributes,
     children,
+    unmountOnExit,
     lockScroll,
     showOverlay,
     closeOnOverlayClick,
@@ -96,6 +105,19 @@ export default function Dialog({
     showCloseButton,
     overlayClassName,
 }: DialogProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        if (open) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setMounted(true);
+        }
+
+        if (!open && unmountOnExit) {
+            setMounted(false);
+        }
+    }, [open, unmountOnExit]);
+
     useEscapeKey({
         enabled: open && closeOnEscape,
         onEscape: onClose,
@@ -103,19 +125,31 @@ export default function Dialog({
 
     useScrollLock(open && lockScroll);
 
-    if (!open) return null;
+    /**
+     * Removes the dialog from the DOM after the closing transition completes.
+     */
+    const handleTransitionEnd = () => {
+        if (!open && !unmountOnExit) {
+            setMounted(false);
+        }
+    };
+
+    if (!mounted) {
+        return null;
+    }
 
     const {
         role = 'dialog',
         'aria-modal': ariaModal = true,
+        onTransitionEnd,
         ...restPanelProps
     } = panelHTMLAttributes ?? {};
 
     return (
         <Portal>
-            {/* Base container */}
+            {/*--- Base container ---*/}
             <div className="pointer-events-none fixed inset-0 z-100">
-                {/* Overlay */}
+                {/*--- Overlay ---*/}
                 {showOverlay && (
                     <div
                         aria-hidden="true"
@@ -126,9 +160,9 @@ export default function Dialog({
                         )}
                     />
                 )}
-                {/* Wrapper for placement main panel */}
+                {/*--- Wrapper for placement main panel ---*/}
                 <div className={cn('relative flex min-h-full', wrapperClassName)}>
-                    {/* Main panel with content */}
+                    {/*--- Main panel ---*/}
                     <div
                         role={role}
                         aria-modal={ariaModal}
@@ -136,8 +170,16 @@ export default function Dialog({
                             'pointer-events-auto relative w-full bg-white p-6',
                             panelClassName
                         )}
+                        // style={{
+                        //     transitionDuration: '7000ms',
+                        // }}
                         {...restPanelProps}
+                        onTransitionEnd={(e) => {
+                            onTransitionEnd?.(e);
+                            handleTransitionEnd();
+                        }}
                     >
+                        {/*--- Close button ---*/}
                         {showCloseButton && (
                             <button
                                 onClick={onClose}
@@ -147,6 +189,7 @@ export default function Dialog({
                                 <X size={24} />
                             </button>
                         )}
+                        {/*--- Content from parent ---*/}
                         {children}
                     </div>
                 </div>
