@@ -1,5 +1,7 @@
 'use client';
 
+import { cn } from '@/src/utils/cn';
+
 import { useCookies } from '@/src/features/cookie/model/use-cookies';
 
 interface Props {
@@ -12,7 +14,7 @@ interface Props {
 export default function CookieSettingsButton({ className }: Props) {
     const { openCookieSettings: openPreferences } = useCookies();
     return (
-        <button type="button" onClick={openPreferences} className={className}>
+        <button type="button" onClick={openPreferences} className={cn('cursor-pointer', className)}>
             Cookie settings
         </button>
     );

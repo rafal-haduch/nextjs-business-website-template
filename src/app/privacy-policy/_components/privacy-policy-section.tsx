@@ -5,7 +5,7 @@ import { PRIVACY_SECTIONS } from '@/src/app/privacy-policy/_content/privacy-poli
 
 import PrivacyPolicySubsection from '@/src/app/privacy-policy/_components/privacy-policy-subsection';
 
-//NOTE: Privacy policy is write in polish.
+//NOTE: Privacy policy template is write in polish.
 //TODO: Remove privacy policy template or replace with lorem ipsum
 export default function PrivacyPolicySection() {
     return (

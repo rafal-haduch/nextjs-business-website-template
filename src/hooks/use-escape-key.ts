@@ -7,10 +7,16 @@ interface UseEscapeKeyProps {
     onEscape: () => void;
 }
 
-//TODO: write JSDOC
 /**
- * JSDOC...
- * @param param0
+ * Executes a callback when the Escape key is pressed.
+ *
+ * Adds a global keyboard listener while enabled and automatically
+ * removes it when disabled or when the component is unmounted.
+ *
+ * Commonly used for closing dialogs, drawers and other overlay components.
+ *
+ * @param enabled Controls whether the Escape key listener is active.
+ * @param onEscape Callback executed when Escape is pressed.
  */
 export function useEscapeKey({ enabled, onEscape }: UseEscapeKeyProps) {
     useEffect(() => {

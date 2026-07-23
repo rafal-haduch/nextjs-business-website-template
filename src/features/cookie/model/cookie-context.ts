@@ -19,7 +19,6 @@ interface CookieContextValue {
      * Controls visibility of the cookie options modal.
      */
     isCookieSettingsOpen: boolean;
-
     openCookieSettings(): void;
     closeCookieSettings(): void;
 }

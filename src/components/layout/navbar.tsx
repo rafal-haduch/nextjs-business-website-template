@@ -23,18 +23,6 @@ export default function Navbar() {
     const path = usePathname();
     const mobileMenu = useDisclosure();
 
-    // Block scroll when mobile menu is open
-    useEffect(() => {
-        if (mobileMenu.isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [mobileMenu.isOpen]);
-
     // Close mobile menu at lg break point
     useEffect(() => {
         const mediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -48,15 +36,6 @@ export default function Navbar() {
         mediaQuery.addEventListener('change', handleChange);
 
         return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []);
-
-    // Close mobile menu by ESC
-    useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') mobileMenu.close();
-        };
-        document.addEventListener('keydown', handleEsc);
-        return () => document.removeEventListener('keydown', handleEsc);
     }, []);
 
     return (
@@ -164,10 +143,13 @@ export default function Navbar() {
                         <Link
                             href={ROUTES.CTA.path}
                             onClick={mobileMenu.close}
-                            className={getButtonClasses({
-                                variant: 'solid',
-                                color: 'gradient',
-                            })}
+                            className={cn(
+                                getButtonClasses({
+                                    variant: 'solid',
+                                    color: 'gradient',
+                                }),
+                                'px-8'
+                            )}
                         >
                             {ROUTES.CTA.label}
                         </Link>

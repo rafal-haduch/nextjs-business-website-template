@@ -2,10 +2,14 @@
 
 import { useEffect } from 'react';
 
-//TODO: write JSDOC
 /**
- * JSDOC...
- * @param enabled
+ * Prevents the document body from scrolling while a component is active.
+ *
+ * Useful for modal-like components such as dialogs, drawers or mobile menus.
+ * Restores the previous body overflow value when the lock is disabled
+ * or the component is unmounted.
+ *
+ * @param enabled Determines whether scroll locking should be active.
  */
 export function useScrollLock(enabled: boolean) {
     useEffect(() => {

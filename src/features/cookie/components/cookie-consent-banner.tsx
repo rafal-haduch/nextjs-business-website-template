@@ -28,18 +28,23 @@ export default function CookieConsentBanner() {
                 'aria-describedby': 'cookie-banner-description',
             }}
         >
-            <div className="text-center">
-                <h2 className="text-lg font-semibold">Privacy policy</h2>
-                <p className="mt-2 text-sm">
-                    This website uses cookies. You can learn more about them in our{' '}
-                    <Link href={ROUTES.PRIVACY_POLICY.path}>{ROUTES.PRIVACY_POLICY.label}</Link>.
-                </p>
-                <div className="mt-6 flex flex-col items-center gap-3 md:mx-auto md:max-w-xl md:flex-row md:justify-center">
+            <div className="space-y-4">
+                {/*--- Banner header ---*/}
+                <div className="text-center">
+                    <h2 className="mb-2 text-lg font-semibold">Privacy policy</h2>
+                    <p className="text-sm">
+                        This website uses cookies. You can learn more about them in our{' '}
+                        <Link href={ROUTES.PRIVACY_POLICY.path}>{ROUTES.PRIVACY_POLICY.label}</Link>
+                        .
+                    </p>
+                </div>
+                {/*--- Banner actions ---*/}
+                <div className="flex w-full flex-col items-center gap-3 md:mx-auto md:max-w-xl md:flex-row md:justify-center">
                     <button
                         onClick={acceptAll}
                         className={getButtonClasses({
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full max-w-sm md:w-1/3',
                         })}
                     >
                         Accept all
@@ -49,7 +54,7 @@ export default function CookieConsentBanner() {
                         className={getButtonClasses({
                             variant: 'outline',
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full max-w-sm md:w-1/3',
                         })}
                     >
                         Reject optional
@@ -58,7 +63,7 @@ export default function CookieConsentBanner() {
                         className={getButtonClasses({
                             variant: 'outline',
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full max-w-sm md:w-1/3',
                         })}
                     />
                 </div>

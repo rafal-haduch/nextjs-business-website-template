@@ -62,7 +62,7 @@
     --color-border-strong: var(--color-gray-600);
 
     --color-border-brand-primary: var(--color-main-brand-primary);
-    --color-border-brand-primary-subtle-: var(--color-brand-primary-200);
+    --color-border-brand-primary-subtle: var(--color-brand-primary-200);
     --color-border-brand-primary-strong: var(--color-brand-primary-600);
 
     --color-border-brand-secondary: var(--color-main-brand-secondary);

@@ -8,6 +8,7 @@ import {
     ALL_COOKIE_CONSENT,
     NECESSARY_COOKIE_CONSENT,
 } from '@/src/features/cookie/model/cookie-consent-presets';
+
 import {
     getCookieConsent,
     removeCookieConsent,

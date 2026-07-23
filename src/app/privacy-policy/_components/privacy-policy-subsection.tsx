@@ -25,13 +25,7 @@ export default function PrivacyPolicySubsection({
                     </p>
                 ))}
                 {intro && <p className="text-sm leading-relaxed">{intro}</p>}
-                {items && (
-                    <BulletList
-                        items={items}
-                        markerColor="text-foreground-brand-primary"
-                        textSize="small"
-                    />
-                )}
+                {items && <BulletList items={items} textSize="small" />}
                 {outro && <p className="text-sm leading-relaxed">{outro}</p>}
             </div>
         </section>

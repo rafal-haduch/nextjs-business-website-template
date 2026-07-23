@@ -1,8 +1,9 @@
 # TODOS:
+-review: analize and understand dialog + modal, drawer and banner components (shoud i change mobile menu drawer to same layer as desktop navbar?)
 -review: shoud i remove or simplicity hook useLocalStorage()?
 
 ## Tech:
-- add link style in getButtonClasses()
+- add link style as getLinkStyles()
 - extract styles from popups components, container and section  into src/lib/design-system
 - add toast component (review: use dialog without overlay or create new component?)
 - top bar with importantr info (closed, etc)

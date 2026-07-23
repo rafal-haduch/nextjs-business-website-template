@@ -5,7 +5,12 @@ import Navbar from '@/src/components/layout/navbar';
 
 import AppUI from '@/src/components/layout/app-ui';
 
-//TODO: Write JSDOC
+/**
+ * Main application layout wrapper.
+ *
+ * Provides shared page structure including navigation,
+ * main content area, footer and global UI elements.
+ */
 export default function AppShell({ children }: { children: ReactNode }) {
     return (
         <>

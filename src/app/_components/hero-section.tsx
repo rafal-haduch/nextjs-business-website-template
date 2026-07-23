@@ -14,7 +14,7 @@ export default function HeroSection() {
     return (
         <PageSection {...PAGE_SECTION_PRESETS.hero} aria-labelledby="hero-title">
             <Container {...CONTAINER_PRESETS.hero}>
-                {/* Background image */}
+                {/*--- Wrapper for background image ---*/}
                 <div className="relative h-svh max-h-184">
                     <Image
                         src={heroImage}
@@ -25,9 +25,9 @@ export default function HeroSection() {
                         sizes="(max-width: 1280px) 100vw, 1280px"
                         className="object-cover"
                     />
-                    {/* Overlay */}
+                    {/*--- Overlay ---*/}
                     <div aria-hidden="true" className="absolute inset-0 z-10 bg-black/40"></div>
-                    {/* Content */}
+                    {/*--- Content ---*/}
                     <div className="relative z-10 flex h-full flex-col justify-evenly gap-4 text-center text-white">
                         <h1
                             id="hero-title"

@@ -1,11 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 import { getButtonClasses } from '@/src/lib/design-system/button';
 
 import Modal from '@/src/components/ui/modal';
 
 import { useCookies } from '@/src/features/cookie/model/use-cookies';
-import { useState } from 'react';
 import { CookieConsent } from '@/src/features/cookie/model/cookie-types';
 import { NECESSARY_COOKIE_CONSENT } from '@/src/features/cookie/model/cookie-consent-presets';
 
@@ -73,17 +74,17 @@ export default function CookieSettingsModal() {
             showCloseButton
         >
             <div className="flex flex-col gap-8">
+                {/*---  Modal header ---*/}
                 <div className="flex flex-col gap-2">
                     <h2 className="text-center">Cookie settings</h2>
                     <p>Cookies help us provide and improve our website.</p>
                 </div>
-
+                {/*---  Cookie categories ---*/}
                 <div className="flex flex-col gap-4">
                     <label className="flex items-center gap-2">
                         <input type="checkbox" checked disabled />
                         Necessary cookies (Always active)
                     </label>
-
                     <label className="flex items-center gap-2">
                         <input
                             type="checkbox"
@@ -92,7 +93,6 @@ export default function CookieSettingsModal() {
                         />
                         Analytics
                     </label>
-
                     <label className="flex items-center gap-2">
                         <input
                             type="checkbox"
@@ -101,7 +101,6 @@ export default function CookieSettingsModal() {
                         />
                         Marketing
                     </label>
-
                     <label className="flex items-center gap-2">
                         <input
                             type="checkbox"
@@ -111,14 +110,15 @@ export default function CookieSettingsModal() {
                         Preferences
                     </label>
                 </div>
-
-                <div className="fex-row flex justify-between gap-6">
+                {/*---  Modal actions  ---*/}
+                {/*TODO:  Improve style checkbox into toggle.*/}
+                <div className="flex flex-col justify-between gap-4 sm:flex-row sm:gap-6">
                     <button
                         onClick={handleAcceptAll}
                         className={getButtonClasses({
                             variant: 'outline',
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full sm:w-1/3',
                         })}
                     >
                         Accept all
@@ -128,18 +128,17 @@ export default function CookieSettingsModal() {
                         className={getButtonClasses({
                             variant: 'outline',
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full sm:w-1/3',
                         })}
                     >
                         Reject optional
                     </button>
-
                     <button
                         onClick={handleSave}
                         disabled={!draftConsent}
                         className={getButtonClasses({
                             size: 'small',
-                            className: 'mx-0 w-1/3',
+                            className: 'mx-0 w-full sm:w-1/3',
                         })}
                     >
                         Save & Exit

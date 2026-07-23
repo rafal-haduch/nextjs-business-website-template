@@ -105,8 +105,32 @@ export default function Dialog({
     showCloseButton,
     overlayClassName,
 }: DialogProps) {
+    /**
+     * Controls whether the dialog exists in the DOM.
+     *
+     * It is separated from the `open` prop because some components
+     * (for example Drawer) need to stay mounted while the closing
+     * animation is running.
+     *
+     * Example:
+     * open=false
+     * mounted=true
+     *
+     * means:
+     * "The dialog is closing, but keep it alive until transition ends."
+     */
     const [mounted, setMounted] = useState(false);
 
+    /**
+     * Synchronizes the mounted state with the open state.
+     *
+     * Opening:
+     * - mounts the dialog in the DOM
+     *
+     * Closing:
+     * - immediately removes it only when `unmountOnExit` is enabled
+     * - otherwise keeps it mounted so exit animations can finish
+     */
     useEffect(() => {
         if (open) {
             // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -127,6 +151,16 @@ export default function Dialog({
 
     /**
      * Removes the dialog from the DOM after the closing transition completes.
+     * Called after CSS transition finishes.
+     *
+     * Used mainly by animated components like Drawer.
+     *
+     * Example:
+     * 1. User closes Drawer
+     * 2. open becomes false
+     * 3. Drawer animates out
+     * 4. transition ends
+     * 5. Component is removed from DOM
      */
     const handleTransitionEnd = () => {
         if (!open && !unmountOnExit) {
@@ -134,10 +168,23 @@ export default function Dialog({
         }
     };
 
+    /**
+     * Prevents rendering when component should not exist.
+     *
+     * Important:
+     * Drawer needs this delayed unmount behavior
+     * to allow closing animations to complete.
+     */
     if (!mounted) {
         return null;
     }
 
+    /**
+     * Extract dialog-related accessibility props.
+     *
+     * Remaining attributes are passed directly
+     * to the dialog panel element.
+     */
     const {
         role = 'dialog',
         'aria-modal': ariaModal = true,
@@ -161,18 +208,15 @@ export default function Dialog({
                     />
                 )}
                 {/*--- Wrapper for placement main panel ---*/}
-                <div className={cn('relative flex min-h-full', wrapperClassName)}>
+                <div className={cn('relative flex min-h-full overflow-x-hidden', wrapperClassName)}>
                     {/*--- Main panel ---*/}
                     <div
                         role={role}
                         aria-modal={ariaModal}
                         className={cn(
-                            'pointer-events-auto relative w-full bg-white p-6',
+                            'pointer-events-auto relative w-full min-w-64 bg-white p-2 md:p-4 lg:p-6',
                             panelClassName
                         )}
-                        // style={{
-                        //     transitionDuration: '7000ms',
-                        // }}
                         {...restPanelProps}
                         onTransitionEnd={(e) => {
                             onTransitionEnd?.(e);
@@ -189,7 +233,7 @@ export default function Dialog({
                                 <X size={24} />
                             </button>
                         )}
-                        {/*--- Content from parent ---*/}
+                        {/*--- Content injected by higher-level components ---*/}
                         {children}
                     </div>
                 </div>
