@@ -1,5 +1,4 @@
 # TODOS:
--review: analize and understand dialog + modal, drawer and banner components (shoud i change mobile menu drawer to same layer as desktop navbar?)
 -review: shoud i remove or simplicity hook useLocalStorage()?
 
 ## Tech:

@@ -102,6 +102,7 @@ const drawerDurationStyles: Record<DrawerAnimationDuration, string> = {
 export default function Drawer({
     open,
     onClose,
+    rootPositionClassName,
     wrapperClassName,
     panelClassName,
     panelHTMLAttributes,
@@ -140,9 +141,10 @@ export default function Drawer({
         <Dialog
             open={open}
             onClose={onClose}
+            rootPositionClassName={rootPositionClassName}
             wrapperClassName={cn(drawerWrapperStyles[side], wrapperClassName)}
             panelClassName={cn(
-                'relative bg-white transition-transform',
+                'relative bg-white transition-transform p-0 md:p-0 lg:p-0',
                 drawerSizeStyles[side][size],
                 drawerPanelBaseStyles[side],
                 animation

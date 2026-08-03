@@ -49,11 +49,21 @@ interface DialogBehaviorProps {
 
 interface DialogLayoutProps {
     overlayClassName?: string;
+
+    /**
+     * Additional classes applied to the root positioning container.
+     *
+     * Useful for overriding properties such as `top`, `bottom`
+     * or `inset` when the dialog should not cover the entire screen.
+     */
+    rootPositionClassName?: string;
+
     /**
      * Additional classes applied to the wrapper responsible for positioning
      * the dialog panel inside the viewport.
      */
     wrapperClassName?: string;
+
     /**
      * Additional classes applied directly to the dialog panel.
      *
@@ -93,6 +103,7 @@ interface DialogProps extends DialogCoreProps, DialogBehaviorProps, DialogLayout
 export default function Dialog({
     open,
     onClose,
+    rootPositionClassName,
     wrapperClassName,
     panelClassName,
     panelHTMLAttributes,
@@ -195,7 +206,7 @@ export default function Dialog({
     return (
         <Portal>
             {/*--- Base container ---*/}
-            <div className="pointer-events-none fixed inset-0 z-100">
+            <div className={cn('pointer-events-none fixed inset-0 z-100', rootPositionClassName)}>
                 {/*--- Overlay ---*/}
                 {showOverlay && (
                     <div

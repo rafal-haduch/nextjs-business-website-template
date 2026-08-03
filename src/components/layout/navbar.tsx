@@ -41,7 +41,7 @@ export default function Navbar() {
     return (
         <>
             {/*--- Desktop menu bar ---*/}
-            <header className="bg-background-primary sticky top-0 z-50 py-4 shadow-sm">
+            <header className="bg-background-primary sticky top-0 z-50 h-24 py-4 shadow-sm">
                 <Container>
                     <div className="flex items-center justify-between">
                         <Link href={ROUTES.HOME.path} className="shrink-0">
@@ -90,7 +90,11 @@ export default function Navbar() {
                             aria-label="Otwórz menu"
                             className="text-foreground-brand-primary cursor-pointer lg:hidden"
                         >
-                            <Menu className="h-8 w-8" aria-hidden="true" />
+                            {mobileMenu.isOpen ? (
+                                <X className="h-8 w-8" aria-hidden="true" />
+                            ) : (
+                                <Menu className="h-8 w-8" aria-hidden="true" />
+                            )}
                         </button>
                     </div>
                 </Container>
@@ -105,26 +109,14 @@ export default function Navbar() {
                 animationDuration="base"
                 lockScroll
                 closeOnEscape
+                rootPositionClassName="top-24 bottom-0"
                 panelClassName="p-0"
                 panelHTMLAttributes={{
                     'aria-label': 'Menu nawigacyjne',
                 }}
             >
-                {/*--- Top bar ---*/}
-                <div className="border-border-brand-primary flex items-center justify-between border-b-3 p-4">
-                    <Link href={ROUTES.HOME.path} onClick={mobileMenu.close} className="shrink-0">
-                        <Image src={logo} alt="Logo pracowni" priority className="h-auto w-64" />
-                    </Link>
-                    <button
-                        onClick={mobileMenu.close}
-                        aria-label="Zamknij menu"
-                        className="text-foreground-brand-primary cursor-pointer p-1"
-                    >
-                        <X className="h-8 w-8" aria-hidden="true" />
-                    </button>
-                </div>
                 {/*--- Mobile nav ---*/}
-                <nav className="flex flex-1 flex-col items-center gap-8 px-4 pt-12 pb-24">
+                <nav className="border-border-brand-primary flex flex-1 flex-col items-center gap-8 border-t-3 px-4 pt-12 pb-24">
                     <ul className="flex flex-col">
                         {NAV_ITEMS.map((item) => (
                             <li key={item.path}>
