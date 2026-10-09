@@ -31,14 +31,14 @@
     --color-brand-secondary-950: var(--color-green-950);
 
     /*--- Main brand colors ---*/
-    --color-main-brand-primary: var(--color-brand-primary-400);
-    --color-main-brand-secondary: var(--color-brand-secondary-400);
+    --color-brand-primary: var(--color-brand-primary-400);
+    --color-brand-secondary: var(--color-brand-secondary-400);
 
     /*--- Backgrounds ---*/
     --color-background-primary: var(--color-white);
     --color-background-secondary: var(--color-brand-primary-100);
-    --color-background-accent-primary: var(--color-main-brand-primary);
-    --color-background-accent-secondary: var(--color-main-brand-secondary);
+    --color-background-accent-primary: var(--color-brand-primary);
+    --color-background-accent-secondary: var(--color-brand-secondary);
     --color-background-strong-primary: var(--color-brand-primary-700);
     --color-background-strong-secondary: var(--color-brand-secondary-700);
 
@@ -48,11 +48,11 @@
     --color-foreground-muted: var(--color-gray-500);
     --color-foreground-inverted: var(--color-white);
 
-    --color-foreground-brand-primary: var(--color-main-brand-primary);
+    --color-foreground-brand-primary: var(--color-brand-primary);
     --color-foreground-brand-primary-inverted: var(--color-brand-primary-50);
     --color-foreground-brand-primary-strong: var(--color-brand-primary-600);
 
-    --color-foreground-brand-secondary: var(--color-main-brand-secondary);
+    --color-foreground-brand-secondary: var(--color-brand-secondary);
     --color-foreground-brand-secondary-inverted: var(--color-brand-secondary-50);
     --color-foreground-brand-secondary-strong: var(--color-brand-secondary-600);
 
@@ -61,11 +61,11 @@
     --color-border-subtle: var(--color-gray-200);
     --color-border-strong: var(--color-gray-600);
 
-    --color-border-brand-primary: var(--color-main-brand-primary);
+    --color-border-brand-primary: var(--color-brand-primary);
     --color-border-brand-primary-subtle: var(--color-brand-primary-200);
     --color-border-brand-primary-strong: var(--color-brand-primary-600);
 
-    --color-border-brand-secondary: var(--color-main-brand-secondary);
+    --color-border-brand-secondary: var(--color-brand-secondary);
     --color-border-brand-secondary-subtle: var(--color-brand-secondary-200);
     --color-border-brand-secondary-strong: var(--color-brand-secondary-600);
 
@@ -170,6 +170,64 @@
 
     .btn-ghost.btn-gradient {
         @apply text-foreground-brand-primary hover:text-foreground-inverted from-background-accent-primary to-background-accent-secondary bg-transparent hover:bg-linear-to-tl;
+    }
+
+    /*--- Input ---*/
+
+    .input {
+        @apply w-full rounded-sm px-1 focus:outline-hidden;
+    }
+
+    /*--- Input sizes ---*/
+
+    .input-sm {
+        @apply h-8 text-sm;
+    }
+
+    .input-md {
+        @apply h-10 text-base;
+    }
+
+    .input-lg {
+        @apply h-12 text-lg;
+    }
+
+    /*--- Input color variants ---*/
+
+    .input-default.input-primary {
+        @apply border-border-brand-primary text-foreground-brand-primary border bg-white focus:border-2;
+    }
+
+    .input-default.input-secondary {
+        @apply border-border-brand-secondary text-foreground-brand-secondary border bg-white focus:border-2;
+    }
+
+    .input-default.input-mix {
+        @apply border-border-brand-primary text-foreground-brand-secondary border bg-white focus:border-2;
+    }
+
+    .input-outline.input-primary {
+        @apply border-border-brand-primary text-foreground-brand-primary border focus:border-2;
+    }
+
+    .input-outline.input-secondary {
+        @apply border-border-brand-secondary text-foreground-brand-secondary border focus:border-2;
+    }
+
+    .input-outline.input-mix {
+        @apply border-border-brand-primary text-foreground-brand-secondary border focus:border-2;
+    }
+
+    .input-solid.input-primary {
+        @apply bg-brand-primary-100 text-foreground-brand-primary border-0;
+    }
+
+    .input-solid.input-secondary {
+        @apply bg-brand-secondary-100 text-foreground-brand-secondary border-0;
+    }
+
+    .input-solid.input-mix {
+        @apply bg-brand-primary-100 text-foreground-brand-secondary focus:border-border-brand-primary border-0 focus:border;
     }
 
     /*--- Table ---*/

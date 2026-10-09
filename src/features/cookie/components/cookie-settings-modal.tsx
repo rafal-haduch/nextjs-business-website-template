@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { getButtonClasses } from '@/src/lib/design-system/button';
+import { buttonStyles } from '@/src/design-system/button';
 
 import Modal from '@/src/components/ui/modal';
 
@@ -115,7 +115,7 @@ export default function CookieSettingsModal() {
                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:gap-6">
                     <button
                         onClick={handleAcceptAll}
-                        className={getButtonClasses({
+                        className={buttonStyles({
                             variant: 'outline',
                             size: 'small',
                             className: 'mx-0 w-full sm:w-1/3',
@@ -125,7 +125,7 @@ export default function CookieSettingsModal() {
                     </button>
                     <button
                         onClick={handleRejectOptional}
-                        className={getButtonClasses({
+                        className={buttonStyles({
                             variant: 'outline',
                             size: 'small',
                             className: 'mx-0 w-full sm:w-1/3',
@@ -136,7 +136,7 @@ export default function CookieSettingsModal() {
                     <button
                         onClick={handleSave}
                         disabled={!draftConsent}
-                        className={getButtonClasses({
+                        className={buttonStyles({
                             size: 'small',
                             className: 'mx-0 w-full sm:w-1/3',
                         })}

@@ -3,7 +3,7 @@ import { House } from 'lucide-react';
 
 import { ROUTES } from '@/src/config/routes';
 
-import { getButtonClasses } from '@/src/lib/design-system/button';
+import { buttonStyles } from '@/src/design-system/button';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
 import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
@@ -16,7 +16,7 @@ export default function NotFound() {
                     404 Not Found
                 </h1>
                 <p className="mb-8">Go to the home page or use the navigation menu.</p>
-                <Link href={ROUTES.HOME.path} className={getButtonClasses({ size: 'large' })}>
+                <Link href={ROUTES.HOME.path} className={buttonStyles({ size: 'large' })}>
                     {ROUTES.HOME.label}
                     <House aria-hidden="true" />
                 </Link>

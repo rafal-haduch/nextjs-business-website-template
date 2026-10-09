@@ -10,7 +10,7 @@ import { NAV_ITEMS, ROUTES } from '@/src/config/routes';
 
 import { cn } from '@/src/utils/cn';
 
-import { getButtonClasses } from '@/src/lib/design-system/button';
+import { buttonStyles } from '@/src/design-system/button';
 
 import { useDisclosure } from '@/src/hooks/use-disclosure';
 
@@ -76,7 +76,7 @@ export default function Navbar() {
                             {/*--- CTA button ---*/}
                             <Link
                                 href={ROUTES.CTA.path}
-                                className={getButtonClasses({
+                                className={buttonStyles({
                                     variant: 'solid',
                                     color: 'gradient',
                                 })}
@@ -136,7 +136,7 @@ export default function Navbar() {
                             href={ROUTES.CTA.path}
                             onClick={mobileMenu.close}
                             className={cn(
-                                getButtonClasses({
+                                buttonStyles({
                                     variant: 'solid',
                                     color: 'gradient',
                                 }),

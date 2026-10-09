@@ -40,7 +40,7 @@ interface Options {
  * @param size - Controls padding and font size. Default: `'base'`.
  * @param className - Additional Tailwind classes merged via `cn()` (clsx + tailwind-merge).
  */
-export function getButtonClasses({
+export function buttonStyles({
     variant = 'solid',
     color = 'primary',
     size = 'base',
