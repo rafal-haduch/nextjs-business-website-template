@@ -12,9 +12,8 @@ export default function Home() {
             <HeroSection />
             <FirstSection />
             <InputWithLabel
-                variant="default"
-                color="mix"
-                coloredLabel
+                inputVariant="default"
+                inputColor="mix"
                 label="Testowy input"
                 id="test"
                 name="name"

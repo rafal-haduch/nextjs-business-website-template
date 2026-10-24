@@ -108,7 +108,7 @@
 
     h4,
     h5,
-    h5 {
+    h6 {
         @apply text-xl;
     }
 }
@@ -228,6 +228,10 @@
 
     .input-solid.input-mix {
         @apply bg-brand-primary-100 text-foreground-brand-secondary focus:border-border-brand-primary border-0 focus:border;
+    }
+
+    .input-default {
+        @apply border-border-default text-foreground-secondary border bg-white focus:border-2;
     }
 
     /*--- Table ---*/

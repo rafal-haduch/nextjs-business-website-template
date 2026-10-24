@@ -2,25 +2,27 @@ import React from 'react';
 
 import { cn } from '@/src/utils/cn';
 
-import { InputColor, InputSize, inputStyles, InputVariant } from '@/src/design-system/input';
+import {
+    InputVariant,
+    InputColor,
+    InputSize,
+    inputStyles,
+    LabelColor,
+    LabelSize,
+    labelStyles,
+} from '@/src/design-system/input-with-label';
 
-type Order = 'labelFirst' | 'inputFirst';
+interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'id'> {
+    id: string;
+    label: string;
 
-const labelVariantStyles: Record<InputColor, string> = {
-    primary: 'text-foreground-brand-primary',
-    secondary: 'text-foreground-brand-secondary',
-    mix: 'text-foreground-brand-primary',
-    none: '',
-};
+    inputVariant?: InputVariant;
+    inputSize?: InputSize;
+    inputColor?: InputColor;
 
-interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'size'> {
-    variant?: InputVariant;
-    color?: InputColor;
-    coloredLabel?: boolean;
-    size?: InputSize;
-    order?: Order;
+    labelSize?: LabelSize;
+    labelColor?: LabelColor;
 
-    label?: string;
     description?: string;
     error?: string;
 
@@ -32,12 +34,13 @@ interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'class
 }
 
 export default function InputWithLabel({
-    variant,
-    color = 'none',
-    coloredLabel = false,
-    size,
-    order = 'labelFirst',
+    id,
     label,
+    inputVariant = 'default',
+    inputColor = 'primary',
+    inputSize = 'medium',
+    labelColor,
+    labelSize,
     description,
     error,
     wrapperClassName,
@@ -45,28 +48,55 @@ export default function InputWithLabel({
     inputClassName,
     descriptionClassName,
     errorClassName,
+    'aria-describedby': ariaDescribedBy,
+    'aria-invalid': ariaInvalid,
     ...restInputProps
 }: Props) {
+    const descriptionId = `${id}-description`;
+    const errorId = `${id}-error`;
+
+    const describedBy =
+        [ariaDescribedBy, description ? descriptionId : undefined, error ? errorId : undefined]
+            .filter(Boolean)
+            .join(' ') || undefined;
+
     return (
-        <div
-            className={cn(
-                'flex w-full',
-                order === 'labelFirst' ? 'flex-col' : 'flex-col-reverse',
-                wrapperClassName
-            )}
-        >
+        <div className={cn('flex w-full flex-col gap-1.5', wrapperClassName)}>
             <label
-                htmlFor={restInputProps.id}
-                className={cn(coloredLabel && labelVariantStyles[color], labelClassName)}
+                htmlFor={id}
+                className={cn(
+                    labelStyles({
+                        color: labelColor,
+                        size: labelSize,
+                    }),
+                    labelClassName
+                )}
             >
                 {label}
             </label>
             <input
                 {...restInputProps}
-                className={cn(inputStyles({ variant, color, size, className: inputClassName }))}
+                id={id}
+                aria-invalid={error ? true : ariaInvalid}
+                aria-describedby={describedBy}
+                className={cn(
+                    inputStyles({ variant: inputVariant, color: inputColor, size: inputSize }),
+                    inputClassName
+                )}
             ></input>
-            {description && <p className={cn('', descriptionClassName)}>{description}</p>}
-            {error && <p className={cn('text-state-error', errorClassName)}>{error}</p>}
+            {description && (
+                <p
+                    id={descriptionId}
+                    className={cn('text-foreground-secondary text-sm', descriptionClassName)}
+                >
+                    {description}
+                </p>
+            )}
+            {error && (
+                <p id={errorId} className={cn('text-state-error text-sm', errorClassName)}>
+                    {error}
+                </p>
+            )}
         </div>
     );
 }
