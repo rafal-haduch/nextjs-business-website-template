@@ -7,21 +7,22 @@ import {
     InputColor,
     InputSize,
     inputStyles,
-    LabelColor,
-    LabelSize,
     labelStyles,
+    InputRoundedCorners,
 } from '@/src/design-system/input-with-label';
+import { Info } from 'lucide-react';
 
-interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className' | 'id'> {
+interface Props extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'className' | 'id' | 'size'
+> {
     id: string;
     label: string;
 
-    inputVariant?: InputVariant;
-    inputSize?: InputSize;
-    inputColor?: InputColor;
-
-    labelSize?: LabelSize;
-    labelColor?: LabelColor;
+    variant?: InputVariant;
+    size?: InputSize;
+    color?: InputColor;
+    roundedCorners?: InputRoundedCorners;
 
     description?: string;
     error?: string;
@@ -36,11 +37,10 @@ interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'class
 export default function InputWithLabel({
     id,
     label,
-    inputVariant = 'default',
-    inputColor = 'primary',
-    inputSize = 'medium',
-    labelColor,
-    labelSize,
+    variant = 'filled',
+    color = 'primary',
+    size = 'medium',
+    roundedCorners = 'none',
     description,
     error,
     wrapperClassName,
@@ -66,32 +66,32 @@ export default function InputWithLabel({
                 htmlFor={id}
                 className={cn(
                     labelStyles({
-                        color: labelColor,
-                        size: labelSize,
+                        color,
+                        size,
                     }),
                     labelClassName
                 )}
             >
                 {label}
             </label>
+            {description && (
+                <div className="text-foreground-muted flex items-center gap-1">
+                    <Info width={16} height={16} />
+                    <p id={descriptionId} className={cn('text-sm', descriptionClassName)}>
+                        {description}
+                    </p>
+                </div>
+            )}
             <input
                 {...restInputProps}
                 id={id}
                 aria-invalid={error ? true : ariaInvalid}
                 aria-describedby={describedBy}
                 className={cn(
-                    inputStyles({ variant: inputVariant, color: inputColor, size: inputSize }),
+                    inputStyles({ variant, color, size, roundedCorners }),
                     inputClassName
                 )}
-            ></input>
-            {description && (
-                <p
-                    id={descriptionId}
-                    className={cn('text-foreground-secondary text-sm', descriptionClassName)}
-                >
-                    {description}
-                </p>
-            )}
+            />
             {error && (
                 <p id={errorId} className={cn('text-state-error text-sm', errorClassName)}>
                     {error}

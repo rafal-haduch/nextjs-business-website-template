@@ -1,63 +1,71 @@
 import { cn } from '@/src/utils/cn';
 
-export type InputVariant = 'solid' | 'outline' | 'default';
-export type InputSize = 'small' | 'medium' | 'large' | 'none';
-export type InputColor = 'primary' | 'secondary' | 'mix' | 'base';
-
-export type LabelSize = 'small' | 'medium' | 'large';
-export type LabelColor = 'primary' | 'secondary' | 'base';
+export type InputVariant = 'outline' | 'filled' | 'soft' | 'solid';
+export type InputSize = 'small' | 'medium' | 'large';
+export type InputColor = 'neutral' | 'primary' | 'secondary' | 'mix';
+export type InputRoundedCorners = 'none' | 'soft' | 'strong';
 
 const inputVariantStyles: Record<InputVariant, string> = {
-    solid: 'input-solid',
     outline: 'input-outline',
-    default: 'input-default',
+    filled: 'input-filled',
+    soft: 'input-soft',
+    solid: 'input-solid',
 };
 
 const inputSizeStyles: Record<InputSize, string> = {
     small: 'input-sm',
     medium: 'input-md',
     large: 'input-lg',
-    none: '',
 };
 
 const inputColorStyles: Record<InputColor, string> = {
+    neutral: 'input-neutral',
     primary: 'input-primary',
     secondary: 'input-secondary',
     mix: 'input-mix',
-    base: '',
 };
 
-const labelSizeStyles: Record<LabelSize, string> = {
-    small: 'text-sm',
-    medium: 'text-base',
-    large: 'text-lg',
+const inputCornersStyles: Record<InputRoundedCorners, string> = {
+    none: '',
+    soft: 'rounded-md',
+    strong: 'rounded-xl',
 };
 
-const labelColorStyles: Record<LabelColor, string> = {
+const labelSizeStyles: Record<InputSize, string> = {
+    small: 'text-base',
+    medium: 'text-lg',
+    large: 'text-xl',
+};
+
+const labelColorStyles: Record<InputColor, string> = {
+    neutral: 'text-foreground-primary',
     primary: 'text-foreground-brand-primary',
     secondary: 'text-foreground-brand-secondary',
-    base: 'text-foreground-primary',
+    mix: 'text-foreground-brand-primary',
 };
 
 interface InputOptions {
-    variant?: InputVariant;
-    color?: InputColor;
-    size?: InputSize;
+    variant: InputVariant;
+    color: InputColor;
+    size: InputSize;
+    roundedCorners: InputRoundedCorners;
 }
 
-export function inputStyles({
-    variant = 'default',
-    color = 'primary',
-    size = 'medium',
-}: InputOptions) {
-    return cn('input', inputVariantStyles[variant], inputColorStyles[color], inputSizeStyles[size]);
+export function inputStyles({ variant, color, size, roundedCorners }: InputOptions) {
+    return cn(
+        'input',
+        inputVariantStyles[variant],
+        inputColorStyles[color],
+        inputSizeStyles[size],
+        inputCornersStyles[roundedCorners]
+    );
 }
 
 interface LabelOptions {
-    color?: LabelColor;
-    size?: LabelSize;
+    color: InputColor;
+    size: InputSize;
 }
 
-export function labelStyles({ color = 'base', size = 'medium' }: LabelOptions) {
+export function labelStyles({ color, size }: LabelOptions) {
     return cn(labelColorStyles[color], labelSizeStyles[size]);
 }

@@ -11,14 +11,20 @@ export default function Home() {
         <>
             <HeroSection />
             <FirstSection />
-            <InputWithLabel
-                inputVariant="default"
-                inputColor="mix"
-                label="Testowy input"
-                id="test"
-                name="name"
-                error="blad!!!"
-            />
+            <form className="mx-auto max-w-lg">
+                <h3>Testowy Formularz</h3>
+                <InputWithLabel
+                    variant="soft"
+                    color="neutral"
+                    label="Testowy input"
+                    roundedCorners="strong"
+                    description="Opis inputa"
+                    id="test"
+                    name="name"
+                    error="blad!!!"
+                />
+                <button type="submit">Przycisk</button>
+            </form>
         </>
     );
 }
