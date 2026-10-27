@@ -1,9 +1,12 @@
 import { cn } from '@/src/utils/cn';
 
 export type InputVariant = 'outline' | 'filled' | 'soft' | 'solid';
+
 export type InputSize = 'small' | 'medium' | 'large';
+
 export type InputColor = 'neutral' | 'primary' | 'secondary' | 'mix';
-export type InputRoundedCorners = 'none' | 'soft' | 'strong';
+
+export type InputRoundedCorners = 'none' | 'small' | 'medium' | 'large';
 
 const inputVariantStyles: Record<InputVariant, string> = {
     outline: 'input-outline',
@@ -27,8 +30,9 @@ const inputColorStyles: Record<InputColor, string> = {
 
 const inputCornersStyles: Record<InputRoundedCorners, string> = {
     none: '',
-    soft: 'rounded-md',
-    strong: 'rounded-xl',
+    small: 'rounded-md',
+    medium: 'rounded-xl',
+    large: 'rounded-3xl',
 };
 
 const labelSizeStyles: Record<InputSize, string> = {

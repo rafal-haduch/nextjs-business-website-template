@@ -259,7 +259,7 @@
     }
 
     .input-soft.input-mix {
-        @apply bg-brand-secondary-100 text-foreground-brand-primary focus:border-border-brand-primary border-0 focus:border;
+        @apply bg-brand-secondary-100 text-foreground-brand-primary focus:border-border-brand-primary border focus:border-2;
     }
 
     .input-soft.input-neutral {

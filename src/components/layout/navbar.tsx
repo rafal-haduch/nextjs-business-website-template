@@ -10,7 +10,7 @@ import { NAV_ITEMS, ROUTES } from '@/src/config/routes';
 
 import { cn } from '@/src/utils/cn';
 
-import { buttonStyles } from '@/src/design-system/button';
+import { buttonStyles } from '@/src/design-system/button-styles';
 
 import { useDisclosure } from '@/src/hooks/use-disclosure';
 

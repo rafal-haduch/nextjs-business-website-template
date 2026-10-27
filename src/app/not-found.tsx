@@ -3,7 +3,7 @@ import { House } from 'lucide-react';
 
 import { ROUTES } from '@/src/config/routes';
 
-import { buttonStyles } from '@/src/design-system/button';
+import { buttonStyles } from '@/src/design-system/button-styles';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
 import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';

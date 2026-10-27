@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { buttonStyles } from '@/src/design-system/button';
+import { buttonStyles } from '@/src/design-system/button-styles';
 
 import Modal from '@/src/components/ui/modal';
 

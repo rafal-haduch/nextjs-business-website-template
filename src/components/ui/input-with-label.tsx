@@ -1,4 +1,5 @@
 import React from 'react';
+import { Info } from 'lucide-react';
 
 import { cn } from '@/src/utils/cn';
 
@@ -9,37 +10,67 @@ import {
     inputStyles,
     labelStyles,
     InputRoundedCorners,
-} from '@/src/design-system/input-with-label';
-import { Info } from 'lucide-react';
+} from '@/src/design-system/input-with-label-styles';
 
-interface Props extends Omit<
+interface InputWithLabelProps extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     'className' | 'id' | 'size'
 > {
+    /** Required id used to associate the input with its label. */
     id: string;
+
+    /** Label text; also used as the placeholder when `labelPlacement` is `placeholder`. */
     label: string;
 
+    /**
+     * Places the label above the input or visually hides it and uses its
+     * text as the input placeholder. The hidden label remains
+     * available to screen readers.
+     */
+    labelPlacement?: 'above' | 'placeholder';
+
+    /**
+     * Input appearance: `outline` uses a transparent background and colored border;
+     * `filled` uses a white background and colored border; `solid` uses a strong
+     * palette color without a border; `soft` uses a light palette background with
+     * a colored border that becomes more prominent on focus.
+     */
     variant?: InputVariant;
+
+    /** Input and label height and text scale. */
     size?: InputSize;
+
+    /** Input and label color theme. */
     color?: InputColor;
+
+    /** Input corner radius. */
     roundedCorners?: InputRoundedCorners;
 
+    /** Help text announced with the input. */
     description?: string;
+
+    /** Error text; marks the input as invalid and associates the message with it. */
     error?: string;
 
+    /** Optional CSS class overrides for individual part of the component. */
     wrapperClassName?: string;
+    /** Optional CSS class overrides for individual part of the component. */
     labelClassName?: string;
+    /** Optional CSS class overrides for individual part of the component. */
     inputClassName?: string;
+    /** Optional CSS class overrides for individual part of the component. */
     descriptionClassName?: string;
+    /** Optional CSS class overrides for individual part of the component. */
     errorClassName?: string;
 }
 
 export default function InputWithLabel({
     id,
     label,
+    labelPlacement = 'above',
     variant = 'filled',
-    color = 'primary',
     size = 'medium',
+    color = 'primary',
     roundedCorners = 'none',
     description,
     error,
@@ -51,7 +82,7 @@ export default function InputWithLabel({
     'aria-describedby': ariaDescribedBy,
     'aria-invalid': ariaInvalid,
     ...restInputProps
-}: Props) {
+}: InputWithLabelProps) {
     const descriptionId = `${id}-description`;
     const errorId = `${id}-error`;
 
@@ -69,11 +100,23 @@ export default function InputWithLabel({
                         color,
                         size,
                     }),
-                    labelClassName
+                    labelClassName,
+                    labelPlacement === 'above' ? '' : 'sr-only'
                 )}
             >
                 {label}
             </label>
+            <input
+                {...restInputProps}
+                id={id}
+                aria-invalid={error ? true : ariaInvalid}
+                aria-describedby={describedBy}
+                placeholder={labelPlacement === 'placeholder' ? label : ''}
+                className={cn(
+                    inputStyles({ variant, color, size, roundedCorners }),
+                    inputClassName
+                )}
+            />
             {description && (
                 <div className="text-foreground-muted flex items-center gap-1">
                     <Info width={16} height={16} />
@@ -82,16 +125,6 @@ export default function InputWithLabel({
                     </p>
                 </div>
             )}
-            <input
-                {...restInputProps}
-                id={id}
-                aria-invalid={error ? true : ariaInvalid}
-                aria-describedby={describedBy}
-                className={cn(
-                    inputStyles({ variant, color, size, roundedCorners }),
-                    inputClassName
-                )}
-            />
             {error && (
                 <p id={errorId} className={cn('text-state-error text-sm', errorClassName)}>
                     {error}

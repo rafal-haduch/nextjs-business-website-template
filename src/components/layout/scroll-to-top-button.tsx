@@ -6,7 +6,7 @@ import { ChevronUp } from 'lucide-react';
 import { cn } from '@/src/utils/cn';
 import { scrollToTop } from '@/src/utils/scroll-to-top';
 
-import { buttonStyles } from '@/src/design-system/button';
+import { buttonStyles } from '@/src/design-system/button-styles';
 
 export default function ScrollToTopButton() {
     const [isVisible, setIsVisible] = useState(false);

@@ -14,7 +14,7 @@ import DecorativeLine, { DECORATIVE_LINE_PRESETS } from '@/src/components/ui/dec
 
 export default function FirstSection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.last} aria-labelledby="section-title">
+        <PageSection {...PAGE_SECTION_PRESETS.between} aria-labelledby="section-title">
             <Container {...CONTAINER_PRESETS.base}>
                 <div className="text-center">
                     <h2
