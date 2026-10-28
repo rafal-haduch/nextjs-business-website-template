@@ -9,8 +9,9 @@ import {
 } from 'lucide-react';
 
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
-import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
+import Container from '@/src/components/ui/container';
 import DecorativeLine, { DECORATIVE_LINE_PRESETS } from '@/src/components/ui/decorative-line';
+import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 
 export default function FirstSection() {
     return (

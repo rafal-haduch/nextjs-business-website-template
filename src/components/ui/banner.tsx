@@ -10,6 +10,7 @@ interface BannerProps extends DialogSharedProps {
     placement?: BannerPlacement;
 }
 
+//TODO: change as position label in input component
 const placementStyles: Record<BannerPlacement, string> = {
     top: 'items-start justify-center ',
     bottom: 'items-end justify-center',

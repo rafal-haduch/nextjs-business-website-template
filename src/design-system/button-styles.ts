@@ -46,11 +46,5 @@ export function buttonStyles({
     size = 'base',
     className,
 }: Options = {}) {
-    return cn(
-        'btn mx-auto',
-        variantStyles[variant],
-        colorStyles[color],
-        sizeStyles[size],
-        className
-    );
+    return cn('btn', variantStyles[variant], colorStyles[color], sizeStyles[size], className);
 }

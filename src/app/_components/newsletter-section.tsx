@@ -1,5 +1,6 @@
-import Container, { CONTAINER_PRESETS } from '@/src/components/ui/container';
+import Container from '@/src/components/ui/container';
 import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 import NewsletterForm from '@/src/features/newsletter/components/newsletter-form';
 
 export default function NewsletterSection() {

@@ -1,7 +1,5 @@
 # TODOS:
-- allow for an options label above input or into input (as placeholder) 
-- write JSDoc for input with label components
-- extract styles from popups components, container and section  into src/lib/design-system?
+- extract styles from popups components, container and section into src/lib/design-system?
 -review: shoud i remove or simplicity hook useLocalStorage()?
 
 ## Tech:

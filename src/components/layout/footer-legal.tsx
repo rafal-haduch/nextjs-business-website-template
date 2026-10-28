@@ -7,7 +7,6 @@ import { COMPANY_NAME } from '@/src/data/site-and-company';
 import Container from '@/src/components/ui/container';
 
 import CookieSettingsButton from '@/src/features/cookie/components/cookies-settings-button';
-import { linkStyles } from '@/src/design-system/link-styles';
 
 export default function FooterLegal() {
     return (
