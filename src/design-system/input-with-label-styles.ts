@@ -73,3 +73,5 @@ interface LabelOptions {
 export function labelStyles({ color, size }: LabelOptions) {
     return cn(labelColorStyles[color], labelSizeStyles[size]);
 }
+
+//TODO: Add presets

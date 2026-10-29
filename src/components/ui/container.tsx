@@ -18,9 +18,10 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
 }
 
-/** Reusable component used to constrain content width and apply horizontal padding.
+/** Constrains content width and applies horizontal padding.
+ * Use a preset from `CONTAINER_PRESETS` for a predefined combination.
+ * `<Container {...CONTAINER_PRESETS.base}>...</Container>`.
  * See {@link containerStyles}
- *  **Recommended:** use via `CONTAINER_PRESETS`
  */
 export default function Container({
     width = 'md',

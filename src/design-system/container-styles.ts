@@ -28,7 +28,7 @@ export function containerStyles({ width, padding }: ContainerStyleOptions) {
     return cn(widthStyles[width], paddingStyles[padding]);
 }
 
-/** Predefined container style combinations for common use cases. Use `className` for one-off overrides. */
+/** Predefined container style combinations for common use cases. */
 export const CONTAINER_PRESETS = {
     hero: {
         width: 'md',
@@ -51,4 +51,4 @@ export const CONTAINER_PRESETS = {
         width: 'full',
         padding: 'md',
     },
-} satisfies Record<ContainerVariant, Partial<ContainerStyleOptions> & { className?: string }>;
+} satisfies Record<ContainerVariant, ContainerStyleOptions & { className?: string }>;
