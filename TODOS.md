@@ -1,11 +1,10 @@
 # TODOS:
-- Improve JSDoc in drawer, modal, banner, InputWithLabel
 - create a decorative ornament (decorative line / decorative ornament – ​​without icon / with icon)
 -review: shoud i remove or simplicity hook useLocalStorage()?
 
 ## Tech:
+- Into navbar add top bar with important info (closed, etc)
 - add toast component (review: use dialog without overlay or create new component?)
-- top bar with important info (closed, etc)
 - expand /design-system by table.ts card.ts etc.
 - add slide-in animate?
 - add animate loading placeholder component?
