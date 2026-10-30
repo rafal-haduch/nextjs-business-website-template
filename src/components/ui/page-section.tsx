@@ -33,8 +33,11 @@ interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * Constrains a page section's vertical padding and background.
  * Use a preset from {@link PAGE_SECTION_PRESETS} for a predefined padding combination.
+ *
+ * @example
  * `<PageSection {...PAGE_SECTION_PRESETS.single}>...</PageSection>`.
- * See {@link pageSectionStyles}
+ *
+ * @See {@link pageSectionStyles}
  */
 export default function PageSection({
     paddingTop = 'lg',

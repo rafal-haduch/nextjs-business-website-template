@@ -6,6 +6,7 @@ export type SectionBackground = 'primary' | 'secondary' | 'accent' | 'none';
 
 export type PageSectionPreset = 'hero' | 'first' | 'between' | 'last' | 'single';
 
+//TODO: compresive options
 const paddingTopStyles: Record<SectionPadding, string> = {
     none: '',
     xs: 'pt-2',
@@ -15,6 +16,7 @@ const paddingTopStyles: Record<SectionPadding, string> = {
     xl: 'pt-24 md:pt-32',
 };
 
+//TODO: compresive options
 const paddingBottomStyles: Record<SectionPadding, string> = {
     none: '',
     xs: 'pb-2',

@@ -1,82 +1,43 @@
 import { cn } from '@/src/utils/cn';
 
-type Color = 'primary' | 'secondary' | 'none';
-type Thickness = 'thin' | 'medium' | 'thick' | 'none';
-type Spacing = 'compact' | 'normal' | 'spacious' | 'none';
-type Width = 'short' | 'base' | 'long' | 'none';
+import {
+    DecorativeLineColor,
+    DecorativeLineSpacing,
+    decorativeLineStyles,
+    DecorativeLineThickness,
+    DecorativeLineWidth,
+} from '@/src/design-system/decorative-line-styles';
 
-type DecorativeLineVariant = 'mainHeading' | 'heading' | 'contentSeparator' | 'custom';
-
-const colorStyles: Record<Color, string> = {
-    primary: 'border-border-brand-primary',
-    secondary: 'border-border-brand-secondary',
-    none: '',
-};
-
-const thicknessStyles: Record<Thickness, string> = {
-    thin: 'border-t-2',
-    medium: 'border-t-4',
-    thick: 'border-t-6',
-    none: '',
-};
-
-const spacingStyles: Record<Spacing, string> = {
-    compact: 'mt-1 mb-4',
-    normal: 'mt-1 mb-8',
-    spacious: 'mt-2 mb-12',
-    none: '',
-};
-
-const widthStyles: Record<Width, string> = {
-    short: 'w-1/2 sm:max-w-xs',
-    base: 'w-4/5 sm:max-w-md',
-    long: 'w-full sm:max-w-2xl',
-    none: '',
-};
+//TODO: create decorative ornament (line with icon or graphis?)
 
 interface Props {
-    color?: Color;
-    thickness?: Thickness;
-    spacing?: Spacing;
-    width?: Width;
+    /** Decorative line width. */
+    width?: DecorativeLineWidth;
+
+    /** Decorative line thickness set using the border. */
+    thickness?: DecorativeLineThickness;
+
+    /** Decorative line color. */
+    color?: DecorativeLineColor;
+
+    /** Margin around the decorative line. */
+    spacing?: DecorativeLineSpacing;
+
+    /** Rounds the edges of the lines. */
     rounded?: boolean;
+
+    /** Additional Tailwind classes merged via `cn()` */
     className?: string;
 }
 
 /**
- * Predefined style combinations for common use cases.
- * Use `custom` preset to opt out of all defaults and style entirely via `className`.
- */
-export const DECORATIVE_LINE_PRESETS = {
-    mainHeading: { thickness: 'thick', spacing: 'spacious' } as const,
-    heading: { thickness: 'medium', spacing: 'normal' } as const,
-    contentSeparator: { thickness: 'thin', spacing: 'compact' } as const,
-    custom: { thickness: 'none', spacing: 'none', width: 'none' } as const,
-} satisfies Record<DecorativeLineVariant, Partial<Props>>;
-
-/**
  * Reusable decorative line component that highlights headings or separates content.
- *
- * **Recommended:** use via {@link DECORATIVE_LINE_PRESETS}
+ * Use a preset from {@link DECORATIVE_LINE_PRESETS} for a predefined padding combination.
  *
  *  @example
- * // Using preset
  * <DecorativeLine {...DECORATIVE_LINE_PRESETS.mainHeading} />
  *
- * @example
- * // Custom combination
- * <DecorativeLine thickness="thick" spacing="normal" width="long" />
- *
- * @example
- * // Fully custom (reset all defaults)
- * <DecorativeLine {...DECORATIVE_LINE_PRESETS.custom} className="border-t-8 my-4 w-2/3" />
- *
- * @param thickness - Border thickness. Default: `'medium'`
- * @param spacing - Margin around the line. Default: `'normal'`
- * @param width - Line width. Default: `'base'`
- * @param rounded - Rounds the edges of the lines. Default: `false`
- * @param className - Additional Tailwind classes merged via `cn()`
- *
+ * @See {@link decorativeLineStyles}
  */
 export default function DecorativeLine({
     color = 'primary',
@@ -91,10 +52,7 @@ export default function DecorativeLine({
             aria-hidden="true"
             className={cn(
                 'mx-auto',
-                colorStyles[color],
-                thicknessStyles[thickness],
-                spacingStyles[spacing],
-                widthStyles[width],
+                decorativeLineStyles({ width, thickness, color, spacing }),
                 rounded ? 'rounded-md' : '',
                 className
             )}

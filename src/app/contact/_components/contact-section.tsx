@@ -1,7 +1,9 @@
-import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
 import WorkInProgress from '@/src/components/ui/wip';
+
 import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
+import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
 
 export default function ContactSection() {
     return (

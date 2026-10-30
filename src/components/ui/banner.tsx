@@ -4,22 +4,15 @@ import { cn } from '@/src/utils/cn';
 
 import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 
-type BannerPlacement = 'top' | 'bottom';
+import {
+    BannerPlacement,
+    bannerPlacementStyles,
+    shadowStyles,
+} from '@/src/design-system/banner-styles';
 
 interface BannerProps extends DialogSharedProps {
     placement?: BannerPlacement;
 }
-
-//TODO: change as position label in input component
-const placementStyles: Record<BannerPlacement, string> = {
-    top: 'items-start justify-center ',
-    bottom: 'items-end justify-center',
-};
-
-const shadowStyles: Record<BannerPlacement, string> = {
-    top: 'shadow-[0_10px_30px_rgba(0,0,0,0.05)]',
-    bottom: 'shadow-[0_-10px_30px_rgba(0,0,0,0.05)]',
-};
 
 /**
  * Banner displayed at the top or bottom of the viewport built on top of {@link Dialog}.
@@ -50,7 +43,7 @@ export default function Banner({
             closeOnOverlayClick={closeOnOverlayClick}
             closeOnEscape={closeOnEscape}
             showCloseButton={showCloseButton}
-            wrapperClassName={cn(placementStyles[placement], wrapperClassName)}
+            wrapperClassName={cn(bannerPlacementStyles[placement], wrapperClassName)}
             panelClassName={cn(shadowStyles[placement], panelClassName)}
         >
             {children}

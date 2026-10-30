@@ -20,8 +20,11 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /** Constrains content width and applies horizontal padding.
  * Use a preset from `CONTAINER_PRESETS` for a predefined combination.
+ *
+ * @example
  * `<Container {...CONTAINER_PRESETS.base}>...</Container>`.
- * See {@link containerStyles}
+ *
+ * @See {@link containerStyles}
  */
 export default function Container({
     width = 'md',

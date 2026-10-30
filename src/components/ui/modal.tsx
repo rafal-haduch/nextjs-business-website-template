@@ -4,19 +4,11 @@ import { cn } from '@/src/utils/cn';
 
 import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 
-type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+import { ModalSize, modalSizeStyles } from '@/src/design-system/modal-styles';
 
 interface ModalProps extends DialogSharedProps {
     size?: ModalSize;
 }
-
-const modalSizeStyles: Record<ModalSize, string> = {
-    sm: 'max-w-md',
-    md: 'max-w-xl',
-    lg: 'max-w-3xl',
-    xl: 'max-w-5xl',
-    full: 'max-w-none w-[95vw] h-[95vh]',
-};
 
 /**
  * Centered modal dialog built on top of {@link Dialog}.

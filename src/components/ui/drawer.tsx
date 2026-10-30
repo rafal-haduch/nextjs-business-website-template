@@ -6,9 +6,16 @@ import { cn } from '@/src/utils/cn';
 
 import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 
-type DrawerSize = 'sm' | 'md' | 'lg' | 'full';
-type DrawerSide = 'left' | 'right' | 'top' | 'bottom';
-type DrawerAnimationDuration = 'slow' | 'base' | 'fast' | 'instant';
+import {
+    DrawerAnimationDuration,
+    drawerAnimationStyles,
+    drawerDurationStyles,
+    drawerPanelBaseStyles,
+    DrawerSide,
+    DrawerSize,
+    drawerSizeStyles,
+    drawerWrapperStyles,
+} from '@/src/design-system/drawer-styles';
 
 interface DrawerProps extends DialogSharedProps {
     size?: DrawerSize;
@@ -23,72 +30,6 @@ interface DrawerProps extends DialogSharedProps {
     animationDuration?: DrawerAnimationDuration;
 }
 
-const drawerWrapperStyles: Record<DrawerSide, string> = {
-    left: 'flex h-full justify-start',
-    right: 'flex h-full justify-end',
-    top: 'flex h-full items-start',
-    bottom: 'flex h-full items-end',
-};
-
-const drawerPanelBaseStyles: Record<DrawerSide, string> = {
-    left: 'h-full',
-    right: 'h-full',
-    top: 'w-full',
-    bottom: 'w-full',
-};
-
-const drawerSizeStyles: Record<DrawerSide, Record<DrawerSize, string>> = {
-    left: {
-        sm: 'w-72',
-        md: 'w-96',
-        lg: 'w-[32rem]',
-        full: 'w-screen',
-    },
-    right: {
-        sm: 'w-72',
-        md: 'w-96',
-        lg: 'w-[32rem]',
-        full: 'w-screen',
-    },
-    top: {
-        sm: 'h-48',
-        md: 'h-72',
-        lg: 'h-96',
-        full: 'h-screen',
-    },
-    bottom: {
-        sm: 'h-48',
-        md: 'h-72',
-        lg: 'h-96',
-        full: 'h-screen',
-    },
-};
-
-const drawerAnimationStyles: Record<DrawerSide, { open: string; closed: string }> = {
-    right: {
-        open: 'translate-x-0',
-        closed: 'translate-x-full',
-    },
-    left: {
-        open: '-translate-x-0',
-        closed: '-translate-x-full',
-    },
-    top: {
-        open: 'translate-y-0',
-        closed: '-translate-y-full',
-    },
-    bottom: {
-        open: 'translate-y-0',
-        closed: 'translate-y-full',
-    },
-};
-
-const drawerDurationStyles: Record<DrawerAnimationDuration, string> = {
-    slow: '700ms',
-    base: '300ms',
-    fast: '150ms',
-    instant: '0ms',
-};
 /**
  * Sliding panel built on top of {@link Dialog}.
  *
