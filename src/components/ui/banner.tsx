@@ -11,17 +11,26 @@ import {
 } from '@/src/design-system/banner-styles';
 
 interface BannerProps extends DialogSharedProps {
+    /** Positions the banner at the top or bottom edge of the viewport. */
     placement?: BannerPlacement;
 }
 
 /**
- * Banner displayed at the top or bottom of the viewport built on top of {@link Dialog}.
+ * Edge-aligned banner displayed at the top or bottom of the viewport built on top of {@link Dialog}.
+ *
+ * It appears at the bottom by default, without a backdrop, scroll lock,
+ * Escape handling, or a built-in close button. Use the shared dialog props
+ * to enable those behaviors. The panel is exposed as a non-modal region;
+ * provide an accessible label in `panelHTMLAttributes` when appropriate.
  */
 export default function Banner({
+    // --- DialogSharedProps ---
     open,
     onClose,
+    rootPositionClassName,
     wrapperClassName,
     panelClassName,
+    overlayClassName,
     panelHTMLAttributes,
     children,
     unmountOnExit = true,
@@ -30,13 +39,20 @@ export default function Banner({
     closeOnOverlayClick = false,
     closeOnEscape = false,
     showCloseButton = false,
+    // --- BannerProps ---
     placement = 'bottom',
 }: BannerProps) {
     return (
         <Dialog
             open={open}
             onClose={onClose}
-            panelHTMLAttributes={panelHTMLAttributes}
+            rootPositionClassName={rootPositionClassName}
+            overlayClassName={overlayClassName}
+            panelHTMLAttributes={{
+                role: 'region',
+                'aria-modal': false,
+                ...panelHTMLAttributes,
+            }}
             unmountOnExit={unmountOnExit}
             lockScroll={lockScroll}
             showOverlay={showOverlay}

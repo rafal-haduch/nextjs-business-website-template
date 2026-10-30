@@ -64,7 +64,13 @@ interface InputWithLabelProps extends Omit<
     errorClassName?: string;
 }
 
-//TODO: wrtie JSDoc
+/**
+ * Text input with a label, optional description, and error message.
+ *
+ * The label can appear above the input or be visually hidden while serving
+ * as its placeholder. The description and error message are associated
+ * with the input for screen readers.
+ */
 export default function InputWithLabel({
     id,
     label,

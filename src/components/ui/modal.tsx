@@ -7,13 +7,20 @@ import Dialog, { DialogSharedProps } from '@/src/components/ui/dialog';
 import { ModalSize, modalSizeStyles } from '@/src/design-system/modal-styles';
 
 interface ModalProps extends DialogSharedProps {
+    /** Controls the modal panel's maximum width. Defaults to `lg`. */
     size?: ModalSize;
 }
 
 /**
  * Centered modal dialog built on top of {@link Dialog}.
+ *
+ * By default, it displays a backdrop and close button, closes on Escape,
+ * and keeps the panel centered in the viewport. Clicking the backdrop does
+ * not close it by default; configure the dismissal behavior with the
+ * corresponding dialog props.
  */
 export default function Modal({
+    // --- DialogSharedProps ---
     open,
     onClose,
     wrapperClassName,
@@ -24,8 +31,9 @@ export default function Modal({
     lockScroll = false,
     showOverlay = true,
     closeOnOverlayClick = false,
-    closeOnEscape = false,
-    showCloseButton = false,
+    closeOnEscape = true,
+    showCloseButton = true,
+    // --- ModalProps ---
     size = 'lg',
 }: ModalProps) {
     return (

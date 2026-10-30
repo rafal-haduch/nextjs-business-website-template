@@ -71,7 +71,6 @@ export default function CookieSettingsModal() {
                 setChanges({});
                 closeCookieSettings();
             }}
-            showCloseButton
         >
             <div className="flex flex-col gap-8">
                 {/*---  Modal header ---*/}

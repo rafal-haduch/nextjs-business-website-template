@@ -10,44 +10,58 @@ import { useScrollLock } from '@/src/hooks/use-scroll-lock';
 
 import Portal from '@/src/components/ui/portal';
 
-interface DialogPanelHTMLAttributes extends Omit<
+/**
+ * HTML and ARIA attributes forwarded to the dialog panel.
+ * Use `panelClassName` for styling and `children` for panel content.
+ */
+type DialogPanelHTMLAttributes = Omit<
     React.HTMLAttributes<HTMLDivElement>,
     'className' | 'children'
-> {
-    role?: React.AriaRole;
-    'aria-label'?: string;
-    'aria-labelledby'?: string;
-    'aria-describedby'?: string;
-    'aria-modal'?: boolean;
-}
+>;
 
 interface DialogCoreProps {
+    /** Controls whether the dialog is open. */
     open: boolean;
+
+    /** Called when a configured dismissal action requests closing the dialog. */
     onClose: () => void;
+
     /**
-     * Additional HTML and ARIA attributes forwarded
-     * to the dialog panel element.
+     * HTML and ARIA attributes forwarded to the dialog panel.
      */
     panelHTMLAttributes?: DialogPanelHTMLAttributes;
+
+    /** Content rendered inside the dialog panel. */
     children: React.ReactNode;
 }
 
 interface DialogBehaviorProps {
     /**
-     * Controls whether the dialog is immediately removed from the DOM when closed.
+     * Unmounts immediately when closed. When `false`, waits for the panel's
+     * transition to finish before unmounting.
      *
-     * Set to `false` to keep the dialog mounted until the exit transition
-     * finishes, allowing close animations to complete.
+     * Use `false` when the panel has a closing transition.
      */
     unmountOnExit: boolean;
+
+    /** Locks document body scrolling while the dialog is open. */
     lockScroll: boolean;
+
+    /** Renders a dimmed backdrop behind the panel. */
     showOverlay: boolean;
+
+    /** Calls `onClose` when the backdrop is clicked. */
     closeOnOverlayClick: boolean;
+
+    /** Calls `onClose` when the Escape key is pressed. */
     closeOnEscape: boolean;
+
+    /** Renders a close button inside the panel. */
     showCloseButton: boolean;
 }
 
 interface DialogLayoutProps {
+    /** Additional classes applied to the backdrop. */
     overlayClassName?: string;
 
     /**
@@ -74,31 +88,29 @@ interface DialogLayoutProps {
 }
 
 /**
- * Shared props used by all dialog-based components.
+ * Props for higher-level components that reuse the dialog primitive.
  *
- * Allows higher-level components to expose only the configuration
- * they need while reusing the same dialog behavior.
+ * Core props (`open`, `onClose`, and `children`) are required.
+ * Behavior and layout options are optional so each component can expose
+ * only the settings it supports.
  */
 export interface DialogSharedProps
     extends DialogCoreProps, Partial<DialogBehaviorProps>, Partial<DialogLayoutProps> {}
 
+/**
+ * Complete props required internally by the Dialog primitive.
+ *
+ * Unlike `DialogSharedProps`, all behavior and layout options are required.
+ */
 interface DialogProps extends DialogCoreProps, DialogBehaviorProps, DialogLayoutProps {}
 
 /**
- * Low-level dialog primitive.
+ * Low-level dialog primitive for modal, drawer, and banner components.
  *
- * Provides common behavior for overlay components:
- * - Modal
- * - Drawer
- * - Banner
- *
- * Features:
- * - Portal rendering
- * - Escape key handling
- * - optional body scroll locking
- * - overlay click handling
- * - accessibility attributes
- * - optional delayed unmount for exit animations
+ * Renders its panel through a portal and provides optional backdrop,
+ * dismissal, body scroll locking, and delayed unmount after the panel's
+ * closing transition. Set `unmountOnExit` to `false` only when the panel
+ * emits a transition end event while closing.
  */
 export default function Dialog({
     open,
@@ -116,32 +128,9 @@ export default function Dialog({
     showCloseButton,
     overlayClassName,
 }: DialogProps) {
-    /**
-     * Controls whether the dialog exists in the DOM.
-     *
-     * It is separated from the `open` prop because some components
-     * (for example Drawer) need to stay mounted while the closing
-     * animation is running.
-     *
-     * Example:
-     * open=false
-     * mounted=true
-     *
-     * means:
-     * "The dialog is closing, but keep it alive until transition ends."
-     */
+    // Separate mount state lets animated panels remain in the DOM during exit.
     const [mounted, setMounted] = useState(false);
 
-    /**
-     * Synchronizes the mounted state with the open state.
-     *
-     * Opening:
-     * - mounts the dialog in the DOM
-     *
-     * Closing:
-     * - immediately removes it only when `unmountOnExit` is enabled
-     * - otherwise keeps it mounted so exit animations can finish
-     */
     useEffect(() => {
         if (open) {
             // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -160,42 +149,20 @@ export default function Dialog({
 
     useScrollLock(open && lockScroll);
 
-    /**
-     * Removes the dialog from the DOM after the closing transition completes.
-     * Called after CSS transition finishes.
-     *
-     * Used mainly by animated components like Drawer.
-     *
-     * Example:
-     * 1. User closes Drawer
-     * 2. open becomes false
-     * 3. Drawer animates out
-     * 4. transition ends
-     * 5. Component is removed from DOM
-     */
-    const handleTransitionEnd = () => {
+    const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+        // Ignore transition events bubbling up from content inside the panel.
+        if (event.target !== event.currentTarget) return;
+
         if (!open && !unmountOnExit) {
             setMounted(false);
         }
     };
 
-    /**
-     * Prevents rendering when component should not exist.
-     *
-     * Important:
-     * Drawer needs this delayed unmount behavior
-     * to allow closing animations to complete.
-     */
     if (!mounted) {
         return null;
     }
 
-    /**
-     * Extract dialog-related accessibility props.
-     *
-     * Remaining attributes are passed directly
-     * to the dialog panel element.
-     */
+    // Handle role and aria-modal here; forward the remaining panel attributes.
     const {
         role = 'dialog',
         'aria-modal': ariaModal = true,
@@ -205,9 +172,9 @@ export default function Dialog({
 
     return (
         <Portal>
-            {/*--- Base container ---*/}
+            {/* Fixed viewport layer that positions the backdrop and panel. */}
             <div className={cn('pointer-events-none fixed inset-0 z-100', rootPositionClassName)}>
-                {/*--- Overlay ---*/}
+                {/* Backdrop sits behind the panel and optionally dismisses it. */}
                 {showOverlay && (
                     <div
                         aria-hidden="true"
@@ -218,9 +185,9 @@ export default function Dialog({
                         )}
                     />
                 )}
-                {/*--- Wrapper for placement main panel ---*/}
+                {/* Wrapper controls the panel's placement within the viewport. */}
                 <div className={cn('relative flex min-h-full overflow-x-hidden', wrapperClassName)}>
-                    {/*--- Main panel ---*/}
+                    {/* Main dialog surface. */}
                     <div
                         role={role}
                         aria-modal={ariaModal}
@@ -231,12 +198,13 @@ export default function Dialog({
                         {...restPanelProps}
                         onTransitionEnd={(e) => {
                             onTransitionEnd?.(e);
-                            handleTransitionEnd();
+                            handleTransitionEnd(e);
                         }}
                     >
-                        {/*--- Close button ---*/}
+                        {/* Optional built-in dismissal control. */}
                         {showCloseButton && (
                             <button
+                                type="button"
                                 onClick={onClose}
                                 aria-label="Close dialog"
                                 className="absolute top-4 right-4 z-10 cursor-pointer p-1"
@@ -244,7 +212,7 @@ export default function Dialog({
                                 <X size={24} />
                             </button>
                         )}
-                        {/*--- Content injected by higher-level components ---*/}
+                        {/* Content supplied by the component using this primitive. */}
                         {children}
                     </div>
                 </div>

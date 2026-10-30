@@ -10,37 +10,43 @@ import {
     DrawerAnimationDuration,
     drawerAnimationStyles,
     drawerDurationStyles,
-    drawerPanelBaseStyles,
     DrawerSide,
     DrawerSize,
-    drawerSizeStyles,
+    drawerPanelSizeStyles,
     drawerWrapperStyles,
 } from '@/src/design-system/drawer-styles';
 
 interface DrawerProps extends DialogSharedProps {
+    /** Controls the drawer panel's width or height, depending on its side. */
     size?: DrawerSize;
+
+    /** Sets which viewport edge the drawer slides in from. */
     side?: DrawerSide;
+
     /**
-     * Enables opening and closing slide animations.
+     * Enables slide transitions when the drawer opens and closes.
      */
     animation?: boolean;
+
     /**
-     * Duration of the drawer transition.
+     * Sets the duration of the opening and closing transitions.
      */
     animationDuration?: DrawerAnimationDuration;
 }
 
 /**
- * Sliding panel built on top of {@link Dialog}.
+ * A sliding panel built on top of {@link Dialog}.
  *
- * Supports configurable:
- * - placement
- * - size
- * - slide animations
- * - animation duration
- * - delayed unmount after exit animations
+ * Configure which edge it opens from, its size, and whether slide animations
+ * are enabled. It also supports the shared dialog options for overlays,
+ * dismissal, scroll locking, panel attributes, and unmounting after close.
+ * By default, the panel fills the viewport along the axis perpendicular to
+ * its opening direction. Override that dimension with `panelClassName` when
+ * needed (for example, `h-1/2 my-auto` for a partial-height side drawer or
+ * `w-1/2 mx-auto` for a partial-width top or bottom drawer).
  */
 export default function Drawer({
+    // --- DialogSharedProps ---
     open,
     onClose,
     rootPositionClassName,
@@ -54,6 +60,7 @@ export default function Drawer({
     closeOnOverlayClick = false,
     closeOnEscape = false,
     showCloseButton = false,
+    // --- DrawerProps ---
     side = 'right',
     size = 'lg',
     animation = true,
@@ -86,8 +93,7 @@ export default function Drawer({
             wrapperClassName={cn(drawerWrapperStyles[side], wrapperClassName)}
             panelClassName={cn(
                 'relative bg-white transition-transform p-0 md:p-0 lg:p-0',
-                drawerSizeStyles[side][size],
-                drawerPanelBaseStyles[side],
+                drawerPanelSizeStyles[side][size],
                 animation
                     ? visible
                         ? drawerAnimationStyles[side].open

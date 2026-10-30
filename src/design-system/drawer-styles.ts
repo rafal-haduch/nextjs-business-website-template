@@ -11,38 +11,30 @@ export const drawerWrapperStyles: Record<DrawerSide, string> = {
     bottom: 'flex h-full items-end',
 };
 
-//REVIEW: ????
-export const drawerPanelBaseStyles: Record<DrawerSide, string> = {
-    left: 'h-full',
-    right: 'h-full',
-    top: 'w-full',
-    bottom: 'w-full',
-};
-
-export const drawerSizeStyles: Record<DrawerSide, Record<DrawerSize, string>> = {
+export const drawerPanelSizeStyles: Record<DrawerSide, Record<DrawerSize, string>> = {
     left: {
-        sm: 'w-72',
-        md: 'w-96',
-        lg: 'w-[32rem]',
-        full: 'w-screen',
+        sm: 'h-full w-72',
+        md: 'h-full w-96',
+        lg: 'h-full w-[32rem]',
+        full: 'h-full w-screen',
     },
     right: {
-        sm: 'w-72',
-        md: 'w-96',
-        lg: 'w-[32rem]',
-        full: 'w-screen',
+        sm: 'h-full w-72',
+        md: 'h-full w-96',
+        lg: 'h-full w-[32rem]',
+        full: 'h-full w-screen',
     },
     top: {
-        sm: 'h-48',
-        md: 'h-72',
-        lg: 'h-96',
-        full: 'h-screen',
+        sm: 'w-full h-48',
+        md: 'w-full h-72',
+        lg: 'w-full h-96',
+        full: 'w-full h-screen',
     },
     bottom: {
-        sm: 'h-48',
-        md: 'h-72',
-        lg: 'h-96',
-        full: 'h-screen',
+        sm: 'w-full h-48',
+        md: 'w-full h-72',
+        lg: 'w-full h-96',
+        full: 'w-full h-screen',
     },
 };
 
