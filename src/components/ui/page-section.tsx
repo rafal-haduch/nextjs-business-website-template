@@ -22,10 +22,10 @@ interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {
     backgroundImage?: string;
 
     /** Optional decorative element rendered before the section. */
-    topSeparator?: React.ReactNode;
+    topSectionDecorator?: React.ReactNode;
 
     /** Optional decorative element rendered after the section. */
-    bottomSeparator?: React.ReactNode;
+    bottomSectionDecorator?: React.ReactNode;
 
     children: React.ReactNode;
 }
@@ -44,8 +44,8 @@ export default function PageSection({
     paddingBottom = 'lg',
     background = 'none',
     backgroundImage,
-    topSeparator,
-    bottomSeparator,
+    topSectionDecorator: topSeparator,
+    bottomSectionDecorator: bottomSeparator,
     className,
     children,
     ...props

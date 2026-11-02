@@ -4,9 +4,9 @@ export type DecorativeLineColor = 'primary' | 'secondary';
 
 export type DecorativeLineThickness = 'thin' | 'medium' | 'thick';
 
-export type DecorativeLineSpacing = 'none' | 'compact' | 'normal' | 'spacious';
+export type DecorativeLineSpacing = 'compact' | 'medium' | 'spacious';
 
-export type DecorativeLineWidth = 'short' | 'base' | 'long';
+export type DecorativeLineWidth = 'short' | 'medium' | 'long';
 
 export type DecorativeLineRoundedCorners = 'none' | 'small' | 'medium' | 'large';
 
@@ -14,7 +14,7 @@ export type DecorativeLinePresets = 'mainHeading' | 'heading' | 'contentSeparato
 
 const widthStyles: Record<DecorativeLineWidth, string> = {
     short: 'w-1/2 sm:max-w-xs',
-    base: 'w-4/5 sm:max-w-md',
+    medium: 'w-4/5 sm:max-w-md',
     long: 'w-full sm:max-w-2xl',
 };
 
@@ -26,9 +26,8 @@ const thicknessStyles: Record<DecorativeLineThickness, string> = {
 
 const spacingStyles: Record<DecorativeLineSpacing, string> = {
     compact: 'mt-1 mb-4',
-    normal: 'mt-1 mb-8',
+    medium: 'mt-1 mb-8',
     spacious: 'mt-2 mb-12',
-    none: '',
 };
 
 const colorStyles: Record<DecorativeLineColor, string> = {
@@ -65,6 +64,6 @@ export function decorativeLineStyles({
  */
 export const DECORATIVE_LINE_PRESETS = {
     mainHeading: { thickness: 'thick', spacing: 'spacious' } as const,
-    heading: { thickness: 'medium', spacing: 'normal' } as const,
+    heading: { thickness: 'medium', spacing: 'medium' } as const,
     contentSeparator: { thickness: 'thin', spacing: 'compact' } as const,
 } satisfies Record<DecorativeLinePresets, Partial<DecorativeLineStyleOptions>>;

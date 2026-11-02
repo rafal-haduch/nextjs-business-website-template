@@ -20,7 +20,7 @@ interface Props {
     /** Decorative line color. */
     color?: DecorativeLineColor;
 
-    /** Margin around the decorative line. */
+    /** Vertical margin around the decorative line. */
     spacing?: DecorativeLineSpacing;
 
     /** Rounds the edges of the lines. */
@@ -42,8 +42,8 @@ interface Props {
 export default function DecorativeLine({
     color = 'primary',
     thickness = 'medium',
-    spacing = 'normal',
-    width = 'base',
+    spacing = 'medium',
+    width = 'medium',
     rounded = false,
     className,
 }: Props) {

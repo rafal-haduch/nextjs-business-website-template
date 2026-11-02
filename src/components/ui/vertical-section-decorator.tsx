@@ -4,7 +4,7 @@ interface Props {
     position: 'top' | 'bottom';
 }
 
-export default function DecorativeSectionSeparator({ position }: Props) {
+export default function VerticalSectionDecorator({ position }: Props) {
     return (
         <div aria-hidden="true" className="w-full overflow-hidden leading-none">
             <svg
