@@ -28,7 +28,7 @@ const paddingBottomStyles: Record<SectionPadding, string> = {
 
 const backgroundStyles: Record<SectionBackground, string> = {
     primary: 'bg-background-primary',
-    secondary: 'bg-background-secondary',
+    secondary: 'bg-background-soft-primary',
     accent: 'bg-background-accent',
     none: '',
 };

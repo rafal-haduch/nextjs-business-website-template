@@ -31,14 +31,15 @@
     --color-brand-secondary-950: var(--color-green-950);
 
     /*--- Main brand colors ---*/
-    --color-brand-primary: var(--color-brand-primary-400);
-    --color-brand-secondary: var(--color-brand-secondary-400);
+    --color-main-brand-primary: var(--color-brand-primary-400);
+    --color-main-brand-secondary: var(--color-brand-secondary-400);
 
     /*--- Backgrounds ---*/
     --color-background-primary: var(--color-white);
-    --color-background-secondary: var(--color-brand-primary-100);
-    --color-background-accent-primary: var(--color-brand-primary);
-    --color-background-accent-secondary: var(--color-brand-secondary);
+    --color-background-soft-primary: var(--color-brand-primary-100);
+    --color-background-soft-secondary: var(--color-brand-secondary-100);
+    --color-background-accent-primary: var(--color-main-brand-primary);
+    --color-background-accent-secondary: var(--color-main-brand-secondary);
     --color-background-strong-primary: var(--color-brand-primary-700);
     --color-background-strong-secondary: var(--color-brand-secondary-700);
 
@@ -48,11 +49,11 @@
     --color-foreground-muted: var(--color-gray-500);
     --color-foreground-inverted: var(--color-white);
 
-    --color-foreground-brand-primary: var(--color-brand-primary);
+    --color-foreground-brand-primary: var(--color-main-brand-primary);
     --color-foreground-brand-primary-inverted: var(--color-brand-primary-50);
     --color-foreground-brand-primary-strong: var(--color-brand-primary-600);
 
-    --color-foreground-brand-secondary: var(--color-brand-secondary);
+    --color-foreground-brand-secondary: var(--color-main-brand-secondary);
     --color-foreground-brand-secondary-inverted: var(--color-brand-secondary-50);
     --color-foreground-brand-secondary-strong: var(--color-brand-secondary-600);
 
@@ -61,11 +62,11 @@
     --color-border-subtle: var(--color-gray-200);
     --color-border-strong: var(--color-gray-600);
 
-    --color-border-brand-primary: var(--color-brand-primary);
+    --color-border-brand-primary: var(--color-main-brand-primary);
     --color-border-brand-primary-subtle: var(--color-brand-primary-200);
     --color-border-brand-primary-strong: var(--color-brand-primary-600);
 
-    --color-border-brand-secondary: var(--color-brand-secondary);
+    --color-border-brand-secondary: var(--color-main-brand-secondary);
     --color-border-brand-secondary-subtle: var(--color-brand-secondary-200);
     --color-border-brand-secondary-strong: var(--color-brand-secondary-600);
 
@@ -120,7 +121,7 @@
         @apply mx-auto flex w-fit cursor-pointer items-center justify-center gap-1 rounded-xl whitespace-nowrap transition;
     }
 
-    /*--- Button sizes ---*/
+    /*-- Button sizes --*/
 
     .btn-sm {
         @apply p-3 text-base;
@@ -134,7 +135,7 @@
         @apply gap-4 px-8 py-4 text-xl sm:text-2xl;
     }
 
-    /*--- Button color variants ---*/
+    /*-- Button color variants --*/
 
     .btn-solid.btn-primary {
         @apply bg-background-accent-primary hover:bg-brand-primary-300 text-foreground-inverted;
@@ -273,7 +274,7 @@
     }
 
     .table-base th {
-        @apply bg-background-secondary px-4 py-3 text-left font-semibold;
+        @apply bg-background-soft-primary px-4 py-3 text-left font-semibold;
     }
 
     .table-base td {

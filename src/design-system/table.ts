@@ -1,6 +1,6 @@
 export const tableStyles = {
     table: 'w-full border-collapse',
-    head: 'bg-background-secondary',
+    head: 'bg-background-soft-primary',
     th: 'px-4 py-3 text-left font-semibold',
     td: 'px-4 py-3',
     row: 'border-b border-border',
