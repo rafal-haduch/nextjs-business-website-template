@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import { ROUTES } from '@/src/config/routes';
 
+import { cn } from '@/src/utils/cn';
+
 import { buttonStyles } from '@/src/design-system/button-styles';
 
 import Banner from '@/src/components/ui/banner';
@@ -42,29 +44,35 @@ export default function CookieConsentBanner() {
                 <div className="flex w-full flex-col items-center gap-3 md:mx-auto md:max-w-xl md:flex-row md:justify-center">
                     <button
                         onClick={acceptAll}
-                        className={buttonStyles({
-                            size: 'small',
-                            className: 'mx-0 w-full max-w-sm md:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                size: 'small',
+                            }),
+                            'mx-0 w-full max-w-sm md:w-1/3'
+                        )}
                     >
                         Accept all
                     </button>
                     <button
                         onClick={rejectOptional}
-                        className={buttonStyles({
-                            variant: 'outline',
-                            size: 'small',
-                            className: 'mx-0 w-full max-w-sm md:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                variant: 'outline',
+                                size: 'small',
+                            }),
+                            'mx-0 w-full max-w-sm md:w-1/3'
+                        )}
                     >
                         Reject optional
                     </button>
                     <CookieSettingsButton
-                        className={buttonStyles({
-                            variant: 'outline',
-                            size: 'small',
-                            className: 'mx-0 w-full max-w-sm md:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                variant: 'outline',
+                                size: 'small',
+                            }),
+                            'mx-0 w-full max-w-sm md:w-1/3'
+                        )}
                     />
                 </div>
             </div>

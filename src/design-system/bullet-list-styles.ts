@@ -1,12 +1,14 @@
-export type Marker = 'dash' | 'bullet' | 'check' | 'arrow' | 'none';
+import { ColorRole, SizeScale, SpacingScale } from '@/src/design-system/scale.types';
 
-export type Color = 'neutral' | 'primary' | 'secondary';
+export type BulletListColor = ColorRole;
 
-export type Spacing = 'compact' | 'normal' | 'spacious';
+export type BulletListSpacing = SpacingScale;
 
-export type TextSize = 'small' | 'medium' | 'large';
+export type BulletListTextSize = SizeScale;
 
-export const markerStyles: Record<Marker, React.ReactNode> = {
+export type BulletListMarker = 'dash' | 'bullet' | 'check' | 'arrow' | 'none';
+
+export const bulletListMarkerStyles: Record<BulletListMarker, React.ReactNode> = {
     dash: '–',
     bullet: '•',
     check: '✓',
@@ -14,19 +16,19 @@ export const markerStyles: Record<Marker, React.ReactNode> = {
     none: null,
 };
 
-export const colorStyles: Record<Color, React.ReactNode> = {
+export const bulletListColorStyles: Record<BulletListColor, React.ReactNode> = {
     neutral: 'text-foreground-secondary',
     primary: 'text-foreground-brand-primary',
     secondary: 'text-foreground-brand-secondary',
 };
 
-export const spacingStyles: Record<Spacing, string> = {
+export const bulletListSpacingStyles: Record<BulletListSpacing, string> = {
     compact: 'gap-1',
-    normal: 'gap-2',
+    medium: 'gap-2',
     spacious: 'gap-4',
 };
 
-export const textSizeStyles: Record<TextSize, string> = {
+export const bulletListTextSizeStyles: Record<BulletListTextSize, string> = {
     small: 'text-sm',
     medium: 'text-base',
     large: 'text-lg',

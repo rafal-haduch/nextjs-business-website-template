@@ -1,51 +1,54 @@
 import { cn } from '@/src/utils/cn';
 
-type Color = 'primary' | 'secondary' | 'base';
-type HoverColor = 'primary' | 'secondary' | 'none';
+import { ColorRole } from '@/src/design-system/scale.types';
 
-const colorStyles: Record<Color, string> = {
+type LinkColor = ColorRole | 'base';
+
+type LinkHoverColor = ColorRole | 'base';
+
+const linkColorStyles: Record<LinkColor, string> = {
+    base: 'text-blue-400',
     primary: 'text-brand-primary',
     secondary: 'text-brand-secondary',
-    base: '',
+    neutral: '',
 };
 
-const hoverColorStyles: Record<HoverColor, string> = {
+const linkHoverColorStyles: Record<LinkHoverColor, string> = {
+    base: 'text-blue-300',
     primary: 'hover:text-brand-primary',
     secondary: 'hover:text-brand-secondary',
-    none: '',
+    neutral: '',
 };
 
-interface Options {
-    color?: Color;
-    hoverColor?: HoverColor;
+interface LinkStyleOptions {
+    /** The base color of the link text. */
+    color?: LinkColor;
+
+    /** Link text color applied on hover. */
+    hoverColor?: LinkHoverColor;
+
+    /** Enables default underline. */
     underline?: boolean;
+
+    /** Enables underline on hover. */
     hoverUnderline?: boolean;
-    className?: string;
 }
 
 /**
  * Generates Tailwind classes for link elements.
  * Supports text colors, hover states and underline styles.
- *
- * @param color - Base text color.
- * @param hoverColor - Text color applied on hover.
- * @param underline - Enables default underline.
- * @param hoverUnderline - Enables underline on hover.
- * @param className - Additional Tailwind classes merged via `cn()` (clsx + tailwind-merge).
  */
 export function linkStyles({
     color = 'base',
-    hoverColor = 'none',
+    hoverColor = 'base',
     underline = false,
     hoverUnderline = false,
-    className,
-}: Options = {}) {
+}: LinkStyleOptions) {
     return cn(
         'transition-colors',
-        colorStyles[color],
-        hoverColorStyles[hoverColor],
+        linkColorStyles[color],
+        linkHoverColorStyles[hoverColor],
         underline && 'underline',
-        hoverUnderline && 'hover:underline',
-        className
+        hoverUnderline && 'hover:underline'
     );
 }

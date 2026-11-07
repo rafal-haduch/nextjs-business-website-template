@@ -1,14 +1,14 @@
 import { cn } from '@/src/utils/cn';
 
 import {
-    Color,
-    colorStyles,
-    Marker,
-    markerStyles,
-    Spacing,
-    spacingStyles,
-    TextSize,
-    textSizeStyles,
+    BulletListColor,
+    bulletListColorStyles,
+    BulletListMarker,
+    bulletListMarkerStyles,
+    BulletListSpacing,
+    bulletListSpacingStyles,
+    BulletListTextSize,
+    bulletListTextSizeStyles,
 } from '@/src/design-system/bullet-list-styles';
 
 interface BulletListProps {
@@ -16,16 +16,16 @@ interface BulletListProps {
     items: string[];
 
     /** Marker displayed before each item. */
-    marker?: Marker;
+    marker?: BulletListMarker;
 
     /**  Foreground color class applied to the marker. */
-    color?: Color;
+    color?: BulletListColor;
 
     /** Vertical spacing between list items. */
-    spacing?: Spacing;
+    spacing?: BulletListSpacing;
 
     /** Text size applied to list items. */
-    textSize?: TextSize;
+    textSize?: BulletListTextSize;
 
     /** Additional Tailwind classes merged via `cn()`. */
     className?: string;
@@ -39,23 +39,23 @@ export default function BulletList({
     items,
     marker = 'dash',
     color = 'primary',
-    spacing = 'normal',
+    spacing = 'medium',
     textSize = 'medium',
     className,
 }: BulletListProps) {
     return (
-        <ul className={cn('flex flex-col', spacingStyles[spacing], className)}>
+        <ul className={cn('flex flex-col', bulletListSpacingStyles[spacing], className)}>
             {items.map((item) => (
                 <li
                     key={item}
                     className={cn(
                         'flex items-start gap-2 leading-relaxed',
-                        textSizeStyles[textSize]
+                        bulletListTextSizeStyles[textSize]
                     )}
                 >
-                    {markerStyles[marker] && (
-                        <span className={cn(colorStyles[color], 'shrink-0')}>
-                            {markerStyles[marker]}
+                    {bulletListMarkerStyles[marker] && (
+                        <span className={cn(bulletListColorStyles[color], 'shrink-0')}>
+                            {bulletListMarkerStyles[marker]}
                         </span>
                     )}
                     <span>{item}</span>

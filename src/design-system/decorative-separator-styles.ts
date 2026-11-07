@@ -1,14 +1,29 @@
 import { cn } from '@/src/utils/cn';
 
-export type DecorativeSeparatorColor = 'primary' | 'secondary' | 'mix';
+import {
+    ExtendedColorRole,
+    LengthScale,
+    SizeScale,
+    SpacingScale,
+    ThicknessScale,
+} from '@/src/design-system/scale.types';
 
-export type DecorativeSeparatorThickness = 'thin' | 'medium' | 'thick';
+export type DecorativeSeparatorColor = ExtendedColorRole;
 
-export type DecorativeSeparatorSpacing = 'compact' | 'medium' | 'spacious';
+export type DecorativeSeparatorWidth = LengthScale;
 
-export type DecorativeSeparatorWidth = 'short' | 'medium' | 'long';
+export type DecorativeSeparatorThickness = ThicknessScale;
 
-export type DecorativeSeparatorIconSize = 'small' | 'medium' | 'large';
+export type DecorativeSeparatorSpacing = SpacingScale;
+
+export type DecorativeSeparatorIconSize = SizeScale;
+
+const colorStyles: Record<DecorativeSeparatorColor, string> = {
+    neutral: 'border-border-default',
+    primary: 'border-border-brand-primary',
+    secondary: 'border-border-brand-secondary',
+    mix: 'border-border-brand-secondary', // NOTE: Icon has contrasting brand color (primary <-> secondary)
+};
 
 export const decorativeSeparatorWidthStyles: Record<DecorativeSeparatorWidth, string> = {
     short: 'w-1/5 md:w-1/6 xl:w-1/7',
@@ -28,12 +43,6 @@ export const decorativeSeparatorSpacingStyles: Record<DecorativeSeparatorSpacing
     spacious: 'my-32',
 };
 
-const colorStyles: Record<DecorativeSeparatorColor, string> = {
-    primary: 'border-border-brand-primary',
-    secondary: 'border-border-brand-secondary',
-    mix: 'border-border-brand-secondary', // NOTE: Icon has contrasting brand color (primary <-> secondary).
-};
-
 const iconSizeStyles: Record<DecorativeSeparatorIconSize, string> = {
     small: 'w-8 h-8 md:w-10 md:h-10',
     medium: 'w-10 h-10 md:w-12 md:h-12',
@@ -41,18 +50,25 @@ const iconSizeStyles: Record<DecorativeSeparatorIconSize, string> = {
 };
 
 const iconColorStyles: Record<DecorativeSeparatorColor, string> = {
+    neutral: 'text-border-default',
     primary: 'text-foreground-brand-primary',
     secondary: 'text-foreground-brand-secondary',
     mix: 'text-foreground-brand-primary', // NOTE: Lines has contrasting brand color (primary <-> secondary).
 };
 
-interface LinesStyleProps {
+interface LinesStyleOptions {
+    /** Sets the separator lines' width. */
     width: DecorativeSeparatorWidth;
+
+    /** Sets the separator lines' thickness. */
     thickness: DecorativeSeparatorThickness;
+
+    /** Sets the separator color. */
     color: DecorativeSeparatorColor;
 }
 
-export function lineStyle({ width, thickness, color }: LinesStyleProps) {
+/** Combines the separator lines' width, thickness, and color classes. */
+export function lineStyles({ width, thickness, color }: LinesStyleOptions) {
     return cn(
         decorativeSeparatorWidthStyles[width],
         thicknessStyles[thickness],
@@ -60,11 +76,15 @@ export function lineStyle({ width, thickness, color }: LinesStyleProps) {
     );
 }
 
-interface IconStyleProps {
+interface IconStyleOptions {
+    /** Sets the separator icon's size. */
     size: DecorativeSeparatorIconSize;
+
+    /** Sets the separator icon's color. */
     color: DecorativeSeparatorColor;
 }
 
-export function iconStyle({ color, size }: IconStyleProps) {
+/** Combines the separator icon's size and color classes. */
+export function iconStyles({ color, size }: IconStyleOptions) {
     return cn(iconSizeStyles[size], iconColorStyles[color]);
 }

@@ -62,7 +62,7 @@ export default function Drawer({
     showCloseButton = false,
     // --- DrawerProps ---
     side = 'right',
-    size = 'lg',
+    size = 'large',
     animation = true,
     animationDuration = 'base',
 }: DrawerProps) {

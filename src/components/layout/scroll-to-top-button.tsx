@@ -31,9 +31,9 @@ export default function ScrollToTopButton() {
             aria-label="Przewiń na górę strony"
             title="Przewiń na górę strony"
             className={cn(
+                buttonStyles({ color: 'mix' }),
                 'fixed right-4 bottom-6 flex h-12 w-12 items-center justify-center rounded-full shadow-xl md:hidden',
-                isVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
-                buttonStyles({ size: 'none', color: 'gradient' })
+                isVisible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
             )}
         >
             <ChevronUp className="h-6 w-6" aria-hidden="true" />

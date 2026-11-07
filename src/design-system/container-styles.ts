@@ -1,54 +1,60 @@
 import { cn } from '@/src/utils/cn';
 
-export type ContainerWidth = 'sm' | 'md' | 'lg' | 'full';
+import { LengthScale, SizeScale } from '@/src/design-system/scale.types';
 
-export type ContainerPadding = 'sm' | 'md' | 'lg';
+export type ContainerWidth = LengthScale | 'full';
+
+export type ContainerPadding = SizeScale;
 
 export type ContainerVariant = 'hero' | 'narrow' | 'base' | 'wide' | 'full';
 
-const widthStyles: Record<ContainerWidth, string> = {
-    sm: 'max-w-3xl',
-    md: 'max-w-7xl',
-    lg: 'max-w-screen-2xl',
+const containerWidthStyles: Record<ContainerWidth, string> = {
+    short: 'max-w-3xl',
+    medium: 'max-w-7xl',
+    long: 'max-w-screen-2xl',
     full: 'w-full',
 };
 
-const paddingStyles: Record<ContainerPadding, string> = {
-    sm: 'px-2 xl:px-0',
-    md: 'px-4 xl:px-0',
-    lg: 'px-6 xl:px-2',
+const containerPaddingStyles: Record<ContainerPadding, string> = {
+    small: 'px-2 xl:px-0',
+    medium: 'px-4 xl:px-0',
+    large: 'px-6 xl:px-2',
 };
 
 export interface ContainerStyleOptions {
+    /** Maximum container width. */
     width: ContainerWidth;
+
+    /** Horizontal padding of the container. */
     padding: ContainerPadding;
 }
 
+/** Combines the container width and horizontal padding classes. */
 export function containerStyles({ width, padding }: ContainerStyleOptions) {
-    return cn(widthStyles[width], paddingStyles[padding]);
+    return cn(containerWidthStyles[width], containerPaddingStyles[padding]);
 }
 
 /** Predefined container style combinations for common use cases. */
 export const CONTAINER_PRESETS = {
     hero: {
-        width: 'md',
-        padding: 'sm',
+        width: 'medium',
+        padding: 'small',
         className: 'px-0',
     },
     narrow: {
-        width: 'sm',
-        padding: 'md',
+        width: 'short',
+        padding: 'medium',
     },
     base: {
-        width: 'md',
-        padding: 'md',
+        width: 'medium',
+        padding: 'medium',
     },
     wide: {
-        width: 'lg',
-        padding: 'md',
+        width: 'long',
+        padding: 'medium',
     },
     full: {
         width: 'full',
-        padding: 'md',
+        padding: 'medium',
     },
 } satisfies Record<ContainerVariant, ContainerStyleOptions & { className?: string }>;

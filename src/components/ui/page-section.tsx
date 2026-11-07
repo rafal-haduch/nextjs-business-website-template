@@ -40,8 +40,8 @@ interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {
  * @See {@link pageSectionStyles}
  */
 export default function PageSection({
-    paddingTop = 'lg',
-    paddingBottom = 'lg',
+    paddingTop = 'large',
+    paddingBottom = 'large',
     background = 'none',
     backgroundImage,
     topSectionDecorator: topSeparator,

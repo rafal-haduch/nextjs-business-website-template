@@ -1,50 +1,55 @@
 import { cn } from '@/src/utils/cn';
 
-type Variant = 'solid' | 'outline' | 'ghost' | 'none';
-type Color = 'primary' | 'secondary' | 'gradient' | 'none';
-type Size = 'small' | 'base' | 'large' | 'none';
+import { ExtendedBrandColorRole, SizeScale } from '@/src/design-system/scale.types';
 
-const variantStyles: Record<Variant, string> = {
+type ButtonSize = SizeScale;
+
+type ButtonColor = ExtendedBrandColorRole;
+
+type ButtonVariant = 'solid' | 'outline' | 'ghost';
+
+const buttonSizeStyles: Record<ButtonSize, string> = {
+    small: 'btn-sm',
+    medium: 'btn-md',
+    large: 'btn-lg gap-4',
+};
+
+const buttonColorStyles: Record<ButtonColor, string> = {
+    primary: 'btn-primary',
+    secondary: 'btn-secondary',
+    mix: 'btn-gradient',
+};
+
+const buttonVariantStyles: Record<ButtonVariant, string> = {
     solid: 'btn-solid',
     outline: 'btn-outline',
     ghost: 'btn-ghost',
-    none: '',
 };
 
-const colorStyles: Record<Color, string> = {
-    primary: 'btn-primary',
-    secondary: 'btn-secondary',
-    gradient: 'btn-gradient',
-    none: '',
-};
+interface ButtonStyleOptions {
+    /** Controls padding and font size. */
+    size?: ButtonSize;
 
-const sizeStyles: Record<Size, string> = {
-    small: 'btn-sm',
-    base: 'btn-md',
-    large: 'btn-lg gap-4',
-    none: '',
-};
+    /** Color of the button from brand scale palette. */
+    color?: ButtonColor;
 
-interface Options {
-    variant?: Variant;
-    color?: Color;
-    size?: Size;
-    className?: string;
+    /** Visual style of the button. */
+    variant?: ButtonVariant;
 }
 
 /**
  * Generates a combined className string for button and link elements
  *  based on predefined component classes defined in `globals.css` (`@layer components`).
- * @param variant - Visual style of the button. Default: `'solid'`.
- * @param color - Color of the button from brand scale palette. Default: `'primary'`.
- * @param size - Controls padding and font size. Default: `'base'`.
- * @param className - Additional Tailwind classes merged via `cn()` (clsx + tailwind-merge).
  */
 export function buttonStyles({
-    variant = 'solid',
+    size = 'medium',
     color = 'primary',
-    size = 'base',
-    className,
-}: Options = {}) {
-    return cn('btn', variantStyles[variant], colorStyles[color], sizeStyles[size], className);
+    variant = 'solid',
+}: ButtonStyleOptions = {}) {
+    return cn(
+        'btn',
+        buttonVariantStyles[variant],
+        buttonColorStyles[color],
+        buttonSizeStyles[size]
+    );
 }

@@ -10,8 +10,8 @@ import {
     DecorativeSeparatorThickness,
     DecorativeSeparatorWidth,
     decorativeSeparatorWidthStyles,
-    iconStyle,
-    lineStyle,
+    iconStyles,
+    lineStyles,
 } from '@/src/design-system/decorative-separator-styles';
 
 interface DecorativeSeparatorProps {
@@ -43,8 +43,8 @@ interface DecorativeSeparatorProps {
  *
  * <DecorativeSeparator lucideIcon={Rocket} />
  *
- * @see {@link lineStyle}
- * @see {@link iconStyle}
+ * @see {@link lineStyles}
+ * @see {@link iconStyles}
  */
 export default function DecorativeSeparator({
     width = 'medium',
@@ -63,7 +63,7 @@ export default function DecorativeSeparator({
                 'flex w-full items-center justify-center'
             )}
         >
-            <div className={cn(lineStyle({ width, thickness, color }), 'h-0')}></div>
+            <div className={cn(lineStyles({ width, thickness, color }), 'h-0')}></div>
             <div
                 className={cn(
                     decorativeSeparatorWidthStyles[width],
@@ -71,10 +71,13 @@ export default function DecorativeSeparator({
                 )}
             >
                 {Icon && (
-                    <Icon className={cn(iconStyle({ size: iconSize, color }))} aria-hidden="true" />
+                    <Icon
+                        className={cn(iconStyles({ size: iconSize, color }))}
+                        aria-hidden="true"
+                    />
                 )}
             </div>
-            <div className={cn(lineStyle({ width, thickness, color }), 'h-0')}></div>
+            <div className={cn(lineStyles({ width, thickness, color }), 'h-0')}></div>
         </div>
     );
 }

@@ -1,10 +1,11 @@
+import { ExtendedColorRole, SizeScale } from '@/src/design-system/scale.types';
 import { cn } from '@/src/utils/cn';
 
 export type InputVariant = 'outline' | 'filled' | 'soft' | 'solid';
 
-export type InputSize = 'small' | 'medium' | 'large';
+export type InputSize = SizeScale;
 
-export type InputColor = 'neutral' | 'primary' | 'secondary' | 'mix';
+export type InputColor = ExtendedColorRole;
 
 export type InputRoundedCorners = 'none' | 'small' | 'medium' | 'large';
 
@@ -49,12 +50,20 @@ const labelColorStyles: Record<InputColor, string> = {
 };
 
 interface InputOptions {
+    /** Sets the input's visual style. */
     variant: InputVariant;
+
+    /** Sets the input's color scheme. */
     color: InputColor;
+
+    /** Sets the input's size. */
     size: InputSize;
+
+    /** Sets the input's corner radius. */
     roundedCorners: InputRoundedCorners;
 }
 
+/** Combines the input's variant, color, size, and corner radius classes. */
 export function inputStyles({ variant, color, size, roundedCorners }: InputOptions) {
     return cn(
         'input',
@@ -66,10 +75,14 @@ export function inputStyles({ variant, color, size, roundedCorners }: InputOptio
 }
 
 interface LabelOptions {
+    /** Sets the label's color. */
     color: InputColor;
+
+    /** Sets the label's text size. */
     size: InputSize;
 }
 
+/** Combines the label's color and text size classes. */
 export function labelStyles({ color, size }: LabelOptions) {
     return cn(labelColorStyles[color], labelSizeStyles[size]);
 }

@@ -1,10 +1,12 @@
-import PageSection, { PAGE_SECTION_PRESETS } from '@/src/components/ui/page-section';
+import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
+
+import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
+import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 
 import { PRIVACY_SECTIONS } from '@/src/app/privacy-policy/_content/privacy-policy';
 
 import PrivacyPolicySubsection from '@/src/app/privacy-policy/_components/privacy-policy-subsection';
-import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 
 //NOTE: Privacy policy template is write in polish.
 //TODO: Remove privacy policy template or replace with lorem ipsum

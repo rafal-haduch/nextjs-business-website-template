@@ -34,7 +34,7 @@ export default function Modal({
     closeOnEscape = true,
     showCloseButton = true,
     // --- ModalProps ---
-    size = 'lg',
+    size = 'large',
 }: ModalProps) {
     return (
         <Dialog

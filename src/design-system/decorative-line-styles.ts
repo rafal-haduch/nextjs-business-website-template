@@ -1,47 +1,63 @@
 import { cn } from '@/src/utils/cn';
 
-export type DecorativeLineColor = 'primary' | 'secondary';
+import {
+    ColorRole,
+    LengthScale,
+    SpacingScale,
+    ThicknessScale,
+} from '@/src/design-system/scale.types';
 
-export type DecorativeLineThickness = 'thin' | 'medium' | 'thick';
+export type DecorativeLineColor = ColorRole;
 
-export type DecorativeLineSpacing = 'compact' | 'medium' | 'spacious';
+export type DecorativeLineWidth = LengthScale;
 
-export type DecorativeLineWidth = 'short' | 'medium' | 'long';
+export type DecorativeLineThickness = ThicknessScale;
+
+export type DecorativeLineSpacing = SpacingScale;
 
 export type DecorativeLineRoundedCorners = 'none' | 'small' | 'medium' | 'large';
 
 export type DecorativeLinePresets = 'mainHeading' | 'heading' | 'contentSeparator';
 
-const widthStyles: Record<DecorativeLineWidth, string> = {
+const decorativeLineColorStyles: Record<DecorativeLineColor, string> = {
+    primary: 'border-border-brand-primary',
+    secondary: 'border-border-brand-secondary',
+    neutral: 'border-border-default',
+};
+
+const decorativeLineWidthStyles: Record<DecorativeLineWidth, string> = {
     short: 'w-1/2 sm:max-w-xs',
     medium: 'w-4/5 sm:max-w-md',
     long: 'w-full sm:max-w-2xl',
 };
 
-const thicknessStyles: Record<DecorativeLineThickness, string> = {
+const decorativeLineThicknessStyles: Record<DecorativeLineThickness, string> = {
     thin: 'border-t-2',
     medium: 'border-t-4',
     thick: 'border-t-6',
 };
 
-const spacingStyles: Record<DecorativeLineSpacing, string> = {
+const decorativeLineSpacingStyles: Record<DecorativeLineSpacing, string> = {
     compact: 'mt-1 mb-4',
     medium: 'mt-1 mb-8',
     spacious: 'mt-2 mb-12',
 };
 
-const colorStyles: Record<DecorativeLineColor, string> = {
-    primary: 'border-border-brand-primary',
-    secondary: 'border-border-brand-secondary',
-};
-
 interface DecorativeLineStyleOptions {
-    width: DecorativeLineWidth;
-    thickness: DecorativeLineThickness;
+    /** Sets the line's color. */
     color: DecorativeLineColor;
+
+    /** Sets the line's width. */
+    width: DecorativeLineWidth;
+
+    /** Sets the line's thickness. */
+    thickness: DecorativeLineThickness;
+
+    /** Sets the vertical spacing around the line. */
     spacing: DecorativeLineSpacing;
 }
 
+/** Combines the decorative line's width, thickness, color, and spacing classes. */
 export function decorativeLineStyles({
     width,
     thickness,
@@ -49,10 +65,10 @@ export function decorativeLineStyles({
     color,
 }: DecorativeLineStyleOptions) {
     return cn(
-        widthStyles[width],
-        thicknessStyles[thickness],
-        colorStyles[color],
-        spacingStyles[spacing]
+        decorativeLineWidthStyles[width],
+        decorativeLineThicknessStyles[thickness],
+        decorativeLineColorStyles[color],
+        decorativeLineSpacingStyles[spacing]
     );
 }
 

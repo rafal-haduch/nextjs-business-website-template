@@ -78,7 +78,7 @@ export default function Navbar() {
                                 href={ROUTES.CTA.path}
                                 className={buttonStyles({
                                     variant: 'solid',
-                                    color: 'gradient',
+                                    color: 'mix',
                                 })}
                             >
                                 {ROUTES.CTA.label}
@@ -138,7 +138,7 @@ export default function Navbar() {
                             className={cn(
                                 buttonStyles({
                                     variant: 'solid',
-                                    color: 'gradient',
+                                    color: 'mix',
                                 }),
                                 'px-8'
                             )}

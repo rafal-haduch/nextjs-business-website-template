@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { cn } from '@/src/utils/cn';
+
 import { buttonStyles } from '@/src/design-system/button-styles';
 
 import Modal from '@/src/components/ui/modal';
@@ -114,31 +116,37 @@ export default function CookieSettingsModal() {
                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:gap-6">
                     <button
                         onClick={handleAcceptAll}
-                        className={buttonStyles({
-                            variant: 'outline',
-                            size: 'small',
-                            className: 'mx-0 w-full sm:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                variant: 'outline',
+                                size: 'small',
+                            }),
+                            'mx-0 w-full sm:w-1/3'
+                        )}
                     >
                         Accept all
                     </button>
                     <button
                         onClick={handleRejectOptional}
-                        className={buttonStyles({
-                            variant: 'outline',
-                            size: 'small',
-                            className: 'mx-0 w-full sm:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                variant: 'outline',
+                                size: 'small',
+                            }),
+                            'mx-0 w-full sm:w-1/3'
+                        )}
                     >
                         Reject optional
                     </button>
                     <button
                         onClick={handleSave}
                         disabled={!draftConsent}
-                        className={buttonStyles({
-                            size: 'small',
-                            className: 'mx-0 w-full sm:w-1/3',
-                        })}
+                        className={cn(
+                            buttonStyles({
+                                size: 'small',
+                            }),
+                            'mx-0 w-full sm:w-1/3'
+                        )}
                     >
                         Save & Exit
                     </button>

@@ -1,32 +1,29 @@
 import { cn } from '@/src/utils/cn';
 
-export type SectionPadding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+import { BrandColorRole, SizeScale } from '@/src/design-system/scale.types';
 
-export type SectionBackground = 'primary' | 'secondary' | 'accent' | 'none';
+export type SectionPadding = SizeScale | 'none';
+
+export type SectionBackground = BrandColorRole | 'accent' | 'none';
 
 export type PageSectionPreset = 'hero' | 'first' | 'between' | 'last' | 'single';
 
-//TODO: compresive options
-const paddingTopStyles: Record<SectionPadding, string> = {
-    none: '',
-    xs: 'pt-2',
-    sm: 'pt-6',
-    md: 'pt-12 md:pt-16',
-    lg: 'pt-16 md:pt-24',
-    xl: 'pt-24 md:pt-32',
+const pageSectionTopPaddingStyles: Record<SectionPadding, string> = {
+    none: 'pt-0',
+    small: 'pt-4',
+    medium: 'pt-8',
+    large: 'pt-12 md:pt-16',
 };
 
-//TODO: compresive options
-const paddingBottomStyles: Record<SectionPadding, string> = {
-    none: '',
-    xs: 'pb-2',
-    sm: 'pb-6',
-    md: 'pb-12 md:pb-16',
-    lg: 'pb-16 md:pb-24',
-    xl: 'pb-24 md:pb-32',
+const pageSectionBottomPaddingStyles: Record<SectionPadding, string> = {
+    none: 'pb-0',
+    small: 'pb-4',
+    medium: 'pb-8',
+    large: 'pb-12 md:pb-16',
 };
 
-const backgroundStyles: Record<SectionBackground, string> = {
+//TODO: page section color backgrounds
+const pageSectionBackgroundStyles: Record<SectionBackground, string> = {
     primary: 'bg-background-primary',
     secondary: 'bg-background-soft-primary',
     accent: 'bg-background-accent',
@@ -34,26 +31,31 @@ const backgroundStyles: Record<SectionBackground, string> = {
 };
 
 interface PageSectionStyleOptions {
+    /** Sets the section's top padding. */
     paddingTop: SectionPadding;
+
+    /** Sets the section's bottom padding. */
     paddingBottom: SectionPadding;
+
+    /** Sets the section's background color. */
     background: SectionBackground;
 }
 
+/** Combines the section's vertical padding and background classes. */
 export function pageSectionStyles({
     paddingTop,
     paddingBottom,
     background,
 }: PageSectionStyleOptions) {
     return cn(
-        paddingTopStyles[paddingTop],
-        paddingBottomStyles[paddingBottom],
-        backgroundStyles[background]
+        pageSectionTopPaddingStyles[paddingTop],
+        pageSectionBottomPaddingStyles[paddingBottom],
+        pageSectionBackgroundStyles[background]
     );
 }
 
 /**
  * Predefined vertical padding combinations for common section positions.
- * The background defaults to `none`; use `className` for one-off style overrides.
  */
 export const PAGE_SECTION_PRESETS = {
     hero: {
@@ -61,19 +63,19 @@ export const PAGE_SECTION_PRESETS = {
         paddingBottom: 'none',
     },
     first: {
-        paddingTop: 'md',
-        paddingBottom: 'lg',
+        paddingTop: 'small',
+        paddingBottom: 'medium',
     },
     between: {
-        paddingTop: 'lg',
-        paddingBottom: 'lg',
+        paddingTop: 'medium',
+        paddingBottom: 'medium',
     },
     last: {
-        paddingTop: 'lg',
-        paddingBottom: 'xl',
+        paddingTop: 'medium',
+        paddingBottom: 'large',
     },
     single: {
-        paddingTop: 'md',
-        paddingBottom: 'xl',
+        paddingTop: 'small',
+        paddingBottom: 'large',
     },
 } satisfies Record<PageSectionPreset, Partial<PageSectionStyleOptions>>;

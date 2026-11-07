@@ -95,7 +95,7 @@ export default function NewsletterForm() {
                 type="submit"
                 disabled={pending}
                 className={cn(
-                    buttonStyles({ variant: 'solid', color: 'gradient', size: 'base' }),
+                    buttonStyles({ variant: 'solid', color: 'mix' }),
                     pending && 'cursor-wait opacity-70'
                 )}
             >

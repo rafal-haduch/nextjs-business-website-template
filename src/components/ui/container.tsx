@@ -27,8 +27,8 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
  * @See {@link containerStyles}
  */
 export default function Container({
-    width = 'md',
-    padding = 'md',
+    width = 'medium',
+    padding = 'medium',
     className,
     children,
     ...props
