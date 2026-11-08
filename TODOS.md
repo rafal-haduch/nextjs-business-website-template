@@ -1,5 +1,4 @@
 # TODOS:
-- Review: shoud i add rounded corners scale, placement and duration into scale.types.ts?
 - Review: shoud i remove or simplicity hook useLocalStorage()?
 - Into navbar add top bar with important info (closed, etc) const in top and closable in bottom?
 - add toast component (review: use dialog without overlay or create new component?) (top/bottom and right/left/center with icon (info, warning, error) text and close button and lifetime?)

@@ -1,5 +1,6 @@
-import { ExtendedColorRole, SizeScale } from '@/src/design-system/scale.types';
 import { cn } from '@/src/utils/cn';
+
+import { CornerRadius, ExtendedColorRole, SizeScale } from '@/src/design-system/scale.types';
 
 export type InputVariant = 'outline' | 'filled' | 'soft' | 'solid';
 
@@ -7,7 +8,7 @@ export type InputSize = SizeScale;
 
 export type InputColor = ExtendedColorRole;
 
-export type InputRoundedCorners = 'none' | 'small' | 'medium' | 'large';
+export type InputRoundedCorners = CornerRadius;
 
 const inputVariantStyles: Record<InputVariant, string> = {
     outline: 'input-outline',
@@ -86,5 +87,3 @@ interface LabelOptions {
 export function labelStyles({ color, size }: LabelOptions) {
     return cn(labelColorStyles[color], labelSizeStyles[size]);
 }
-
-//TODO: Add presets?

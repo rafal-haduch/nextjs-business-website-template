@@ -1,11 +1,11 @@
-import { SizeScale } from '@/src/design-system/scale.types';
+import { Duration, Position, SizeScale } from '@/src/design-system/scale.types';
 
 export type DrawerSize = SizeScale | 'full';
 
 /** Viewport edge from which the drawer enters. */
-export type DrawerSide = 'left' | 'right' | 'top' | 'bottom';
+export type DrawerSide = Position;
 
-export type DrawerAnimationDuration = 'slow' | 'base' | 'fast' | 'instant';
+export type DrawerAnimationDuration = Duration;
 
 /** Alignment classes that position the drawer against its selected viewport edge. */
 export const drawerWrapperStyles: Record<DrawerSide, string> = {
@@ -65,8 +65,8 @@ export const drawerAnimationStyles: Record<DrawerSide, { open: string; closed: s
 
 /** Transition duration values in milliseconds for each animation preset. */
 export const drawerDurationStyles: Record<DrawerAnimationDuration, string> = {
-    instant: '0ms',
-    fast: '150ms',
-    base: '300ms',
     slow: '700ms',
+    medium: '300ms',
+    fast: '150ms',
+    instant: '0ms',
 };

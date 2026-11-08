@@ -2,6 +2,7 @@ import { cn } from '@/src/utils/cn';
 
 import {
     ColorRole,
+    CornerRadius,
     LengthScale,
     SpacingScale,
     ThicknessScale,
@@ -15,7 +16,7 @@ export type DecorativeLineThickness = ThicknessScale;
 
 export type DecorativeLineSpacing = SpacingScale;
 
-export type DecorativeLineRoundedCorners = 'none' | 'small' | 'medium' | 'large';
+export type DecorativeLineRoundedCorners = CornerRadius;
 
 export type DecorativeLinePresets = 'mainHeading' | 'heading' | 'contentSeparator';
 
