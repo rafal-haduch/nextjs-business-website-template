@@ -21,13 +21,17 @@ export function getCookieConsent(): CookieConsent | null {
 /**
  * Persists cookie consent settings.
  */
-export function setCookieConsent(consent: CookieConsent): void {
+export function setCookieConsent(consent: CookieConsent): void | null {
+    if (typeof window === 'undefined') return null;
+
     localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, JSON.stringify(consent));
 }
 
 /**
  * Removes saved cookie consent settings.
  */
-export function removeCookieConsent(): void {
+export function removeCookieConsent(): void | null {
+    if (typeof window === 'undefined') return null;
+
     localStorage.removeItem(COOKIE_CONSENT_STORAGE_KEY);
 }

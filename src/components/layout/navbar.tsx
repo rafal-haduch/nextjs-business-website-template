@@ -106,7 +106,7 @@ export default function Navbar() {
                 onClose={mobileMenu.close}
                 side="right"
                 size="full"
-                animationDuration="base"
+                animationDuration="medium"
                 lockScroll
                 closeOnEscape
                 rootPositionClassName="top-24 bottom-0"
