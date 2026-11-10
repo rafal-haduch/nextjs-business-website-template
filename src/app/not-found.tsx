@@ -8,13 +8,12 @@ import { buttonStyles } from '@/src/design-system/button-styles';
 import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
 
-import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
 
 export default function NotFound() {
     return (
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="not-found-title">
-            <Container {...CONTAINER_PRESETS.base} className="text-center">
+            <Container className="text-center">
                 <h1 id="not-found-title" className="mb-6">
                     404 Not Found
                 </h1>

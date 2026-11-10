@@ -64,7 +64,7 @@ export default function Drawer({
     side = 'right',
     size = 'large',
     animation = true,
-    animationDuration = 'base',
+    animationDuration = 'medium',
 }: DrawerProps) {
     // Controls the slide animation independently from mounting.
     const [visible, setVisible] = useState(false);

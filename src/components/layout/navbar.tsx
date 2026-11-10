@@ -19,7 +19,11 @@ import Drawer from '@/src/components/ui/drawer';
 
 import logo from '@/public/full-logo.svg';
 
-export default function Navbar() {
+interface NavbarProps {
+    hasAnnouncement: boolean;
+}
+
+export default function Navbar({ hasAnnouncement }: NavbarProps) {
     const path = usePathname();
     const mobileMenu = useDisclosure();
 
@@ -41,7 +45,7 @@ export default function Navbar() {
     return (
         <>
             {/*--- Desktop menu bar ---*/}
-            <header className="bg-background-primary sticky top-0 z-50 h-24 py-4 shadow-sm">
+            <header className="bg-background-primary h-24 py-4 shadow-sm">
                 <Container>
                     <div className="flex items-center justify-between">
                         <Link href={ROUTES.HOME.path} className="shrink-0">
@@ -109,7 +113,7 @@ export default function Navbar() {
                 animationDuration="medium"
                 lockScroll
                 closeOnEscape
-                rootPositionClassName="top-24 bottom-0"
+                rootPositionClassName={hasAnnouncement ? 'top-32 bottom-0' : 'top-24 bottom-0'}
                 panelClassName="p-0"
                 panelHTMLAttributes={{
                     'aria-label': 'Menu nawigacyjne',

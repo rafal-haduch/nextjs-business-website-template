@@ -6,7 +6,7 @@ export type ContainerWidth = LengthScale | 'full';
 
 export type ContainerPadding = SizeScale;
 
-export type ContainerVariant = 'hero' | 'narrow' | 'base' | 'wide' | 'full';
+export type ContainerVariant = 'narrow' | 'wide' | 'full';
 
 const containerWidthStyles: Record<ContainerWidth, string> = {
     short: 'max-w-3xl',
@@ -36,17 +36,8 @@ export function containerStyles({ width, padding }: ContainerStyleOptions) {
 
 /** Predefined container style combinations for common use cases. */
 export const CONTAINER_PRESETS = {
-    hero: {
-        width: 'medium',
-        padding: 'small',
-        className: 'px-0',
-    },
     narrow: {
         width: 'short',
-        padding: 'medium',
-    },
-    base: {
-        width: 'medium',
         padding: 'medium',
     },
     wide: {

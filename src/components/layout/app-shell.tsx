@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
 
-import Footer from '@/src/components/layout/footer';
+import AnnouncementBar from '@/src/components/layout/announcement-bar';
 import Navbar from '@/src/components/layout/navbar';
-
+import Footer from '@/src/components/layout/footer';
 import AppUI from '@/src/components/layout/app-ui';
+
+const hasAnnouncement = Boolean(process.env.NEXT_PUBLIC_ANNOUNCEMENT_BAR_TEXT);
 
 /**
  * Main application layout wrapper.
@@ -14,7 +16,10 @@ import AppUI from '@/src/components/layout/app-ui';
 export default function AppShell({ children }: { children: ReactNode }) {
     return (
         <>
-            <Navbar />
+            <div className="sticky top-0 z-50">
+                <AnnouncementBar />
+                <Navbar hasAnnouncement={hasAnnouncement} />
+            </div>
             <main>{children}</main>
             <Footer variant="fat" />
             <AppUI />

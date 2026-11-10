@@ -9,10 +9,10 @@ import {
 } from '@/src/design-system/container-styles';
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-    /** Maximum content width. Defaults to `md`. */
+    /** Maximum content width. */
     width?: ContainerWidth;
 
-    /** Horizontal padding. Defaults to `md`. */
+    /** Horizontal padding. */
     padding?: ContainerPadding;
 
     children: React.ReactNode;
@@ -22,7 +22,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
  * Use a preset from `CONTAINER_PRESETS` for a predefined combination.
  *
  * @example
- * `<Container {...CONTAINER_PRESETS.base}>...</Container>`.
+ * `<Container {...CONTAINER_PRESETS.hero}>...</Container>`.
  *
  * @See {@link containerStyles}
  */

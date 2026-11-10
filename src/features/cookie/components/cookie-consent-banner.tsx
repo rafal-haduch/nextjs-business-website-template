@@ -23,7 +23,6 @@ export default function CookieConsentBanner() {
         <Banner
             open
             onClose={() => {}}
-            placement="bottom"
             panelHTMLAttributes={{
                 role: 'region',
                 'aria-labelledby': 'cookie-banner-title',

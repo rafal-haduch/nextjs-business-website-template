@@ -12,14 +12,13 @@ import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
 import DecorativeLine from '@/src/components/ui/decorative-line';
 
-import { CONTAINER_PRESETS } from '@/src/design-system/container-styles';
 import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
 import { DECORATIVE_LINE_PRESETS } from '@/src/design-system/decorative-line-styles';
 
 export default function FirstSection() {
     return (
         <PageSection {...PAGE_SECTION_PRESETS.between} aria-labelledby="section-title">
-            <Container {...CONTAINER_PRESETS.base}>
+            <Container>
                 <div className="text-center">
                     <h2
                         id="section-title"
