@@ -7,13 +7,10 @@ import { SITE_NAME } from '@/src/data/site-and-company';
 /**
  * Centralized SEO metadata for all routes.
  *
- * Use in each `page.tsx`:
- * ```typescript
- * import { SEO } from '@/src/config/seo';
- * export const metadata: Metadata = SEO.HOME;
- * ```
+ * Use on every page that should have its own metadata.
  */
 export const SEO = {
+    //TODO(template): Set pages metadata.
     HOME: {
         title: {
             absolute: SITE_NAME,

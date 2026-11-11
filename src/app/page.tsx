@@ -11,6 +11,7 @@ import FAQSection from '@/src/app/_components/faq-section';
 
 export const metadata = SEO.HOME;
 
+//TODO(template): Replace the placeholder content on the homepage with the actual content.
 export default function Home() {
     return (
         <>

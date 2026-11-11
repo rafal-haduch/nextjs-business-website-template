@@ -1,5 +1,7 @@
 import { COMPANY_NAME } from '@/src/data/site-and-company';
 
+//TODO(template): Set contact data.
+
 // --- Phone ---
 
 const PHONE_NUMBER = '123 123 123' as const;

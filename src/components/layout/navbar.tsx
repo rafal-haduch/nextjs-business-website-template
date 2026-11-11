@@ -45,16 +45,11 @@ export default function Navbar({ hasAnnouncement }: NavbarProps) {
     return (
         <>
             {/*--- Desktop menu bar ---*/}
-            <header className="bg-background-primary h-24 py-4 shadow-sm">
+            <header className="bg-background-primary sticky top-0 z-50 h-24 py-4 shadow-sm">
                 <Container>
                     <div className="flex items-center justify-between">
                         <Link href={ROUTES.HOME.path} className="shrink-0">
-                            <Image
-                                src={logo}
-                                alt="Logo pracowni"
-                                priority
-                                className="h-auto w-64"
-                            />
+                            <Image src={logo} alt="Logo" priority className="h-auto w-64" />
                         </Link>
                         {/*--- Desktop nav ---*/}
                         <div className="my-auto hidden h-fit items-center gap-4 lg:flex">

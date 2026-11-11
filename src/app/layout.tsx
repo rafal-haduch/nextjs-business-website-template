@@ -10,16 +10,19 @@ import AppShell from '@/src/components/layout/app-shell';
 
 import '@/src/app/globals.css';
 
+//TODO(template): Replace the fonts on the page.
 const geistSans = Geist({
     variable: '--font-geist-sans',
     subsets: ['latin'],
 });
 
+//TODO(template): Replace the fonts on the page.
 const geistMono = Geist_Mono({
     variable: '--font-geist-mono',
     subsets: ['latin'],
 });
 
+//TODO(template): Configure metadata.
 export const metadata: Metadata = {
     metadataBase: new URL(BASE_URL),
     title: {
@@ -54,6 +57,7 @@ export default function RootLayout({
     children: ReactNode;
 }>) {
     return (
+        //TODO(template): Specify the language.
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
             <body>
                 <AppProviders>

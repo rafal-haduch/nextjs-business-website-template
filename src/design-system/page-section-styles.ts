@@ -4,9 +4,9 @@ import { BrandColorRole, SizeScale } from '@/src/design-system/scale.types';
 
 export type SectionPadding = SizeScale | 'none';
 
-export type SectionBackground = BrandColorRole | 'accent' | 'none';
+export type SectionBackground = BrandColorRole | 'none';
 
-export type PageSectionPreset = 'hero' | 'first' | 'between' | 'last' | 'single';
+export type PageSectionPreset = 'first' | 'between' | 'last' | 'single';
 
 const pageSectionTopPaddingStyles: Record<SectionPadding, string> = {
     none: 'pt-0',
@@ -22,11 +22,9 @@ const pageSectionBottomPaddingStyles: Record<SectionPadding, string> = {
     large: 'pb-12 md:pb-16',
 };
 
-//TODO: page section color backgrounds
 const pageSectionBackgroundStyles: Record<SectionBackground, string> = {
     primary: 'bg-background-primary',
-    secondary: 'bg-background-soft-primary',
-    accent: 'bg-background-accent',
+    secondary: 'bg-background-secondary',
     none: '',
 };
 
@@ -58,10 +56,6 @@ export function pageSectionStyles({
  * Predefined vertical padding combinations for common section positions.
  */
 export const PAGE_SECTION_PRESETS = {
-    hero: {
-        paddingTop: 'none',
-        paddingBottom: 'none',
-    },
     first: {
         paddingTop: 'small',
         paddingBottom: 'medium',

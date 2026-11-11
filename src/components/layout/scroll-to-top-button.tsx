@@ -25,11 +25,12 @@ export default function ScrollToTopButton() {
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
 
+    //TODO(template): Switch accessibility to the site's language.
     return (
         <button
             onClick={scrollToTop}
-            aria-label="Przewiń na górę strony"
-            title="Przewiń na górę strony"
+            aria-label="Scroll to the top of the page"
+            title="Scroll to the top of the page"
             className={cn(
                 buttonStyles({ color: 'mix' }),
                 'fixed right-4 bottom-6 flex h-12 w-12 items-center justify-center rounded-full shadow-xl md:hidden',

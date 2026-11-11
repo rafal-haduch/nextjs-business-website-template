@@ -3,13 +3,13 @@ import { House } from 'lucide-react';
 
 import { ROUTES } from '@/src/config/routes';
 
-import { buttonStyles } from '@/src/design-system/button-styles';
-
 import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
 
 import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
+import { buttonStyles } from '@/src/design-system/button-styles';
 
+//TODO(template): Determine the content for the 404 page.
 export default function NotFound() {
     return (
         <PageSection {...PAGE_SECTION_PRESETS.single} aria-labelledby="not-found-title">

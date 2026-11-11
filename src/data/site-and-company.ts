@@ -1,3 +1,5 @@
+//TODO(template): Set site and company name.
+
 export const COMPANY_NAME = 'COMPANY_NAME' as const;
 
 export const SITE_NAME = 'SITE_NAME' as const;

@@ -1,20 +1,22 @@
 /**
  * Navigation item links.
- * @property {number} order - Sort order in navigation (ascending).
  */
 interface NavItem {
+    /** Sort order in navigation (ascending). */
     order: number;
 }
 
 /**
  * Application route definition.
- * @property {string} path - URL path for the route.
- * @property {string} label - Display text in navigation menu or link buttons.
- * @property {NavItem} [nav] - Optional navigation metadata (omit for non-navigable routes).
  */
 interface AppRoute {
+    /** URL path for the route. */
     path: string;
+
+    /** Display text in navigation menu or link buttons. */
     label: string;
+
+    /** Optional navigation metadata (omit for non-navigable routes). */
     nav?: NavItem;
 }
 
@@ -29,10 +31,9 @@ interface NavRoute extends AppRoute {
 /**
  * Central routing configuration for the application.
  * Use in: Link href props, canonical URLs etc.
- * @example
- * href={ROUTES.HOME.path}
  */
 export const ROUTES = {
+    //TODO(template): Set the application routes.
     HOME: {
         path: '/',
         label: 'Home',

@@ -1,6 +1,8 @@
-import Container from '@/src/components/ui/container';
 import PageSection from '@/src/components/ui/page-section';
+import Container from '@/src/components/ui/container';
 import Collapsible from '@/src/components/ui/collapsible';
+
+import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
 
 interface FAQElement {
     id: number;
@@ -33,9 +35,11 @@ const faqLists: FAQElement[] = [
 
 export default function FAQSection() {
     return (
-        <PageSection>
+        <PageSection {...PAGE_SECTION_PRESETS.between} aria-labelledby="faq-title">
             <Container>
-                <h2 className="mb-4 text-center">Frequently Asked Questions</h2>
+                <h2 id="faq-title" className="mb-4 text-center">
+                    Frequently Asked Questions
+                </h2>
                 <p className="mx-auto mb-12 max-w-xl text-center">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque
                     tincidunt ipsum, sed consequat eros aliquam mollis.

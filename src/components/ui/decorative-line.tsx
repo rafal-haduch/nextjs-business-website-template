@@ -8,9 +8,7 @@ import {
     DecorativeLineWidth,
 } from '@/src/design-system/decorative-line-styles';
 
-//TODO: create decorative ornament (line with icon or graphis?)
-
-interface Props {
+interface DecorativeLineProps {
     /** Decorative line width. */
     width?: DecorativeLineWidth;
 
@@ -46,7 +44,7 @@ export default function DecorativeLine({
     width = 'medium',
     rounded = false,
     className,
-}: Props) {
+}: DecorativeLineProps) {
     return (
         <div
             aria-hidden="true"

@@ -3,9 +3,9 @@ import React from 'react';
 import { cn } from '@/src/utils/cn';
 
 import {
-    type SectionBackground,
     pageSectionStyles,
-    type SectionPadding,
+    SectionBackground,
+    SectionPadding,
 } from '@/src/design-system/page-section-styles';
 
 interface PageSectionProps extends React.HTMLAttributes<HTMLElement> {

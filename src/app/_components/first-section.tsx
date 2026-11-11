@@ -1,9 +1,10 @@
 import {
-    Blocks,
-    Component,
+    FolderTree,
     LayoutTemplate,
-    PencilRuler,
+    LucideIcon,
+    Palette,
     Puzzle,
+    SearchCheck,
     Settings2,
     Sparkles,
 } from 'lucide-react';
@@ -34,16 +35,25 @@ export default function FirstSection() {
                     <p className="mb-4">
                         This is a business website template in NextJS made by Rafał Haduch.
                     </p>
-                    <div className="text-foreground-brand-primary inline-grid grid-cols-2 flex-row flex-wrap place-items-center gap-16 py-8 sm:grid-cols-3 md:flex md:items-center md:justify-between md:py-16">
-                        <LayoutTemplate aria-hidden="true" className="h-18 w-18" />
-                        <Puzzle aria-hidden="true" className="h-18 w-18" />
-                        <Settings2 aria-hidden="true" className="h-18 w-18" />
-                        <Blocks aria-hidden="true" className="h-18 w-18" />
-                        <PencilRuler aria-hidden="true" className="h-18 w-18" />
-                        <Component aria-hidden="true" className="h-18 w-18" />
+                    <div className="text-foreground-brand-primary mx-auto grid max-w-4xl grid-cols-2 gap-x-8 gap-y-10 py-8 sm:grid-cols-3 sm:gap-x-12 md:py-16">
+                        <Feature icon={LayoutTemplate} label="Ready-to-use template" />
+                        <Feature icon={Puzzle} label="Reusable components" />
+                        <Feature icon={FolderTree} label="Organized project structure" />
+                        <Feature icon={Palette} label="Consistent design system" />
+                        <Feature icon={Settings2} label="Base Next.js configuration" />
+                        <Feature icon={SearchCheck} label="Essential SEO setup" />
                     </div>
                 </div>
             </Container>
         </PageSection>
+    );
+}
+
+function Feature({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+    return (
+        <div className="flex flex-col items-center gap-3 text-center">
+            <Icon aria-hidden="true" className="h-12 w-12" />
+            <p className="text-foreground-secondary text-sm font-medium sm:text-base">{label}</p>
+        </div>
     );
 }

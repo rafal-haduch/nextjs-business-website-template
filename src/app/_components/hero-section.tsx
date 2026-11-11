@@ -8,13 +8,11 @@ import { buttonStyles } from '@/src/design-system/button-styles';
 import PageSection from '@/src/components/ui/page-section';
 import Container from '@/src/components/ui/container';
 
-import { PAGE_SECTION_PRESETS } from '@/src/design-system/page-section-styles';
-
 import heroImage from '@/public/hero-image.webp';
 
 export default function HeroSection() {
     return (
-        <PageSection {...PAGE_SECTION_PRESETS.hero} aria-labelledby="hero-title">
+        <PageSection paddingTop="none" paddingBottom="none" aria-labelledby="hero-title">
             <Container className="px-0">
                 {/*--- Wrapper for background image ---*/}
                 <div className="relative h-svh max-h-184">

@@ -5,9 +5,12 @@ import { useActionState } from 'react';
 
 import { ROUTES } from '@/src/config/routes';
 import { cn } from '@/src/utils/cn';
+
 import InputWithLabel from '@/src/components/ui/input-with-label';
+
 import { buttonStyles } from '@/src/design-system/button-styles';
 import { linkStyles } from '@/src/design-system/link-styles';
+
 import { subscribeToNewsletter } from '@/src/features/newsletter/actions/subscribe-to-newsletter';
 import { initialNewsletterFormState } from '@/src/features/newsletter/model/newsletter-form-state';
 
@@ -99,7 +102,7 @@ export default function NewsletterForm() {
                     pending && 'cursor-wait opacity-70'
                 )}
             >
-                {pending ? 'Sending…' : 'Zapisz się'}
+                {pending ? 'Sending…' : 'Subscribe'}
             </button>
         </form>
     );

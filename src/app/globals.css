@@ -36,13 +36,16 @@
 
     /*--- Backgrounds ---*/
     --color-background-primary: var(--color-white);
-    --color-background-secondary: var(--color-white);
-    --color-background-soft-primary: var(--color-brand-primary-100);
-    --color-background-soft-secondary: var(--color-brand-secondary-100);
+    --color-background-secondary: var(--color-brand-primary-100);
+
+    --color-background-soft-primary: var(--color-brand-primary-200);
+    --color-background-soft-secondary: var(--color-brand-secondary-200);
+
     --color-background-accent-primary: var(--color-main-brand-primary);
     --color-background-accent-secondary: var(--color-main-brand-secondary);
-    --color-background-strong-primary: var(--color-brand-primary-700);
-    --color-background-strong-secondary: var(--color-brand-secondary-700);
+
+    --color-background-strong-primary: var(--color-brand-primary-600);
+    --color-background-strong-secondary: var(--color-brand-secondary-600);
 
     /*--- Foregrounds ---*/
     --color-foreground-primary: var(--color-gray-800);
@@ -275,23 +278,5 @@
 
     .input-soft.input-neutral {
         @apply border-border-strong text-foreground-primary border bg-neutral-100 focus:border-2;
-    }
-
-    /*--- Table ---*/
-
-    .table-base {
-        @apply w-full border-collapse;
-    }
-
-    .table-base th {
-        @apply bg-background-soft-primary px-4 py-3 text-left font-semibold;
-    }
-
-    .table-base td {
-        @apply px-4 py-3;
-    }
-
-    .table-base tr {
-        @apply border-border-brand-primary border-b;
     }
 }
