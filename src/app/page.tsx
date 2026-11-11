@@ -7,6 +7,7 @@ import DecorativeSeparator from '@/src/components/ui/decorative-separator';
 import HeroSection from '@/src/app/_components/hero-section';
 import FirstSection from '@/src/app/_components/first-section';
 import NewsletterSection from '@/src/app/_components/newsletter-section';
+import FAQSection from '@/src/app/_components/faq-section';
 
 export const metadata = SEO.HOME;
 
@@ -16,8 +17,9 @@ export default function Home() {
             <HeroSection />
             <FirstSection />
             <DecorativeSeparator lucideIcon={Rocket} />
-            <NewsletterSection />
+            <FAQSection />
             <DecorativeSeparator lucideIcon={Rocket} />
+            <NewsletterSection />
         </>
     );
 }

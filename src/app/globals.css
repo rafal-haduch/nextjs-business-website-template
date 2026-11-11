@@ -36,6 +36,7 @@
 
     /*--- Backgrounds ---*/
     --color-background-primary: var(--color-white);
+    --color-background-secondary: var(--color-white);
     --color-background-soft-primary: var(--color-brand-primary-100);
     --color-background-soft-secondary: var(--color-brand-secondary-100);
     --color-background-accent-primary: var(--color-main-brand-primary);
